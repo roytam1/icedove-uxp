@@ -692,15 +692,9 @@
 @RESPATH@/components/BuiltinProviders.manifest
 @RESPATH@/components/PresentationControlService.js
 
-; Phishing Protection
 ; Modules
 @RESPATH@/modules/*
 
-@RESPATH@/components/nsURLClassifier.manifest
-@RESPATH@/components/nsUrlClassifierHashCompleter.js
-@RESPATH@/components/nsUrlClassifierListManager.js
-@RESPATH@/components/nsUrlClassifierLib.js
-@RESPATH@/components/url-classifier.xpt
 
 ; Security Reports
 @RESPATH@/components/SecurityReporter.manifest
