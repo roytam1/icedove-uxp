@@ -38,14 +38,14 @@ THUNDERBIRD_VERSION=$MOZ_APP_VERSION
 MOZ_UA_BUILDID=20100101
 
 MOZ_BRANDING_DIRECTORY=mail/branding/icedove
-MOZ_OFFICIAL_BRANDING_DIRECTORY=other-licenses/branding/icedove
+MOZ_OFFICIAL_BRANDING_DIRECTORY=mail/branding/icedove
 MOZ_APP_ID={3550f703-e582-4d05-9a08-453d09bdfdc6}
 # This should usually be the same as the value MAR_CHANNEL_ID.
 # If more than one ID is needed, then you should use a comma separated list
 # of values.
-ACCEPTED_MAR_CHANNEL_IDS=thunderbird-comm-release
+ACCEPTED_MAR_CHANNEL_IDS=icedove-comm-release
 # The MAR_CHANNEL_ID must not contain the following 3 characters: ",\t "
-MAR_CHANNEL_ID=thunderbird-comm-release
+MAR_CHANNEL_ID=icedove-comm-release
 # Enable generational GC on desktop.
 JSGC_GENERATIONAL=1
 MOZ_PROFILE_MIGRATOR=1
