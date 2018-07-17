@@ -26,7 +26,7 @@ if test "$OS_ARCH" = "WINNT"; then
   fi
 fi
 
-# For Icedove-UXP we want to use 52.9.0_YYYYMMDD as MOZ_APP_VERSION in release
+# For Icedove-UXP we want to use 52.9.YYYYMMDD as MOZ_APP_VERSION in release
 # builds so add-on developers have something to target while maintaining
 # Thunderbird compatibility.
 # To enable add "export ICEDOVE_VERSION=1" to the .mozconfig file.
@@ -34,7 +34,7 @@ fi
 # don't export the variable if you are in development or don't care.
 # When not exported we fall back the value in the version*.txt file.
 if test -n "$ICEDOVE_VERSION" ; then
-    MOZ_APP_VERSION_TXT=52.9.0_`date --utc '+%Y%m%d'`
+    MOZ_APP_VERSION_TXT=52.9.`date --utc '+%Y%m%d'`
     MOZ_APP_VERSION=`cat $MOZ_APP_VERSION_TXT`
     MOZ_APP_VERSION_DISPLAY_TXT=`date --utc '+%Y%m%d'`
     MOZ_APP_VERSION_DISPLAY=`cat $MOZ_APP_VERSION_DISPLAY_TXT`
