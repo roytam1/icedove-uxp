@@ -107,10 +107,6 @@
 @BINPATH@/gtk2/@DLL_PREFIX@mozgtk@DLL_SUFFIX@
 #endif
 
-; Security Reports
-@RESPATH@/components/SecurityReporter.manifest
-@RESPATH@/components/SecurityReporter.js
-
 ; ANGLE GLES-on-D3D rendering library
 #ifdef MOZ_ANGLE_RENDERER
 @BINPATH@/libEGL.dll
@@ -419,7 +415,6 @@
 @RESPATH@/components/toolkit_filewatcher.xpt
 @RESPATH@/components/toolkit_formautofill.xpt
 @RESPATH@/components/toolkit_osfile.xpt
-@RESPATH@/components/toolkit_securityreporter.xpt
 #ifdef NIGHTLY_BUILD
 @RESPATH@/components/toolkit_perfmonitoring.xpt
 #endif
