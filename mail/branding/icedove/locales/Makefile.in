@@ -39,7 +39,7 @@ DEPTH          = @DEPTH@
 topsrcdir      = @top_srcdir@
 srcdir         = @srcdir@
 VPATH          = @srcdir@
-relativesrcdir = application/icedove-uxp/mail/branding/icedove/locales
+relativesrcdir = mail/branding/icedove/locales
 
 include $(DEPTH)/config/autoconf.mk
 
