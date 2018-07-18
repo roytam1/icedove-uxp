@@ -1,7 +1,8 @@
-amazondotcom
-answers
-creativecommons
-google
-wikipedia
-yahoo
-ddg
+searx
+searx-tor
+yacy
+quitter-is
+goblinrefuge
+internet-archive
+wikipedia-en
+hyperbola-packages
