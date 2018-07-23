@@ -34,10 +34,8 @@ fi
 # don't export the variable if you are in development or don't care.
 # When not exported we fall back the value in the version*.txt file.
 if test -n "$ICEDOVE_VERSION" ; then
-    MOZ_APP_VERSION_TXT=52.9.`date --utc '+%Y%m%d'`
-    MOZ_APP_VERSION=`cat $MOZ_APP_VERSION_TXT`
-    MOZ_APP_VERSION_DISPLAY_TXT=`date --utc '+%Y%m%d'`
-    MOZ_APP_VERSION_DISPLAY=`cat $MOZ_APP_VERSION_DISPLAY_TXT`
+    MOZ_APP_VERSION=52.9.`date --utc '+%Y%m%d'`
+    MOZ_APP_VERSION_DISPLAY=52.9.`date --utc '+%Y%m%d'`
 else
     MOZ_APP_VERSION_TXT=${_topsrcdir}/$MOZ_BUILD_APP/config/version.txt
     MOZ_APP_VERSION=`cat $MOZ_APP_VERSION_TXT`
