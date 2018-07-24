@@ -9,6 +9,7 @@ classic.jar:
   skin/classic/messenger/dialogs.css                             (mail/dialogs.css)
   skin/classic/messenger/messenger.css                           (mail/messenger.css)
   skin/classic/messenger/aboutNetError.css                       (../shared/mail/aboutNetError.css)
+  skin/classic/messenger/about.css                       (../shared/mail/about.css)
   skin/classic/messenger/messengerLWTheme.css                    (../shared/mail/messengerLWTheme.css)
   skin/classic/messenger/primaryToolbar.css                      (mail/primaryToolbar.css)
   skin/classic/messenger/aboutSupport.css                        (../windows/mail/aboutSupport.css)
@@ -344,3 +345,4 @@ classic.jar:
 [extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}] chrome.jar:
 % override chrome://mozapps/skin/extensions/extensionGeneric-16.png chrome://messenger/skin/icons/extensionGeneric.svg
 % override chrome://global/skin/netError.css chrome://messenger/skin/aboutNetError.css
+% override chrome://global/skin/about.css chrome://messenger/skin/about.css
