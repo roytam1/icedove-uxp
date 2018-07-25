@@ -820,6 +820,34 @@ pref("datareporting.healthreport.uploadEnabled", false);
 pref("datareporting.healthreport.about.reportUrl", "");
 pref("datareporting.policy.dataSubmissionEnabled", false);
 
+// Disable safe browsing remote lookups for downloaded files.
+// This leaks information to google.
+// https://www.mozilla.org/en-US/firefox/39.0/releasenotes/
+// https://wiki.mozilla.org/Security/Application_Reputation
+pref("browser.safebrowsing.downloads.remote.enabled", false);
+pref("browser.safebrowsing.provider.mozilla.gethashURL", "about:blank");
+pref("browser.safebrowsing.provider.mozilla.updateURL", "about:blank");
+pref("browser.safebrowsing.downloads.remote.block_dangerous", false);
+pref("browser.safebrowsing.downloads.remote.block_dangerous_host", false);
+pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
+pref("browser.safebrowsing.downloads.remote.enabled", false);
+pref("browser.safebrowsing.downloads.remote.url", "about:blank");
+pref("browser.safebrowsing.provider.google.pver", "about:blank");
+pref("browser.safebrowsing.provider.google.reportURL", "about:blank");
+pref("browser.safebrowsing.provider.google.gethashURL", "about:blank");
+pref("browser.safebrowsing.provider.google.updateURL", "about:blank");
+pref("browser.safebrowsing.provider.google.lists", "about:blank");
+
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1025965
+pref("browser.safebrowsing.phishing.enabled", false);
+pref("browser.safebrowsing.provider.google4.lists", "about:blank");
+pref("browser.safebrowsing.provider.google4.updateURL", "about:blank");
+pref("browser.safebrowsing.provider.google4.gethashURL", "about:blank");
+pref("browser.safebrowsing.provider.google4.pver", "about:blank");
+pref("browser.safebrowsing.provider.google4.reportURL", "about:blank");
+pref("browser.safebrowsing.provider.mozilla.lists", "about:blank");
+
 pref("mail.chat.enabled", true);
 // Whether to show chat notifications or not.
 pref("mail.chat.show_desktop_notifications", true);
