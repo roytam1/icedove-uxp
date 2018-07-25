@@ -127,3 +127,6 @@ comm.jar:
 toolkit.jar:
 % overlay chrome://global/content/customizeToolbar.xul chrome://messenger/content/customizeToolbarOverlay.xul
 % overlay chrome://mozapps/content/downloads/downloads.xul chrome://messenger/content/downloadsOverlay.xul
+
+# Icedove-UXP specific branding override
+% override chrome://global/skin/about.css chrome://messenger/skin/about.css

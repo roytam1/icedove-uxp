@@ -277,4 +277,3 @@ classic.jar:
 % override chrome://global/skin/icons/close.png               chrome://global/skin/icons/close.svg
 % override chrome://mozapps/skin/extensions/extensionGeneric-16.png chrome://messenger/skin/icons/extensionGeneric.svg
 % override chrome://global/skin/netError.css chrome://messenger/skin/aboutNetError.css
-% override chrome://global/skin/about.css chrome://messenger/skin/about.css
