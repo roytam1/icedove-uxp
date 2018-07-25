@@ -400,8 +400,6 @@ pref("browser.display.auto_quality_min_font_size", 0);
 
 pref("view_source.syntax_highlight", false);
 
-pref("toolkit.telemetry.infoURL", "https://www.mozilla.org/thunderbird/legal/privacy/#telemetry");
-
 pref("mousewheel.withcontrolkey.action", 3);
 /////////////////////////////////////////////////////////////////
 // End core all.js pref overrides
@@ -812,6 +810,15 @@ pref("devtools.debugger.log", false);
 pref("devtools.chrome.enabled", true);
 pref("devtools.debugger.remote-enabled", true);
 pref("devtools.selfxss.count", 5);
+
+// Telemetry Preferences (Disabled by default)
+pref("toolkit.telemetry.prompted", 2);
+pref("toolkit.telemetry.rejected", true);
+pref("toolkit.telemetry.enabled", false);
+pref("toolkit.telemetry.server", "");
+pref("datareporting.healthreport.uploadEnabled", false);
+pref("datareporting.healthreport.about.reportUrl", "");
+pref("datareporting.policy.dataSubmissionEnabled", false);
 
 pref("mail.chat.enabled", true);
 // Whether to show chat notifications or not.
