@@ -188,8 +188,7 @@
 @RESPATH@/components/nsActivity.js
 @RESPATH@/components/nsActivityManager.js
 @RESPATH@/components/nsActivityManagerUI.js
-@RESPATH@/components/nsHightail.js
-@RESPATH@/components/nsBox.js
+@RESPATH@/components/nsNextcloud.js
 @RESPATH@/components/nsAddrbook.manifest
 @RESPATH@/components/nsMailNewsCommandLineHandler.js
 @RESPATH@/components/nsNewsAutoCompleteSearch.js

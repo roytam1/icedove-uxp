@@ -8,8 +8,7 @@
 # mail
 chrome/classic/skin/classic/messenger/icons/new-mail-alert.png
 chrome/messenger/content/branding/icon48.png
-chrome/messenger/content/messenger/cloudfile/Box/management.js
-chrome/messenger/content/messenger/cloudfile/Hightail/management.js
+chrome/messenger/content/messenger/cloudfile/NextCloud/management.js
 chrome/devtools/modules/devtools/client/themes/splitters.css
 chrome/devtools/skin/splitters.css
 chrome/icons/default/default48.png
