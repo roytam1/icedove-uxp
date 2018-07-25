@@ -71,7 +71,7 @@ calBackendLoader.prototype = {
                       .autoRegister(file);
             dump("[calBackendLoader] Using icaljs backend at " + file.path + "\n");
         } else {
-            dump("[calBackendLoader] Using Thunderbird's builtin libical backend\n");
+            dump("[calBackendLoader] Using Icedove-UXP's builtin libical backend\n");
         }
 
         this.loaded = true;
