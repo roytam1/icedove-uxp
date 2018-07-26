@@ -451,7 +451,7 @@ nsMsgContentPolicy::IsExposedProtocol(nsIURI *aContentLocation)
   NS_ENSURE_SUCCESS(rv, false);
 
   // Check some exposed protocols. Not all protocols in the list of
-  // network.protocol-handler.expose.* prefs in all-thunderbird.js are
+  // network.protocol-handler.expose.* prefs in all-icedove-uxp.js are
   // admitted purely based on their scheme.
   // news, snews, nntp, imap and mailbox are checked before the call
   // to this function by matching content location and requesting location.

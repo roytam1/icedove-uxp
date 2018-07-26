@@ -65,5 +65,5 @@ if CONFIG['MOZILLA_OFFICIAL']:
 DISABLE_STL_WRAPPING = True
 
 JS_PREFERENCE_PP_FILES += [
-    'profile/all-thunderbird.js',
+    'profile/all-icedove-uxp.js',
 ]

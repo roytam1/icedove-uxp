@@ -306,13 +306,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; default pref files
-@RESPATH@/defaults/pref/all-thunderbird.js
+@RESPATH@/defaults/pref/all-icedove-uxp.js
 @RESPATH@/defaults/pref/channel-prefs.js
 @RESPATH@/defaults/pref/composer.js
 @RESPATH@/defaults/pref/mailnews.js
 @RESPATH@/defaults/pref/mdn.js
 @RESPATH@/defaults/pref/smime.js
-@RESPATH@/defaults/pref/thunderbird-branding.js
+@RESPATH@/defaults/pref/icedove-uxp-branding.js
 @RESPATH@/greprefs.js
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

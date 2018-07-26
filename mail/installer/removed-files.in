@@ -506,12 +506,12 @@ uninstall/uninstall.exe
   @DIR_MACOS@defaults/autoconfig/platform.js
   @DIR_MACOS@defaults/autoconfig/prefcalls.js
   @DIR_MACOS@defaults/pref/all-l10n.js
-  @DIR_MACOS@defaults/pref/all-thunderbird.js
+  @DIR_MACOS@defaults/pref/all-icedove-uxp.js
   @DIR_MACOS@defaults/pref/composer.js
   @DIR_MACOS@defaults/pref/mailnews.js
   @DIR_MACOS@defaults/pref/mdn.js
   @DIR_MACOS@defaults/pref/smime.js
-  @DIR_MACOS@defaults/pref/thunderbird-branding.js
+  @DIR_MACOS@defaults/pref/icedove-uxp-branding.js
   @DIR_MACOS@defaults/profile/localstore.rdf
   @DIR_MACOS@defaults/profile/mimeTypes.rdf
   @DIR_MACOS@defaults/profile/prefs.js
