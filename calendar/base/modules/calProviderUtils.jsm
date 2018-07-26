@@ -475,7 +475,7 @@ cal.ObserverBag.prototype = {
 /**
  * Base prototype to be used implementing a provider.
  *
- * @see e.g. providers/gdata
+ * @see e.g. providers/
  */
 cal.ProviderBase = function() {
     cal.ASSERT("This prototype should only be inherited!");

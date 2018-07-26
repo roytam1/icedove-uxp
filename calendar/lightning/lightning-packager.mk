@@ -4,7 +4,7 @@
 
 # NOTE: The packager is not only used in calendar/lightning but should be
 # general enough to be able to repackage other sub-extensions like
-# calendar/providers/gdata. This means no lightning-specific files, no version
+# calendar/providers/. This means no lightning-specific files, no version
 # numbers directly from lightning and be careful with relative paths.
 
 # This packager can be used to repackage extensions. To use it, set the
