@@ -219,7 +219,7 @@ var gDataMigrator = {
         // This is the function that the migration wizard will call to actually
         // migrate the data.  It's defined here because we may use it multiple
         // times (with different aProfileDirs), for instance if there is both
-        // a Thunderbird and Firefox cal-extension
+        // a Icedove-UXP and Iceweasel-UXP cal-extension
         function extMigrator(aProfileDir, aCallback) {
             // Get the old datasource
             var dataSource = aProfileDir.clone();
@@ -405,7 +405,7 @@ var gDataMigrator = {
         }
         var profileDir = this.dirService.get("ProfD", Components.interfaces.nsILocalFile);
         var icalSpec = profileDir.path;
-        var diverge = icalSpec.indexOf("Thunderbird");
+        var diverge = icalSpec.indexOf("Icedove-UXP");
         if (diverge == -1) {
             return [];
         }
@@ -579,17 +579,17 @@ var gDataMigrator = {
      *     Windows:  %APPDATA%\Mozilla\Sunbird\Profiles
      *     Mac OS X: ~jdoe/Library/Application Support/Sunbird/Profiles
      *
-     * Firefox:
+     * Iceweasel-UXP:
      *     Unix:     ~jdoe/.mozilla/firefox/
      *     Windows:  %APPDATA%\Mozilla\Firefox\Profiles
      *     Mac OS X: ~jdoe/Library/Application Support/Firefox/Profiles
      *
-     * Thunderbird:
+     * Icedove-UXP:
      *     Unix:     ~jdoe/.thunderbird/
      *     Windows:  %APPDATA%\Thunderbird\Profiles
      *     Mac OS X: ~jdoe/Library/Thunderbird/Profiles
      *
-     * Notice that Firefox and Sunbird follow essentially the same pattern, so
+     * Notice that Iceweasel-UXP and Sunbird follow essentially the same pattern, so
      * we group them with getNormalProfile
      */
     getFirefoxProfile: function gdm_getFF() {
@@ -601,7 +601,7 @@ var gDataMigrator = {
      */
     getThunderbirdProfile: function gdm_getTB() {
         let profileRoot = this.dirService.get("DefProfRt", Components.interfaces.nsILocalFile);
-        migLOG("searching for Thunderbird in " + profileRoot.path);
+        migLOG("searching for Icedove-UXP in " + profileRoot.path);
         return profileRoot.exists() ? profileRoot : null;
     },
 

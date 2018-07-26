@@ -175,7 +175,7 @@ var WinTaskbarJumpList = {
     let file = Services.dirsvc.get("XCurProcD", Ci.nsILocalFile);
 
     // XXX where can we grab this from in the build? Do we need to?
-    file.append("thunderbird.exe");
+    file.append("icedove-uxp.exe");
 
     let handlerApp = Cc["@mozilla.org/uriloader/local-handler-app;1"]
                        .createInstance(Ci.nsILocalHandlerApp);

@@ -228,7 +228,7 @@ var GlodaABAttrs = {
       }); // tested-by: test_attributes_fundamental
 
     /* ***** Contact Meta ***** */
-    // Freeform tags; not explicit like thunderbird's fundamental tags.
+    // Freeform tags; not explicit like Icedove-UXP's fundamental tags.
     //  we differentiate for now because of fundamental implementation
     //  differences.
     this._attrFreeTag = Gloda.defineAttribute({

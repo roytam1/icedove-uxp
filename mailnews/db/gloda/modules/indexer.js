@@ -91,12 +91,12 @@ IndexingJob.prototype = {
  * Responsiveness
  * - When the user wants to quit, we should be able to stop and quit in a timely
  *   fasion.
- * - We should not interfere with the user's thunderbird usage.
+ * - We should not interfere with the user's Icedove-UXP usage.
  *
  * Correctness
  * - Quitting should not result in any information loss; we should (eventually)
  *   end up at the same indexed state regardless of whether a user lets
- *   indexing run to completion or restarts thunderbird in the middle of the
+ *   indexing run to completion or restarts Icedove-UXP in the middle of the
  *   process.  (It is okay to take slightly longer in the latter case.)
  *
  * Worst Case Scenario Avoidance
@@ -107,7 +107,7 @@ IndexingJob.prototype = {
  *
  * Adaptive Indexing
  * - The indexer tries to stay out of the way of other running code in
- *   Thunderbird (autosync) and other code on the system.  We try and target
+ *   Icedove-UXP (autosync) and other code on the system.  We try and target
  *   some number of milliseconds of activity between intentional inactive
  *   periods.  The number of milliseconds of activity varies based on whether we
  *   believe the user to be actively using the computer or idle.  We use our

@@ -4,7 +4,7 @@
 
 /*
  * This file tests our indexing prowess.  This includes both our ability to
- *  properly be triggered by events taking place in thunderbird as well as our
+ *  properly be triggered by events taking place in Icedove-UXP as well as our
  *  ability to correctly extract/index the right data.
  * In general, if these tests pass, things are probably working quite well.
  *

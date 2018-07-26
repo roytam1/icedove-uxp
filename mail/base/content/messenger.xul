@@ -38,7 +38,7 @@
 ]>
 
 <!--
-  - The 'what you think of when you think of thunderbird' window;
+  - The 'what you think of when you think of icedove-uxp' window;
   -  3-pane view inside of tabs.
   -->
 <window id="messengerWindow"

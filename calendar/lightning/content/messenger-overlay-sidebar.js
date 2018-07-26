@@ -413,7 +413,7 @@ function ltnOnLoad(event) {
 function ltnIntegrationNotification() {
     const kOptOut = "mail.calendar-integration.opt-out"; // default: false
     const kNotify = "calendar.integration.notify"; // default: true
-    const kSupportUri = "https://support.mozilla.org/kb/thunderbird-calendar-integration";
+    const kSupportUri = "https://forums.hyperbola.info/";
     const kLightningGuuid = "{e2fda1a4-762b-4020-b5ad-a41df1933103}";
 
     // we fall back to messagepanebox for Seamonkey
@@ -906,8 +906,8 @@ function checkCalendarBinaryComponent() {
         return;
     }
 
-    const THUNDERBIRD_GUID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
-    const SEAMONKEY_GUID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
+    const ICEDOVEUXP_GUID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
+    const ICEAPEUXP_GUID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
     const LIGHTNING_GUID = "{e2fda1a4-762b-4020-b5ad-a41df1933103}";
 
     AddonManager.getAddonByID(LIGHTNING_GUID, (ext) => {
@@ -921,10 +921,10 @@ function checkCalendarBinaryComponent() {
         let extbrand = ltnGetString("lightning", "brandShortName");
 
         switch (Services.appinfo.ID) {
-            case THUNDERBIRD_GUID: // e.g. 31.4.0 -> 3.3
+            case ICEDOVEUXP_GUID: // e.g. 31.4.0 -> 3.3
                 version = ((parseInt(versionparts[0], 10) + 2) / 10).toFixed(1);
                 break;
-            case SEAMONKEY_GUID: // e.g. 2.28.4 -> 3.3
+            case ICEAPEUXP_GUID: // e.g. 2.28.4 -> 3.3
                 version = ((parseInt(versionparts[1], 10) + 5) / 10).toFixed(1);
                 break;
         }

@@ -688,7 +688,7 @@ var calendarController2 = {
 
     isCommandEnabled: function(aCommand) {
         switch (aCommand) {
-            // Thunderbird Commands
+            // Icedove-UXP Commands
             case "cmd_cut":
                 return calendarController.selected_items_writable;
             case "cmd_copy":
@@ -744,7 +744,7 @@ var calendarController2 = {
                 calPrint();
                 break;
 
-            // Thunderbird commands
+            // Icedove-UXP commands
             case "cmd_goForward":
                 currentView().moveView(1);
                 break;
@@ -774,14 +774,14 @@ var calendarController2 = {
 
 /**
  * Inserts the command controller into the document. On Lightning, also make
- * sure that it is inserted before the conflicting thunderbird command
+ * sure that it is inserted before the conflicting icedove-uxp command
  * controller.
  */
 function injectCalendarCommandController() {
     // We need to put our new command controller *before* the one that
-    // gets installed by thunderbird. Since we get called pretty early
+    // gets installed by Icedove-UXP. Since we get called pretty early
     // during startup we need to install the function below as a callback
-    // that periodically checks when the original thunderbird controller
+    // that periodically checks when the original icedove-uxp controller
     // gets alive. Please note that setTimeout with a value of 0 means that
     // we leave the current thread in order to re-enter the message loop.
 

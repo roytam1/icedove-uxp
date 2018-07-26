@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "nsNativeAppSupportWin.h"
 
-1 24 "thunderbird.exe.manifest" 
+1 24 "icedove-uxp.exe.manifest" 
 
 STRINGTABLE DISCARDABLE
 BEGIN

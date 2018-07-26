@@ -1,7 +1,7 @@
 /*.app/***
 /*.dylib
 /certutil
-/thunderbird-bin
+/icedove-uxp-bin
 /pk12util
 /ssltunnel
 /xpcshell

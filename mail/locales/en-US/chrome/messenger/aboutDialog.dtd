@@ -35,7 +35,7 @@
 <!ENTITY community.end3             " working together to keep the Web open, public and accessible to all.">
 
 <!ENTITY helpus.start               "Want to help? ">
-<!-- LOCALIZATION NOTE (helpus.donateLink): This is a link title that links to the thunderbird donation page -->
+<!-- LOCALIZATION NOTE (helpus.donateLink): This is a link title that links to the Icedove-UXP donation page -->
 <!ENTITY helpus.donateLink          "Make a donation">
 <!ENTITY helpus.middle              " or ">
 <!-- LOCALIZATION NOTE (helpus.getInvolvedLink): This is a link title that links to http://www.mozilla.org/contribute/. -->

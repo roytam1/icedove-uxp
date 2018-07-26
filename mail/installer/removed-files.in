@@ -102,7 +102,7 @@
 @DIR_MACOS@components/progressDlg.xpt
 @DIR_MACOS@components/sidebar.xpt
 @DIR_MACOS@components/signonviewer.xpt
-@DIR_MACOS@components/thunderbird.xpt
+@DIR_MACOS@components/icedove-uxp.xpt
 @DIR_MACOS@components/@DLL_PREFIX@spellchecker@DLL_SUFFIX@
 @DIR_MACOS@components/spellchk.dll
 @DIR_MACOS@components/uconvd.dll
@@ -161,8 +161,8 @@
 @DIR_MACOS@defaults/profile/US/mimeTypes.rdf
 @DIR_MACOS@defaults/profile/US/
 #ifdef XP_WIN
-  defaults/shortcuts/Mozilla Thunderbird.lnk
-  defaults/shortcuts/Mozilla Thunderbird (No Extensions).lnk
+  defaults/shortcuts/Icedove-UXP.lnk
+  defaults/shortcuts/Icedove-UXP (No Extensions).lnk
   defaults/shortcuts/
 #endif
 @DIR_MACOS@defaults/wallet/VcardSchema.tbl
@@ -182,7 +182,7 @@
 @DIR_MACOS@@DLL_PREFIX@mozsqlite3@DLL_SUFFIX@
 #endif
 
-# Remove obsolete bundled thunderbird test pilot.
+# Remove obsolete bundled icedove-uxp test pilot.
 # In the average case, this directory is only used by Test Pilot, and will get
 # removed by the updater. In some cases (eg, partner builds), distribution/
 # will have other files and/or directories in it. In these cases, the updater
@@ -347,14 +347,14 @@
 @DIR_MACOS@res/html/gopher-unknown.gif
 @DIR_MACOS@@DLL_PREFIX@sqlite3@DLL_SUFFIX@
 #ifdef XP_MACOSX
-  @DIR_MACOS@Thunderbird.app/Contents/Library/Spotlight/Thunderbird.mdimporter/Contents/Info.plist
-  @DIR_MACOS@Thunderbird.app/Contents/Library/Spotlight/Thunderbird.mdimporter/Contents/MacOS/Thunderbird
-  @DIR_MACOS@Thunderbird.app/Contents/Library/Spotlight/Thunderbird.mdimporter/Contents/Resources/schema.xml
-  @DIR_MACOS@Thunderbird.app/Contents/Library/Spotlight/Thunderbird.mdimporter/Contents/Resources/English.lproj/InfoPlist.strings
-  @DIR_MACOS@Thunderbird.app/Contents/Library/Spotlight/Thunderbird.mdimporter/Contents/Resources/English.lproj/schema.strings
+  @DIR_MACOS@Icedove-UXP.app/Contents/Library/Spotlight/Icedove-UXP.mdimporter/Contents/Info.plist
+  @DIR_MACOS@Icedove-UXP.app/Contents/Library/Spotlight/Icedove-UXP.mdimporter/Contents/MacOS/Thunderbird
+  @DIR_MACOS@Icedove-UXP.app/Contents/Library/Spotlight/Icedove-UXP.mdimporter/Contents/Resources/schema.xml
+  @DIR_MACOS@Icedove-UXP.app/Contents/Library/Spotlight/Icedove-UXP.mdimporter/Contents/Resources/English.lproj/InfoPlist.strings
+  @DIR_MACOS@Icedove-UXP.app/Contents/Library/Spotlight/Icedove-UXP.mdimporter/Contents/Resources/English.lproj/schema.strings
 #endif
 #ifdef XP_WIN
-uninstall/UninstallThunderbird.exe
+uninstall/UninstallIcedove-UXP.exe
 uninstall/uninst.exe
 uninstall/uninstall.exe
 #endif

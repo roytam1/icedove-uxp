@@ -4,7 +4,7 @@
 
 # This directory is producing a framework as a target. The output of this
 # framework will be located here.
-FRAMEWORK_DIR := $(DIST)/package/thunderbird.mdimporter
+FRAMEWORK_DIR := $(DIST)/package/icedove-uxp.mdimporter
 
 STRING_FILES := English.lproj/InfoPlist.strings English.lproj/schema.strings
 STRING_DEST := $(FRAMEWORK_DIR)/Contents/Resources/English.lproj

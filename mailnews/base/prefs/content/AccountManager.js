@@ -894,7 +894,7 @@ function updateButtons(tree, account) {
   let setDefaultButton = document.getElementById("setDefaultButton");
 
   if (!addAccountButton && !removeButton && !setDefaultButton)
-    return; // Thunderbird isn't using these.
+    return; // Icedove-UXP isn't using these.
 
   updateItems(tree, account, addAccountButton, setDefaultButton, removeButton);
   updateBlockedItems([addAccountButton, setDefaultButton, removeButton], false);
@@ -902,7 +902,7 @@ function updateButtons(tree, account) {
 
 /**
  * Set enabled/disabled state for the actions in the Account Actions menu.
- * Called only by Thunderbird.
+ * Called only by Icedove-UXP.
  */
 function initAccountActionsButtons(menupopup) {
   if (!Services.prefs.getBoolPref("mail.chat.enabled"))
@@ -1091,7 +1091,7 @@ function pageURL(pageId)
   try {
     // we could compare against "main","server","copies","offline","addressing",
     // "smtp" and "advanced" first to save the work, but don't,
-    // as some of these might be turned into extensions (for thunderbird)
+    // as some of these might be turned into extensions (for Icedove-UXP)
     let packageName = pageId.split("am-")[1].split(".xul")[0];
     chromePackageName = MailServices.accounts.getChromePackageName(packageName);
   }

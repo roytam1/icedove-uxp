@@ -17,7 +17,7 @@
 #   XPI_NO_UNIVERSAL = 1  # If set, no universal path is used on mac
 #
 # For the upload target to work, you also need to set:
-#   LIGHTNING_VERSION = 2.2  # Will be used to replace the Thunderbird version
+#   LIGHTNING_VERSION = 2.2  # Will be used to replace the Icedove-UXP version
 #   						 # in POST_UPLOAD_CMD
 
 include $(MOZILLA_SRCDIR)/toolkit/mozapps/installer/package-name.mk
@@ -78,10 +78,10 @@ endif
 print_ltnconfig = $(shell $(PYTHON) $(MOZILLA_SRCDIR)/config/printconfigsetting.py $(XPI_STAGE_PATH)/$(XPI_NAME)/app.ini $1 $2)
 
 wget-en-US:
-ifeq (thunderbird,$(MOZ_APP_NAME))
-FINAL_BINARY_URL = $(subst thunderbird,calendar/lightning,$(EN_US_BINARY_URL))
+ifeq (icedove-uxp,$(MOZ_APP_NAME))
+FINAL_BINARY_URL = $(subst icedove-uxp,calendar/lightning,$(EN_US_BINARY_URL))
 else
-FINAL_BINARY_URL = $(subst seamonkey,calendar/lightning,$(subst latest-comm-central-trunk,latest-comm-central,$(EN_US_BINARY_URL)))
+FINAL_BINARY_URL = $(subst iceape-uxp,calendar/lightning,$(subst latest-comm-central-trunk,latest-comm-central,$(EN_US_BINARY_URL)))
 endif
 wget-en-US: $(XPI_STAGE_PATH)
 	(cd $(XPI_STAGE_PATH) && $(WGET) -nv -N $(FINAL_BINARY_URL)/$(ENUS_PKGNAME).xpi)
@@ -174,10 +174,10 @@ $(DIST)/bin/platform.ini:
 recreate-platformini: $(DIST)/bin/platform.ini
 
 
-# Lightning uses Thunderbird's build machinery, so we need to hack the post
+# Lightning uses Icedove-UXP's build machinery, so we need to hack the post
 # upload command to use Lightning's directories and version.
 upload: upload-$(AB_CD)
-upload-%: LTN_UPLOAD_CMD := $(patsubst $(THUNDERBIRD_VERSION)%,$(LIGHTNING_VERSION),$(subst thunderbird,calendar/lightning,$(POST_UPLOAD_CMD)))
+upload-%: LTN_UPLOAD_CMD := $(patsubst $(THUNDERBIRD_VERSION)%,$(LIGHTNING_VERSION),$(subst icedove-uxp,calendar/lightning,$(POST_UPLOAD_CMD)))
 upload-%: stage_upload
 	POST_UPLOAD_CMD="$(LTN_UPLOAD_CMD)" \
 	  $(PYTHON) $(MOZILLA_DIR)/build/upload.py --base-path $(DIST) \

@@ -1,13 +1,13 @@
 ;--- Include MAKEMSI support ------------------------------------------------
-#include "thunderbird.mmh"
+#include "icedove-uxp.mmh"
 
 <$AbortIf Condition=^not VersionNT OR (VersionNT < 400)^ Message=^Can only be installed on WinNT, Windows 2000, XP or greater.^>
 
-<$DirectoryTree Key="INSTALLDIR" DIR="[ProgramFilesFolder]\Mozilla Thunderbird Installer" CHANGE="\" PrimaryFolder="Y">
+<$DirectoryTree Key="INSTALLDIR" DIR="[ProgramFilesFolder]\Icedove-UXP Installer" CHANGE="\" PrimaryFolder="Y">
 
-<$Feature "F_ThunderbirdMain" Title="Browser" Description="Thunderbird installer files" Attributes="FavorLocal">
+<$Feature "F_ThunderbirdMain" Title="Browser" Description="Icedove-UXP installer files" Attributes="FavorLocal">
         
-    <$Icon KEY="@Thunderbirdicon" "..\branding\thunderbird.ico">
+    <$Icon KEY="@Thunderbirdicon" "..\branding\icedove-uxp.ico">
 
     <$Files "..\install\setup\*.*" SubDir="TREE" DestDir="INSTALLDIR" EXLIST="NotThese">
     <$Files "..\install\xpi\*.*" SubDir="TREE" DestDir="INSTALLDIR" EXLIST="NotThese">

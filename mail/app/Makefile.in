@@ -8,7 +8,7 @@ GRE_MILESTONE = $(shell $(PYTHON) $(MOZILLA_SRCDIR)/config/printconfigsetting.py
 MOZ_BUILDID = $(shell $(PYTHON) $(MOZILLA_SRCDIR)/config/printconfigsetting.py $(DIST)/bin/platform.ini Build BuildID)
 
 DEFINES += \
-  -DTHUNDERBIRD_ICO='"$(DIST)/branding/thunderbird.ico"' \
+  -DTHUNDERBIRD_ICO='"$(DIST)/branding/icedove.ico"' \
    $(NULL)
 
 # Build a binary bootstrapping with XRE_main
@@ -46,11 +46,11 @@ address-book.ico: $(mailtoolbar) $(srcdir)/png2ico.py
 embedded-icons:: write-message.ico address-book.ico
 GARBAGE += write-message.ico address-book.ico
 
-# Rebuild thunderbird.exe if the manifest changes - it's included by splash.rc.
-# (this dependency should really be just for thunderbird.exe, not other targets)
+# Rebuild icedove-uxp.exe if the manifest changes - it's included by splash.rc.
+# (this dependency should really be just for icedove-uxp.exe, not other targets)
 # Note the manifest file exists in the tree, so we use the explicit filename
 # here.
-EXTRA_DEPS += thunderbird.exe.manifest
+EXTRA_DEPS += icedove-uxp.exe.manifest
 endif
 
 include $(topsrcdir)/config/rules.mk
@@ -142,8 +142,8 @@ tools repackage:: $(PROGRAM)
 	$(RM) $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/MacOS/$(PROGRAM)
 	rsync -aL $(PROGRAM) $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/MacOS
 	$(MKDIR) -p $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/Library/Spotlight
-	rsync -a --copy-unsafe-links $(DIST)/package/thunderbird.mdimporter $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/Library/Spotlight
-	cp -RL $(DIST)/branding/thunderbird.icns $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/Resources/thunderbird.icns
+	rsync -a --copy-unsafe-links $(DIST)/package/icedove-uxp.mdimporter $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/Library/Spotlight
+	cp -RL $(DIST)/branding/icedove-uxp.icns $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/Resources/icedove-uxp.icns
 	printf APPLMOZM > $(DIST)/$(MOZ_MACBUNDLE_NAME)/Contents/PkgInfo
 endif
 

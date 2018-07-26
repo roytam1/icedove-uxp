@@ -446,7 +446,7 @@ var nsMailDefaultHandler = {
     if (actionFlagIdx && (osintFlagIdx > -1)) {
       var param = cmdLine.getArgument(actionFlagIdx + 1);
       if (cmdLine.length != actionFlagIdx + 2 ||
-          /thunderbird.url.(mailto|news):/.test(param))
+          /icedove-uxp.url.(mailto|news):/.test(param))
         throw NS_ERROR_ABORT;
       cmdLine.handleFlag("osint", false)
     }

@@ -11,7 +11,7 @@ Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
 /**
  * This bar lives inside the message window.
- * Its lifetime is the lifetime of the main thunderbird message window.
+ * Its lifetime is the lifetime of the main icedove-uxp message window.
  */
 var ltnImipBar = {
 
@@ -21,14 +21,14 @@ var ltnImipBar = {
     msgOverlay: null,
 
     /**
-     * Thunderbird Message listener interface, hide the bar before we begin
+     * Icedove-UXP Message listener interface, hide the bar before we begin
      */
     onStartHeaders: function() {
         ltnImipBar.resetBar();
     },
 
     /**
-     * Thunderbird Message listener interface
+     * Icedove-UXP Message listener interface
      */
     onEndHeaders: function() {
 
@@ -198,7 +198,7 @@ var ltnImipBar = {
         }
 
         // We need this to determine whether this is an outgoing or incoming message because
-        // Thunderbird doesn't provide a distinct flag on message level to do so. Relying on
+        // Icedove-UXP doesn't provide a distinct flag on message level to do so. Relying on
         // folder flags only may lead to false positives.
         let isOutgoing = function(aMsgHdr) {
             if (!aMsgHdr) {

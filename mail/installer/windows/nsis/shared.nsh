@@ -242,17 +242,17 @@
   StrCpy $1 "$\"$8$\" $\"%1$\""
   StrCpy $2 "$\"$8$\" -osint -compose $\"%1$\""
 
-  ; An empty string is used for the 5th param because ThunderbirdEML is not a
+  ; An empty string is used for the 5th param because Icedove-UXPEML is not a
   ; protocol handler
-  ${AddHandlerValues} "$0\ThunderbirdEML"  "$1" "$8,0" \
+  ${AddHandlerValues} "$0\Icedove-UXPEML"  "$1" "$8,0" \
                       "${AppRegNameMail} Document" "" ""
-  ${AddHandlerValues} "$0\Thunderbird.Url.mailto"  "$2" "$8,0" "${AppRegNameMail} URL" "delete" ""
+  ${AddHandlerValues} "$0\Icedove-UXP.Url.mailto"  "$2" "$8,0" "${AppRegNameMail} URL" "delete" ""
   ${AddHandlerValues} "$0\mailto" "$2" "$8,0" "${AppRegNameMail} URL" "true" ""
 
-  ; Associate the file handlers with ThunderbirdEML
+  ; Associate the file handlers with Icedove-UXPEML
   ReadRegStr $6 SHCTX ".eml" ""
-  ${If} "$6" != "ThunderbirdEML"
-    WriteRegStr SHCTX "$0\.eml"   "" "ThunderbirdEML"
+  ${If} "$6" != "Icedove-UXPEML"
+    WriteRegStr SHCTX "$0\.eml"   "" "Icedove-UXPEML"
   ${EndIf}
 !macroend
 !define SetHandlersMail "!insertmacro SetHandlersMail"
@@ -262,7 +262,7 @@
   StrCpy $0 "SOFTWARE\Classes"
   StrCpy $1 "$\"$8$\" -osint -mail $\"%1$\""
 
-  ${AddHandlerValues} "$0\Thunderbird.Url.news" "$1" "$8,0" \
+  ${AddHandlerValues} "$0\Icedove-UXP.Url.news" "$1" "$8,0" \
                       "${AppRegNameNews} URL" "delete" ""
   ${AddHandlerValues} "$0\news"   "$1" "$8,0" "${AppRegNameNews} URL" "true" ""
   ${AddHandlerValues} "$0\nntp"   "$1" "$8,0" "${AppRegNameNews} URL" "true" ""
@@ -352,10 +352,10 @@
   WriteRegStr HKLM "$0\Capabilities" "ApplicationDescription" "$(REG_APP_DESC)"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationIcon" "$8,0"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationName" "${AppRegNameMail}"
-  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".eml"   "ThunderbirdEML"
-  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".wdseml" "ThunderbirdEML"
+  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".eml"   "Icedove-UXPEML"
+  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".wdseml" "Icedove-UXPEML"
   WriteRegStr HKLM "$0\Capabilities\StartMenu" "Mail" "${ClientsRegName}"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "mailto" "Thunderbird.Url.mailto"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "mailto" "Icedove-UXP.Url.mailto"
 
   ; Vista Registered Application
   WriteRegStr HKLM "Software\RegisteredApplications" "${AppRegNameMail}" "$0\Capabilities"
@@ -414,9 +414,9 @@
   WriteRegStr HKLM "$0\Capabilities" "ApplicationDescription" "$(REG_APP_DESC)"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationIcon" "$8,0"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationName" "${AppRegNameNews}"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "nntp" "Thunderbird.Url.news"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "news" "Thunderbird.Url.news"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "snews" "Thunderbird.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "nntp" "Icedove-UXP.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "news" "Icedove-UXP.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "snews" "Icedove-UXP.Url.news"
 
   ; Protocols
   StrCpy $1 "$\"$8$\" -osint -mail $\"%1$\""
@@ -524,15 +524,15 @@
 
   ; Only set the file and protocol handlers if the existing one under HKCR is
   ; for this install location.
-  ${IsHandlerForInstallDir} "ThunderbirdEML" $R9
+  ${IsHandlerForInstallDir} "Icedove-UXPEML" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\ThunderbirdEML" "$3" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\Icedove-UXPEML" "$3" "$8,0" \
                         "${AppRegNameMail} Document" "" ""
   ${EndIf}
 
-  ${IsHandlerForInstallDir} "Thunderbird.Url.mailto" $R9
+  ${IsHandlerForInstallDir} "Icedove-UXP.Url.mailto" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\Thunderbird.Url.mailto" "$1" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\Icedove-UXP.Url.mailto" "$1" "$8,0" \
                         "${AppRegNameMail} URL" "delete" ""
   ${EndIf}
 
@@ -541,9 +541,9 @@
     ${AddHandlerValues} "SOFTWARE\Classes\mailto" "$1" "$8,0" "" "" ""
   ${EndIf}
 
-  ${IsHandlerForInstallDir} "Thunderbird.Url.news" $R9
+  ${IsHandlerForInstallDir} "Icedove-UXP.Url.news" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\Thunderbird.Url.news" "$2" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\Icedove-UXP.Url.news" "$2" "$8,0" \
                         "${AppRegNameNews} URL" "delete" ""
   ${EndIf}
 
@@ -604,7 +604,7 @@
   StrCpy $0 "SOFTWARE\Classes"
 
   ; remove DI and SOC from the .eml class if it exists and contains
-  ; thunderbird.exe
+  ; icedove-uxp.exe
   ClearErrors
   ReadRegStr $1 HKLM "$0\.eml\shell\open\command" ""
   ${WordFind} "$1" "${FileMainEXE}" "E+1{" $R1
@@ -633,7 +633,7 @@
     DeleteRegKey HKCU "$0\.eml\DefaultIcon"
   ${EndUnless}
 
-  ; Remove the Shredder clients key if its default icon contains thunderbird.exe
+  ; Remove the Shredder clients key if its default icon contains icedove-uxp.exe
   ClearErrors
   ReadRegStr $1 HKLM "SOFTWARE\clients\mail\Shredder\DefaultIcon" ""
   ${WordFind} "$1" "${FileMainEXE}" "E+1{" $R1
@@ -649,10 +649,10 @@
   ${EndUnless}
 
   ; The Vista shim for 1.5.0.10 writes out a set of bogus keys which we need to
-  ; cleanup. Intentionally hard coding Mozilla Thunderbird here
+  ; cleanup. Intentionally hard coding Mozilla Icedove-UXP here
   ; as this is the string used by the vista shim.
-  DeleteRegKey HKLM "$0\Mozilla Thunderbird.Url.mailto"
-  DeleteRegValue HKLM "Software\RegisteredApplications" "Mozilla Thunderbird"
+  DeleteRegKey HKLM "$0\Icedove-UXP.Url.mailto"
+  DeleteRegValue HKLM "Software\RegisteredApplications" "Icedove-UXP"
 
   ; Remove the app compatibility registry key
   StrCpy $0 "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
@@ -680,7 +680,7 @@
       ${If} ${AtLeastWin7}
         ; No need to check the default on Win8 and later
         ${If} ${AtMostWin2008R2}
-          ; Check if the Thunderbird is the mailto handler for this user
+          ; Check if the Icedove-UXP is the mailto handler for this user
           SetShellVarContext current ; Set SHCTX to the current user
           ${IsHandlerForInstallDir} "mailto" $R9
           ${If} $TmpVal == "HKLM"

@@ -91,8 +91,8 @@ nsMailMacIntegration::isDefaultHandlerForProtocol(CFStringRef aScheme)
   // Since neither Launch Services nor Internet Config actually differ between
   // bundles which have the same bundle identifier (That is, if we set our
   // URL of our bundle as the default handler for the given protocol,
-  // Launch Service might return the URL of another thunderbird bundle as the
-  // defualt handler for that protocol), we are comparing the identifiers of the
+  // Launch Service might return the URL of another Icedove-UXP bundle as the
+  // default handler for that protocol), we are comparing the identifiers of the
   // bundles rather than their URLs.
 
   CFStringRef tbirdID = ::CFBundleGetIdentifier(CFBundleGetMainBundle());

@@ -19,7 +19,7 @@ endif
 MOZMILLPROGRAM = $(ABS_DIST)/$(APP_NAME).app/
 else
 # Non-mac options
-MOZMILLPROGRAM = $(ABS_DIST)/bin/thunderbird$(BIN_SUFFIX)
+MOZMILLPROGRAM = $(ABS_DIST)/bin/icedove-uxp$(BIN_SUFFIX)
 endif
 
 check-no-solo = $(foreach solo,SOLO_TEST SOLO_FILE,$(if $($(solo)),$(error $(subst SOLOVAR,$(solo),$(1)))))
@@ -27,7 +27,7 @@ find-solo-test = $(if $(and $(SOLO_TEST),$(SOLO_FILE)),$(error Both SOLO_TEST an
 
 include $(topsrcdir)/config/rules.mk
 
-# Calendar uses both its own shared modules and those from Thunderbird. Since
+# Calendar uses both its own shared modules and those from Icedove-UXP. Since
 # the build system and mozmill is not set up to include files from two different
 # locations, we have to stuff them into the same directory. There might be
 # problems if the names are the same, but I propose we boycott those modules!

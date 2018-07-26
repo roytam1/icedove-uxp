@@ -1697,7 +1697,7 @@ var GlodaMsgIndexer = {
     // -- asynchronously get a list of all identities without contacts
     // The upper bound on the number of messed up contacts is the number of
     //  contacts in the user's address book.  This should be small enough
-    //  (and the data size small enough) that this won't explode thunderbird.
+    //  (and the data size small enough) that this won't explode Icedove-UXP.
     let queryStmt = GlodaDatastore._createAsyncStatement(
       "SELECT identities.id, identities.contactID, identities.value " +
         "FROM identities " +
@@ -1758,7 +1758,7 @@ var GlodaMsgIndexer = {
           //  like tracing.)  Either way, The potential fallout is minimal
           //  since the object identity invariant will just lapse and popularity
           //  on the contact may become stale, and neither of those meaningfully
-          //  affect the operation of anything in Thunderbird.
+          //  affect the operation of anything in Icedove-UXP.
           // If we really cared, we could find all the dominant collections
           //  that reference the identity and update their corresponding
           //  contact collection to make it reachable.  That use-case does not

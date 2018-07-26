@@ -8,10 +8,10 @@ SOURCES = [
     'main.c',
 ]
 
-Program('thunderbird-mdimport')
+Program('icedove-uxp-mdimport')
 # This directory is producing a framework as a target. The output of this
 # framework will be located here.
-FINAL_TARGET = 'dist/package/thunderbird.mdimporter/Contents/MacOS'
+FINAL_TARGET = 'dist/package/icedove-uxp.mdimporter/Contents/MacOS'
 
 OS_LIBS += [
     '-framework CoreFoundation',

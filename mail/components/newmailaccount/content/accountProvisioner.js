@@ -238,7 +238,7 @@ var EmailAccountProvisioner = {
     commentary.innerHTML =
       commentary.innerHTML +
       "<span>" +
-      stringBundle.get("disclaimer", ["https://www.mozilla.org/thunderbird/legal/privacy/"]) +
+      stringBundle.get("disclaimer", ["https://wiki.hyperbola.info/doku.php?id=en:main:social_contract"]) +
       "</span>";
 
     EmailAccountProvisioner.tryToPopulateProviderList();

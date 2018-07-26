@@ -2,7 +2,7 @@
 ; License, v. 2.0. If a copy of the MPL was not distributed with this
 ; file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-; Package file for the Thunderbird build.
+; Package file for the Icedove-UXP build.
 ;
 ; Packaging manifest is used to copy files from dist/bin
 ; to the staging directory.
@@ -41,8 +41,8 @@
 ; Mac bundle stuff
 @APPNAME@/Contents/Info.plist
 @APPNAME@/Contents/PkgInfo
-@APPNAME@/Contents/Library/Spotlight/thunderbird.mdimporter/
-@RESPATH@/thunderbird.icns
+@APPNAME@/Contents/Library/Spotlight/icedove-uxp.mdimporter/
+@RESPATH@/icedove-uxp.icns
 @RESPATH@/@LPROJ_ROOT@.lproj/*
 #endif
 
@@ -121,7 +121,7 @@
 [mail]
 #ifndef XP_UNIX
 @BINPATH@/@MOZ_APP_NAME@.exe
-@BINPATH@/thunderbird.VisualElementsManifest.xml
+@BINPATH@/icedove-uxp.VisualElementsManifest.xml
 @BINPATH@/VisualElements/VisualElements_150.png
 @BINPATH@/VisualElements/VisualElements_70.png
 #else
@@ -281,7 +281,7 @@
 @RESPATH@/components/logger.js
 @RESPATH@/components/logger.manifest
 
-; Thunderbird specific
+; Icedove-UXP specific
 @RESPATH@/@PREF_DIR@/all-im.js
 @RESPATH@/components/im.manifest
 @RESPATH@/components/imIncomingServer.js
