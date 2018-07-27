@@ -13,19 +13,19 @@
         with minimum and maximum supported versions. -->
     <em:targetApplication>
       <Description>
-        <!-- thunderbird -->
+        <!-- Icedove-UXP -->
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
-        <em:minVersion>@THUNDERBIRD_VERSION@</em:minVersion>
-        <em:maxVersion>@THUNDERBIRD_MAXVERSION@</em:maxVersion>
+        <em:minVersion>@ICEDOVEUXP_VERSION@</em:minVersion>
+        <em:maxVersion>@ICEDOVEUXP_MAXVERSION@</em:maxVersion>
       </Description>
     </em:targetApplication>
 
     <em:targetApplication>
       <Description>
-        <!-- seamonkey -->
+        <!-- Iceape-UXP -->
         <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
-        <em:minVersion>@SEAMONKEY_VERSION@</em:minVersion>
-        <em:maxVersion>@SEAMONKEY_MAXVERSION@</em:maxVersion>
+        <em:minVersion>@ICEAPEUXP_VERSION@</em:minVersion>
+        <em:maxVersion>@ICEAPEUXP_MAXVERSION@</em:maxVersion>
       </Description>
     </em:targetApplication>
 

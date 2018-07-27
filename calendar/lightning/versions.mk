@@ -3,26 +3,26 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Lighting version number
-THUNDERBIRD_VERSION := $(shell cat $(topsrcdir)/mail/config/version.txt)
-SEAMONKEY_VERSION := $(shell cat $(topsrcdir)/suite/config/version.txt)
+ICEDOVEUXP_VERSION := $(shell cat $(topsrcdir)/mail/config/version.txt)
+ICEAPEUXP_VERSION := $(shell cat $(topsrcdir)/suite/config/version.txt)
 
 ifdef MOZ_SUITE
-LIGHTNING_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(THUNDERBIRD_VERSION))
+LIGHTNING_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(ICEDOVEUXP_VERSION))
 else
-LIGHTNING_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(word 1,$(MOZ_PKG_VERSION) $(THUNDERBIRD_VERSION)))
+LIGHTNING_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(word 1,$(MOZ_PKG_VERSION) $(ICEDOVEUXP_VERSION)))
 endif
 
 # For extensions we require a max version that is compatible across security releases.
-# THUNDERBIRD_MAXVERSION and SEAMONKEY_MAXVERSION is our method for doing that.
+# ICEDOVEUXP_MAXVERSION and ICEAPEUXP_MAXVERSION is our method for doing that.
 # Alpha versions 10.0a1 and 10.0a2 aren't affected
-# For Seamonkey, 2.17 becomes 2.17.*, 2.17.1 becomes 2.17.*
-# For Thunderbird, 10.0 becomes 10.*, 10.0.1 becomes 10.*
-THUNDERBIRD_MAXVERSION := $(THUNDERBIRD_VERSION)
-ifneq (a,$(findstring a,$(THUNDERBIRD_VERSION)))
-THUNDERBIRD_MAXVERSION := $(shell echo $(THUNDERBIRD_VERSION) | sed 's|\(^[0-9]*\)\.\([0-9]*\).*|\1|' ).*
+# For Iceape-UXP, 2.17 becomes 2.17.*, 2.17.1 becomes 2.17.*
+# For Icedove-UXP, 10.0 becomes 10.*, 10.0.1 becomes 10.*
+ICEDOVEUXP_MAXVERSION := $(ICEDOVEUXP_VERSION)
+ifneq (a,$(findstring a,$(ICEDOVEUXP_VERSION)))
+ICEDOVEUXP_MAXVERSION := $(shell echo $(ICEDOVEUXP_VERSION) | sed 's|\(^[0-9]*\)\.\([0-9]*\).*|\1|' ).*
 endif
 
-SEAMONKEY_MAXVERSION := $(SEAMONKEY_VERSION)
-ifneq (a,$(findstring a,$(SEAMONKEY_VERSION)))
-SEAMONKEY_MAXVERSION := $(shell echo $(SEAMONKEY_VERSION) | sed 's|\(^[0-9]*.[0-9]*\).*|\1|' ).*
+ICEAPEUXP_MAXVERSION := $(ICEAPEUXP_VERSION)
+ifneq (a,$(findstring a,$(ICEAPEUXP_VERSION)))
+ICEAPEUXP_MAXVERSION := $(shell echo $(ICEAPEUXP_VERSION) | sed 's|\(^[0-9]*.[0-9]*\).*|\1|' ).*
 endif

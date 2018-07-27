@@ -177,7 +177,7 @@ recreate-platformini: $(DIST)/bin/platform.ini
 # Lightning uses Icedove-UXP's build machinery, so we need to hack the post
 # upload command to use Lightning's directories and version.
 upload: upload-$(AB_CD)
-upload-%: LTN_UPLOAD_CMD := $(patsubst $(THUNDERBIRD_VERSION)%,$(LIGHTNING_VERSION),$(subst icedove-uxp,calendar/lightning,$(POST_UPLOAD_CMD)))
+upload-%: LTN_UPLOAD_CMD := $(patsubst $(ICEDOVEUXP_VERSION)%,$(LIGHTNING_VERSION),$(subst icedove-uxp,calendar/lightning,$(POST_UPLOAD_CMD)))
 upload-%: stage_upload
 	POST_UPLOAD_CMD="$(LTN_UPLOAD_CMD)" \
 	  $(PYTHON) $(MOZILLA_DIR)/build/upload.py --base-path $(DIST) \
