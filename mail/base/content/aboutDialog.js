@@ -40,20 +40,8 @@ function init(aEvent)
     // Pref is unset
   }
 
-  // XXX FIXME
-  // Include the build ID and display warning if this is an "a#" (nightly or aurora) build
   let versionField = document.getElementById("version");
   let version = Services.appinfo.version;
-  if (/a\d+$/.test(version)) {
-    let buildID = Services.appinfo.appBuildID;
-    let year = buildID.slice(0, 4);
-    let month = buildID.slice(4, 6);
-    let day = buildID.slice(6, 8);
-    versionField.textContent += ` (${year}-${month}-${day})`;
-
-    document.getElementById("experimental").hidden = false;
-    document.getElementById("communityDesc").hidden = true;
-  }
 
   // Append "(32-bit)" or "(64-bit)" build architecture to the version number:
   let bundle = Services.strings.createBundle("chrome://messenger/locale/messenger.properties");
