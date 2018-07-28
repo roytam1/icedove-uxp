@@ -5,6 +5,7 @@
 classic.jar:
   skin/classic/communicator/smileys.css                       (mail/smileys.css)
 % skin messenger classic/1.0 %skin/classic/messenger/
+% override chrome://global/skin/findBar.css chrome://messenger/skin/findBar.css
   skin/classic/messenger/primaryToolbar.css                   (mail/primaryToolbar.css)
   skin/classic/messenger/aboutSupport.css                     (../windows/mail/aboutSupport.css)
   skin/classic/messenger/accountCentral.css                   (mail/accountCentral.css)
@@ -30,6 +31,7 @@ classic.jar:
   skin/classic/messenger/messageQuotes.css                    (mail/messageQuotes.css)
   skin/classic/messenger/messenger.css                        (mail/messenger.css)
   skin/classic/messenger/aboutNetError.css                    (../shared/mail/aboutNetError.css)
+  skin/classic/messenger/findBar.css                    (mail/findBar.css)
   skin/classic/messenger/about.css                    (../shared/mail/about.css)
   skin/classic/messenger/messengerLWTheme.css                 (../shared/mail/messengerLWTheme.css)
   skin/classic/messenger/attachmentList.css                   (mail/attachmentList.css)
