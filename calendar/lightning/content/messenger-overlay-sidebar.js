@@ -906,8 +906,8 @@ function checkCalendarBinaryComponent() {
         return;
     }
 
-    const ICEDOVEUXP_GUID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
-    const ICEAPEUXP_GUID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
+    const ICEDOVEUXP_GUID = "{3aa07e56-beb0-47a0-b0cb-c735edd25419}";
+    const ICEAPEUXP_GUID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}";
     const LIGHTNING_GUID = "{e2fda1a4-762b-4020-b5ad-a41df1933103}";
 
     AddonManager.getAddonByID(LIGHTNING_GUID, (ext) => {

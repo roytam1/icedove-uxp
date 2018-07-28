@@ -13,9 +13,9 @@ lightning.jar:
 % overlay chrome://messenger/content/messageWindow.xul chrome://lightning/content/imip-bar-overlay.xul
 % overlay chrome://messenger/content/messageWindow.xul chrome://lightning/content/messenger-overlay-messageWindow.xul
 % overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://lightning/content/imip-bar-overlay.xul
-% overlay chrome://communicator/content/pref/preferences.xul chrome://lightning/content/suite-overlay-preferences.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-% overlay about:addons chrome://lightning/content/suite-overlay-addons.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-% overlay chrome://mozapps/content/extensions/extensions.xul chrome://lightning/content/suite-overlay-addons.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+% overlay chrome://communicator/content/pref/preferences.xul chrome://lightning/content/suite-overlay-preferences.xul application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
+% overlay about:addons chrome://lightning/content/suite-overlay-addons.xul application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
+% overlay chrome://mozapps/content/extensions/extensions.xul chrome://lightning/content/suite-overlay-addons.xul application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
 % overlay chrome://messenger/content/preferences/preferences.xul chrome://lightning/content/messenger-overlay-preferences.xul
 % overlay about:preferences chrome://lightning/content/messenger-overlay-preferences.xul
 % overlay chrome://messenger/content/preferences/preferences.xul chrome://calendar/content/preferences/alarms.xul
@@ -30,10 +30,10 @@ lightning.jar:
 % overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://calendar/content/calendar-unifinder-todo.xul
 % overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://calendar/content/calendar-task-view.xul
 % overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://calendar/content/today-pane.xul
-% overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://lightning/content/suite-overlay-sidebar.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+% overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://lightning/content/suite-overlay-sidebar.xul application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
 % overlay chrome://calendar/content/calendarCreation.xul chrome://lightning/content/lightning-calendar-creation.xul
 % overlay chrome://calendar/content/calendar-properties-dialog.xul chrome://lightning/content/lightning-calendar-properties.xul
-% override chrome://lightning/skin/accountCentral.css chrome://lightning-common/skin/suite-accountCentral.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+% override chrome://lightning/skin/accountCentral.css chrome://lightning-common/skin/suite-accountCentral.css application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
 % content lightning %content/lightning/
     content/lightning/imip-bar.js                          (content/imip-bar.js)
     content/lightning/imip-bar-overlay.xul                 (content/imip-bar-overlay.xul)
@@ -70,9 +70,9 @@ lightning.jar:
 % skin lightning classic/1.0 chrome/skin/windows/lightning/ os=WINNT
 % skin lightning-common classic/1.0 chrome/skin/lightning-common/
 % style chrome://global/content/customizeToolbar.xul chrome://lightning/skin/lightning-toolbar.css
-% style chrome://calendar/content/calendar-event-dialog.xul chrome://communicator/skin/communicator.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-% style chrome://global/content/customizeToolbar.xul chrome://lightning-common/skin/lightning.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-% style chrome://global/content/customizeToolbar.xul chrome://calendar-common/skin/dialogs/calendar-event-dialog.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+% style chrome://calendar/content/calendar-event-dialog.xul chrome://communicator/skin/communicator.css application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
+% style chrome://global/content/customizeToolbar.xul chrome://lightning-common/skin/lightning.css application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
+% style chrome://global/content/customizeToolbar.xul chrome://calendar-common/skin/dialogs/calendar-event-dialog.css application={9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}
     ../skin/lightning-common/mode-switch-icons.png            (themes/common/images/mode-switch-icons.png)
     ../skin/lightning-common/suite-accountCentral.css         (themes/common/suite-accountCentral.css)
 

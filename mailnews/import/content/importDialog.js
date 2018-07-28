@@ -981,8 +981,8 @@ function next()
     if (radioGroup.value == "all")
     {
       let args = { closeMigration: true };
-      let SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
-      if (Services.appinfo.ID == SEAMONKEY_ID) {
+      let ICEAPEUXP_ID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}";
+      if (Services.appinfo.ID == ICEAPEUXP_ID) {
         window.openDialog("chrome://communicator/content/migration/migration.xul",
                           "", "chrome,dialog,modal,centerscreen");
       } else {

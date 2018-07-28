@@ -9,7 +9,7 @@
     <em:description>Provides a custom folder tree mode to be used by tests</em:description>
     <em:targetApplication>
       <Description>
-        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:id>{3aa07e56-beb0-47a0-b0cb-c735edd25419}</em:id> <!-- Thunderbird -->
         <em:minVersion>3.1a1pre</em:minVersion>
         <em:maxVersion>*</em:maxVersion>
       </Description>
