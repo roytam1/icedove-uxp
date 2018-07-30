@@ -981,7 +981,7 @@ function next()
     if (radioGroup.value == "all")
     {
       let args = { closeMigration: true };
-      let ICEAPEUXP_ID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}";
+      let ICEAPEUXP_ID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}";
       if (Services.appinfo.ID == ICEAPEUXP_ID) {
         window.openDialog("chrome://communicator/content/migration/migration.xul",
                           "", "chrome,dialog,modal,centerscreen");

@@ -907,7 +907,7 @@ function checkCalendarBinaryComponent() {
     }
 
     const ICEDOVEUXP_GUID = "{3aa07e56-beb0-47a0-b0cb-c735edd25419}";
-    const ICEAPEUXP_GUID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}";
+    const ICEAPEUXP_GUID = "{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}";
     const LIGHTNING_GUID = "{e2fda1a4-762b-4020-b5ad-a41df1933103}";
 
     AddonManager.getAddonByID(LIGHTNING_GUID, (ext) => {

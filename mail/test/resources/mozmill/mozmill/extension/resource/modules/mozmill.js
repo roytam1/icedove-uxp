@@ -87,7 +87,7 @@ var aConsoleService = Components.classes["@mozilla.org/consoleservice;1"].
 
 applicationDictionary = {
   "{718e30fb-e89b-41dd-9da7-e25a45638b28}": "Sunbird",
-  "{9184b6fe-4a5c-484d-8b4b-efbfccbfb5143a}": "SeaMonkey",
+  "{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}": "SeaMonkey",
   "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "Firefox",
   "{3aa07e56-beb0-47a0-b0cb-c735edd25419}": 'Thunderbird',
 }
