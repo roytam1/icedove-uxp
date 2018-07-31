@@ -42,6 +42,7 @@ function init(aEvent)
 
   let versionField = document.getElementById("version");
   let version = Services.appinfo.version;
+  versionField.textContent = version;
 
   // Append "(32-bit)" or "(64-bit)" build architecture to the version number:
   let bundle = Services.strings.createBundle("chrome://messenger/locale/messenger.properties");
