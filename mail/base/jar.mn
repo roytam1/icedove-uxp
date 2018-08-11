@@ -52,6 +52,7 @@ messenger.jar:
     content/messenger/specialTabs.xul               (content/specialTabs.xul)
     content/messenger/subscribe.xul                 (content/subscribe.xul)
     content/messenger/subscribe.js                  (content/subscribe.js)
+    content/messenger/aboutCredits.html     (content/aboutCredits.html)
     content/messenger/aboutDialog-appUpdater.js     (content/aboutDialog-appUpdater.js)
 *   content/messenger/aboutDialog.xul               (content/aboutDialog.xul)
     content/messenger/aboutDialog.js                (content/aboutDialog.js)
@@ -130,3 +131,4 @@ toolkit.jar:
 
 # Icedove-UXP specific branding override
 % override chrome://global/skin/about.css chrome://messenger/skin/about.css
+% override chrome://global/content/aboutCredits.html chrome://messenger/content/aboutCredits.html
