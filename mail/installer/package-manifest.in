@@ -222,9 +222,6 @@
 @RESPATH@/components/gloda.manifest
 @RESPATH@/components/jsmimeemitter.js
 
-; OAuth2 for mail
-@RESPATH@/components/msgOAuth2Module.js
-
 ; New message notification
 @RESPATH@/components/newMailNotificationService.js
 

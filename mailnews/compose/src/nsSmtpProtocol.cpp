@@ -216,8 +216,13 @@ esmtp_value_encode(const char *addr)
 // END OF TEMPORARY HARD CODED FUNCTIONS
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-NS_IMPL_ISUPPORTS_INHERITED(nsSmtpProtocol, nsMsgAsyncWriteProtocol,
-                            msgIOAuth2ModuleListener)
+
+NS_IMPL_ADDREF_INHERITED(nsSmtpProtocol, nsMsgAsyncWriteProtocol)
+NS_IMPL_RELEASE_INHERITED(nsSmtpProtocol, nsMsgAsyncWriteProtocol)
+
+NS_INTERFACE_MAP_BEGIN(nsSmtpProtocol)
+NS_INTERFACE_MAP_END_INHERITING(nsMsgAsyncWriteProtocol)
+// TODO: See if we can use NS_IMPL_ISUPPORTS_INHERITED: https://hg.mozilla.org/comm-central/diff/eae1195fde6d/mailnews/compose/src/nsSmtpProtocol.cpp
 
 nsSmtpProtocol::nsSmtpProtocol(nsIURI * aURL)
     : nsMsgAsyncWriteProtocol(aURL)
@@ -290,18 +295,6 @@ void nsSmtpProtocol::Initialize(nsIURI * aURL)
         smtpServer->GetAuthMethod(&authMethod);
         smtpServer->GetSocketType(&m_prefSocketType);
         smtpServer->GetHelloArgument(getter_Copies(m_helloArgument));
-
-        // Query for OAuth2 support. If the SMTP server preferences don't allow
-        // for OAuth2, then don't carry around the OAuth2 module any longer
-        // since we won't need it.
-        mOAuth2Support = do_CreateInstance(MSGIOAUTH2MODULE_CONTRACTID);
-        if (mOAuth2Support)
-        {
-          bool supportsOAuth = false;
-          mOAuth2Support->InitFromSmtp(smtpServer, &supportsOAuth);
-          if (!supportsOAuth)
-            mOAuth2Support = nullptr;
-        }
     }
     InitPrefAuthMethods(authMethod);
 
@@ -793,10 +786,6 @@ nsresult nsSmtpProtocol::SendEhloResponse(nsIInputStream * inputStream, uint32_t
           if (responseLine.Find(NS_LITERAL_CSTRING("EXTERNAL"),
                                 CaseInsensitiveCompare) >= 0)
             SetFlag(SMTP_AUTH_EXTERNAL_ENABLED);
-
-          if (responseLine.Find(NS_LITERAL_CSTRING("XOAUTH2"),
-                                CaseInsensitiveCompare) >= 0)
-            SetFlag(SMTP_AUTH_OAUTH2_ENABLED);
         }
         else if (StringBeginsWith(responseLine, NS_LITERAL_CSTRING("SIZE"), nsCaseInsensitiveCStringComparator()))
         {
@@ -891,9 +880,6 @@ void nsSmtpProtocol::InitPrefAuthMethods(int32_t authMethodPrefValue)
     case nsMsgAuthMethod::GSSAPI:
       m_prefAuthMethods = SMTP_AUTH_GSSAPI_ENABLED;
       break;
-    case nsMsgAuthMethod::OAuth2:
-      m_prefAuthMethods = SMTP_AUTH_OAUTH2_ENABLED;
-      break;
     case nsMsgAuthMethod::secure:
       m_prefAuthMethods = SMTP_AUTH_CRAM_MD5_ENABLED |
           SMTP_AUTH_GSSAPI_ENABLED |
@@ -912,14 +898,9 @@ void nsSmtpProtocol::InitPrefAuthMethods(int32_t authMethodPrefValue)
           SMTP_AUTH_LOGIN_ENABLED | SMTP_AUTH_PLAIN_ENABLED |
           SMTP_AUTH_CRAM_MD5_ENABLED | SMTP_AUTH_GSSAPI_ENABLED |
           SMTP_AUTH_NTLM_ENABLED | SMTP_AUTH_MSN_ENABLED |
-          SMTP_AUTH_OAUTH2_ENABLED |
           SMTP_AUTH_EXTERNAL_ENABLED;
       break;
   }
-
-  // Only enable OAuth2 support if we can do the lookup.
-  if ((m_prefAuthMethods & SMTP_AUTH_OAUTH2_ENABLED) && !mOAuth2Support)
-    m_prefAuthMethods &= ~SMTP_AUTH_OAUTH2_ENABLED;
 
   NS_ASSERTION(m_prefAuthMethods != 0, "SMTP:InitPrefAuthMethods() failed");
 }
@@ -952,8 +933,6 @@ nsresult nsSmtpProtocol::ChooseAuthMethod()
     m_currentAuthMethod = SMTP_AUTH_NTLM_ENABLED;
   else if (SMTP_AUTH_MSN_ENABLED & availCaps)
     m_currentAuthMethod = SMTP_AUTH_MSN_ENABLED;
-  else if (SMTP_AUTH_OAUTH2_ENABLED & availCaps)
-    m_currentAuthMethod = SMTP_AUTH_OAUTH2_ENABLED;
   else if (SMTP_AUTH_PLAIN_ENABLED & availCaps)
     m_currentAuthMethod = SMTP_AUTH_PLAIN_ENABLED;
   else if (SMTP_AUTH_LOGIN_ENABLED & availCaps)
@@ -1059,10 +1038,6 @@ nsresult nsSmtpProtocol::ProcessAuth()
            m_currentAuthMethod == SMTP_AUTH_MSN_ENABLED)
   {
     m_nextState = SMTP_SEND_AUTH_LOGIN_STEP0;
-  }
-  else if (m_currentAuthMethod == SMTP_AUTH_OAUTH2_ENABLED)
-  {
-    m_nextState = SMTP_AUTH_OAUTH2_STEP;
   }
   else // All auth methods failed
   {
@@ -1486,57 +1461,6 @@ nsresult nsSmtpProtocol::AuthLoginStep2()
   // XXX -1 is not a valid nsresult
   return static_cast<nsresult>(-1);
 }
-
-nsresult nsSmtpProtocol::AuthOAuth2Step1()
-{
-  MOZ_ASSERT(mOAuth2Support, "Can't do anything without OAuth2 support");
-
-  nsresult rv = mOAuth2Support->Connect(true, this);
-  NS_ENSURE_SUCCESS(rv, rv);
-
-  m_nextState = SMTP_SUSPENDED;
-  return NS_OK;
-}
-
-nsresult nsSmtpProtocol::OnSuccess(const nsACString &aAccessToken)
-{
-  MOZ_ASSERT(mOAuth2Support, "Can't do anything without OAuth2 support");
-
-  nsCString base64Str;
-  mOAuth2Support->BuildXOAuth2String(base64Str);
-
-  // Send the AUTH XOAUTH2 command, and then siphon us back to the regular
-  // authentication login stream.
-  nsAutoCString buffer;
-  buffer.AppendLiteral("AUTH XOAUTH2 ");
-  buffer += base64Str;
-  buffer += CRLF;
-  nsresult rv = SendData(buffer.get(), true);
-  if (NS_FAILED(rv))
-  {
-    m_nextState = SMTP_ERROR_DONE;
-  }
-  else
-  {
-    m_nextState = SMTP_RESPONSE;
-    m_nextStateAfterResponse = SMTP_AUTH_LOGIN_RESPONSE;
-  }
-
-  SetFlag(SMTP_PAUSE_FOR_READ);
-
-  ProcessProtocolState(nullptr, nullptr, 0, 0);
-  return NS_OK;
-}
-
-nsresult nsSmtpProtocol::OnFailure(nsresult aError)
-{
-  MOZ_LOG(SMTPLogModule, mozilla::LogLevel::Debug, ("OAuth2 login error %08x",
-    (uint32_t)aError));
-  m_urlErrorState = aError;
-  m_nextState = SMTP_ERROR_DONE;
-  return ProcessProtocolState(nullptr, nullptr, 0, 0);
-}
-
 
 nsresult nsSmtpProtocol::SendMailResponse()
 {
@@ -2025,10 +1949,6 @@ nsresult nsSmtpProtocol::ProcessProtocolState(nsIURI * url, nsIInputStream * inp
         status = AuthLoginStep2();
         break;
 
-      case SMTP_AUTH_OAUTH2_STEP:
-        status = AuthOAuth2Step1();
-        break;
-
 
       case SMTP_SEND_MAIL_RESPONSE:
         if (inputStream == nullptr)
@@ -2085,12 +2005,6 @@ nsresult nsSmtpProtocol::ProcessProtocolState(nsIURI * url, nsIInputStream * inp
         // smtp is a one time use connection so kill it if we get here...
         nsMsgAsyncWriteProtocol::CloseSocket();
         return NS_OK; /* final end */
-
-      // This state means we're going into an async loop and waiting for
-      // something (say auth) to happen. ProcessProtocolState will be
-      // retriggered when necessary.
-      case SMTP_SUSPENDED:
-        return NS_OK;
 
       default: /* should never happen !!! */
         m_nextState = SMTP_ERROR_DONE;

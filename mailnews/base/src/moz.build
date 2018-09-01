@@ -69,7 +69,6 @@ EXTRA_COMPONENTS += [
     'folderLookupService.js',
     'msgAsyncPrompter.js',
     'msgBase.manifest',
-    'msgOAuth2Module.js',
     'newMailNotificationService.js',
     'nsMailNewsCommandLineHandler.js',
 ]

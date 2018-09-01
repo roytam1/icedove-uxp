@@ -25,7 +25,6 @@ upload::
 	@$(MAKE) -C mail/installer upload
 ifdef MOZ_CALENDAR
 	@$(MAKE) -C calendar/lightning upload
-	@$(MAKE) -C calendar/providers/gdata upload
 endif
 
 source-upload::

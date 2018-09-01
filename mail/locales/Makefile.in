@@ -206,11 +206,9 @@ l10n-check::
 
 ifdef MOZ_CALENDAR
 LIGHTNING_PATH=$(DEPTH)/calendar/lightning
-GDATA_PATH=$(DEPTH)/calendar/providers/gdata
 
 define run-calendar-rule
 $(MAKE) -C $(LIGHTNING_PATH) LOCALE_MERGEDIR=$(LOCALE_MERGEDIR) $(subst calendar-,,$@)
-$(MAKE) -C $(GDATA_PATH) LOCALE_MERGEDIR=$(LOCALE_MERGEDIR) $(subst calendar-,,$@)
 endef
 
 # Add calendar targets for pattern rules. Unfortunately multiple pattern rules

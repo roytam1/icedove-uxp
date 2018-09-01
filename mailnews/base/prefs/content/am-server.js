@@ -30,8 +30,7 @@ function onInit(aPageId, aServerId)
   if (serverType == "imap")
     setupImapDeleteUI(aServerId);
 
-  // TLS Cert (External) and OAuth2 are only supported on IMAP.
-  document.getElementById("authMethod-oauth2").hidden = (serverType != "imap");
+  // TLS Cert (External) is only supported on IMAP.
   document.getElementById("authMethod-external").hidden = (serverType != "imap");
 
   // "STARTTLS, if available" is vulnerable to MITM attacks so we shouldn't
@@ -83,7 +82,6 @@ function initServerType()
   setLabelFromStringBundle("authMethod-kerberos", "authKerberos");
   setLabelFromStringBundle("authMethod-external", "authExternal");
   setLabelFromStringBundle("authMethod-ntlm", "authNTLM");
-  setLabelFromStringBundle("authMethod-oauth2", "authOAuth2");
   setLabelFromStringBundle("authMethod-anysecure", "authAnySecure");
   setLabelFromStringBundle("authMethod-any", "authAny");
   setLabelFromStringBundle("authMethod-password-encrypted",

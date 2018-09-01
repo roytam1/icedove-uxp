@@ -94,8 +94,7 @@ function readFromXML(clientConfigXML)
                 // @deprecated TODO remove
                 "secure" : Ci.nsMsgAuthMethod.passwordEncrypted,
                 "GSSAPI" : Ci.nsMsgAuthMethod.GSSAPI,
-                "NTLM" : Ci.nsMsgAuthMethod.NTLM,
-                "OAuth2" : Ci.nsMsgAuthMethod.OAuth2 });
+                "NTLM" : Ci.nsMsgAuthMethod.NTLM});
           break; // take first that we support
         } catch (e) { exception = e; }
       }
@@ -176,7 +175,6 @@ function readFromXML(clientConfigXML)
                 "secure" : Ci.nsMsgAuthMethod.passwordEncrypted,
                 "GSSAPI" : Ci.nsMsgAuthMethod.GSSAPI,
                 "NTLM" : Ci.nsMsgAuthMethod.NTLM,
-                "OAuth2" : Ci.nsMsgAuthMethod.OAuth2,
               });
 
           break; // take first that we support

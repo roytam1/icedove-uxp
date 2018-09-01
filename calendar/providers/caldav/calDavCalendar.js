@@ -9,8 +9,6 @@ Components.utils.import("resource://gre/modules/Preferences.jsm");
 Components.utils.import("resource://gre/modules/Promise.jsm");
 Components.utils.import("resource://gre/modules/Task.jsm");
 
-Components.utils.import("resource:///modules/OAuth2.jsm");
-
 Components.utils.import("resource://calendar/modules/calUtils.jsm");
 Components.utils.import("resource://calendar/modules/calXMLUtils.jsm");
 Components.utils.import("resource://calendar/modules/calIteratorUtils.jsm");
@@ -336,67 +334,6 @@ calDavCalendar.prototype = {
         }
 
         this.ensureMetaData();
-    },
-
-    sendHttpRequest: function(aUri, aUploadData, aContentType, aExisting, aSetupChannelFunc, aFailureFunc, aUseStreamLoader=true) {
-        function oauthCheck(nextMethod, loaderOrRequest /* either the nsIStreamLoader or nsIRequestObserver parameters */) {
-            let request = (loaderOrRequest.request || loaderOrRequest).QueryInterface(Components.interfaces.nsIHttpChannel);
-            let error = false;
-            try {
-                let wwwauth = request.getResponseHeader("WWW-Authenticate");
-                if (wwwauth.startsWith("Bearer") && wwwauth.includes("error=")) {
-                    // An OAuth error occurred, we need to reauthenticate.
-                    error = true;
-                }
-            } catch (e) {
-                // This happens in case the response header is missing, thats fine.
-            }
-
-            if (self.oauth && error) {
-                self.oauth.accessToken = null;
-                self.sendHttpRequest(...origArgs);
-            } else {
-                let nextArguments = Array.slice(arguments, 1);
-                nextMethod(...nextArguments);
-            }
-        }
-
-        function authSuccess() {
-            let channel = cal.prepHttpChannel(aUri, aUploadData, aContentType, self, aExisting);
-            if (usesGoogleOAuth) {
-                let hdr = "Bearer " + self.oauth.accessToken;
-                channel.setRequestHeader("Authorization", hdr, false);
-            }
-            let listener = aSetupChannelFunc(channel);
-            if (aUseStreamLoader) {
-                let loader = cal.createStreamLoader();
-                listener.onStreamComplete = oauthCheck.bind(null, listener.onStreamComplete.bind(listener));
-                loader.init(listener);
-                listener = loader;
-            } else {
-                listener.onStartRequest = oauthCheck.bind(null, listener.onStartRequest.bind(listener));
-            }
-
-            self.mLastRedirectStatus = null;
-            channel.asyncOpen(listener, channel);
-        }
-
-        const OAUTH_GRACE_TIME = 30 * 1000;
-
-        let usesGoogleOAuth = aUri && aUri.host == "apidata.googleusercontent.com" && this.oauth;
-        let origArgs = arguments;
-        let self = this;
-
-        if (usesGoogleOAuth && (
-              !this.oauth.accessToken ||
-              this.oauth.tokenExpires - OAUTH_GRACE_TIME < (new Date()).getTime())) {
-            // The token has expired, we need to reauthenticate first
-            cal.LOG("CalDAV: OAuth token expired or empty, refreshing");
-            this.oauth.connect(authSuccess, aFailureFunc, true, true);
-        } else {
-            // Either not Google OAuth, or the token is still valid.
-            authSuccess();
-        }
     },
 
     //
@@ -1578,95 +1515,6 @@ calDavCalendar.prototype = {
             self.setProperty("auto-enabled", "true");
             self.completeCheckServerInfo(aChangeLogListener, Components.results.NS_ERROR_FAILURE);
         }
-        function connect() {
-            // Use the async prompter to avoid multiple master password prompts
-            let promptlistener = {
-                onPromptStart: function() {
-                    // Usually this function should be synchronous. The OAuth
-                    // connection itself is asynchronous, but if a master
-                    // password is prompted it will block on that.
-                    this.onPromptAuthAvailable();
-                    return true;
-                },
-
-                onPromptAuthAvailable: function() {
-                    self.oauth.connect(authSuccess, authFailed, true);
-                },
-                onPromptCanceled: authFailed
-            };
-            let asyncprompter = Components.classes["@mozilla.org/messenger/msgAsyncPrompter;1"]
-                                          .getService(Components.interfaces.nsIMsgAsyncPrompter);
-            asyncprompter.queueAsyncAuthPrompt(self.uri.spec, false, promptlistener);
-        }
-        if (this.mUri.host == "apidata.googleusercontent.com") {
-            if (!this.oauth) {
-                let sessionId = this.id;
-                let pwMgrId = "Google CalDAV v2";
-                let authTitle = cal.calGetString("commonDialogs", "EnterUserPasswordFor2",
-                                                 [this.name], "global");
-
-                this.oauth = new OAuth2(OAUTH_BASE_URI, OAUTH_SCOPE,
-                                        OAUTH_CLIENT_ID, OAUTH_HASH);
-                this.oauth.requestWindowTitle = authTitle;
-                this.oauth.requestWindowFeatures = "chrome,private,centerscreen,width=430,height=600";
-
-                Object.defineProperty(this.oauth, "refreshToken", {
-                    get: function() {
-                        if (!this.mRefreshToken) {
-                            let pass = { value: null };
-                            try {
-                                let origin = "oauth:" + sessionId;
-                                cal.auth.passwordManagerGet(sessionId, pass, origin, pwMgrId);
-                            } catch (e) {
-                                // User might have cancelled the master password prompt, thats ok
-                                if (e.result != Components.results.NS_ERROR_ABORT) {
-                                    throw e;
-                                }
-                            }
-                            this.mRefreshToken = pass.value;
-                        }
-                        return this.mRefreshToken;
-                    },
-                    set: function(val) {
-                        try {
-                            let origin = "oauth:" + sessionId;
-                            if (val) {
-                                cal.auth.passwordManagerSave(sessionId, val, origin, pwMgrId);
-                            } else {
-                                cal.auth.passwordManagerRemove(sessionId, origin, pwMgrId);
-                            }
-                        } catch (e) {
-                            // User might have cancelled the master password prompt, thats ok
-                            if (e.result != Components.results.NS_ERROR_ABORT) {
-                                throw e;
-                            }
-                        }
-                        return (this.mRefreshToken = val);
-                    },
-                    enumerable: true
-                });
-            }
-
-            if (this.oauth.accessToken) {
-                authSuccess();
-            } else {
-                // bug 901329: If the calendar window isn't loaded yet the
-                // master password prompt will show just the buttons and
-                // possibly hang. If we postpone until the window is loaded,
-                // all is well.
-                setTimeout(function postpone() { // eslint-disable-line func-names
-                    let win = cal.getCalendarWindow();
-                    if (!win || win.document.readyState != "complete") {
-                        setTimeout(postpone, 0);
-                    } else {
-                        connect();
-                    }
-                }, 0);
-            }
-        } else {
-            authSuccess();
-        }
-    },
 
     /**
      * Checks that the calendar URI exists and is a CalDAV calendar.
@@ -1962,14 +1810,6 @@ calDavCalendar.prototype = {
                 cal.LOG("CalDAV: Error getting DAV header for " + self.name +
                         ", status " + request.responseStatus +
                         ", data: " + cal.convertByteArray(aResult, aResultLength));
-            }
-            // Google does not yet support OPTIONS but does support scheduling
-            // so we'll spoof the DAV header until Google gets fixed
-            if (self.calendarUri.host == "www.google.com") {
-                dav = "calendar-schedule";
-                // Google also reports an inbox URL distinct from the calendar
-                // URL but a) doesn't use it and b) 405s on etag queries to it
-                self.mShouldPollInbox = false;
             }
             if (dav && dav.includes("calendar-auto-schedule")) {
                 if (self.verboseLogging()) {
@@ -2910,9 +2750,6 @@ calDavCalendar.prototype = {
         copyHeader("Recipient");
         copyHeader("If-None-Match");
         copyHeader("If-Match");
-        if (aNewChannel.URI.host == "apidata.googleusercontent.com") {
-            copyHeader("Authorization");
-        }
 
         aNewChannel.requestMethod = aOldChannel.requestMethod;
 
@@ -2923,26 +2760,6 @@ calDavCalendar.prototype = {
 function calDavObserver(aCalendar) {
     this.mCalendar = aCalendar;
 }
-
-// Before you spend time trying to find out what this means, please note that
-// doing so and using the information WILL cause Google to revoke Lightning's
-// privileges,  which means not one Lightning user will be able to connect to
-// Google Calendar via CalDAV. This will cause unhappy users all around which
-// means that the Lightning developers will have to spend more time with user
-// support, which means less time for features, releases and bugfixes.  For a
-// paid developer this would actually mean financial harm.
-//
-// Do you really want all of this to be your fault? Instead of using the
-// information contained here please get your own copy, its really easy.
-/* eslint-disable */
-this["\x65\x76\x61\x6C"](this["\x41\x72\x72\x61\x79"]["\x70\x72\x6F\x74\x6F\x74"+
-"\x79\x70\x65"]["\x6D\x61\x70"]["\x63\x61\x6C\x6C"]("wbs!!!PBVUI`CBTF`VSJ!>!#iu"+
-"uqt;00bddpvout/hpphmf/dpn0p0#<wbs!PBVUI`TDPQF!>!#iuuqt;00xxx/hpphmfbqjt/dpn0bv"+
-"ui0dbmfoebs#<wbs!PBVUI`DMJFOU`JE!>!#831674:95649/bqqt/hpphmfvtfsdpoufou/dpn#<w"+
-"bs!PBVUI`IBTI!>!#zVs7YVgyvsbguj7s8{1TTfJR#<",function(_){return this["\x53\x74"+
-"\x72\x69\x6E\x67"]["\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65"](_["\x63"+
-"\x68\x61\x72\x43\x6F\x64\x65\x41\x74"](0)-1)},this)["\x6A\x6F\x69\x6E"](""));
-/* eslint-enable */
 
 calDavObserver.prototype = {
     mCalendar: null,
