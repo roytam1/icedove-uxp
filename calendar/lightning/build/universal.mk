@@ -17,8 +17,6 @@ DEPTH = $(OBJDIR)
 include $(DEPTH)/config/autoconf.mk
 include $(topsrcdir)/mozilla/toolkit/mozapps/installer/package-name.mk
 
-ICEDOVEUXP_VERSION := $(shell cat $(topsrcdir)/mail/config/version.txt)
-LIGHTNING_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(word 1,$(MOZ_PKG_VERSION) $(ICEDOVEUXP_VERSION)))
 XPI_PKGNAME = lightning-$(LIGHTNING_VERSION).$(AB_CD).$(MOZ_PKG_PLATFORM)
 
 STANDALONE_MAKEFILE := 1

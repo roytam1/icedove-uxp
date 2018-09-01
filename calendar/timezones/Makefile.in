@@ -4,17 +4,11 @@
 
 XPI_PKGNAME = calendar-timezones-$(TIMEZONES_VERSION)
 
-ICEDOVEUXP_VERSION := $(shell cat $(topsrcdir)/mail/config/version.txt)
-ICEAPEUXP_VERSION := $(shell cat $(topsrcdir)/suite/config/version.txt)
-CALENDAR_VERSION := $(shell $(PYTHON) $(topsrcdir)/calendar/lightning/build/makeversion.py $(word 1,$(MOZ_PKG_VERSION) $(ICEDOVEUXP_VERSION)))
 TIMEZONES_VERSION := $(shell $(PYTHON) $(srcdir)/version.py)
 
 relativesrcdir = calendar/locales
 
-DEFINES += -DICEDOVEUXP_VERSION=$(ICEDOVEUXP_VERSION) \
-           -DICEAPEUXP_VERSION=$(ICEAPEUXP_VERSION) \
-           -DCALENDAR_VERSION=$(CALENDAR_VERSION) \
-           -DTIMEZONES_VERSION=$(TIMEZONES_VERSION) \
+DEFINES += -DTIMEZONES_VERSION=$(TIMEZONES_VERSION) \
            $(NULL)
 
 libs-%:

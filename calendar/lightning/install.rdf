@@ -15,8 +15,8 @@
       <Description>
         <!-- Icedove-UXP -->
         <em:id>{3aa07e56-beb0-47a0-b0cb-c735edd25419}</em:id>
-        <em:minVersion>@ICEDOVEUXP_VERSION@</em:minVersion>
-        <em:maxVersion>@ICEDOVEUXP_MAXVERSION@</em:maxVersion>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>52.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
@@ -24,26 +24,20 @@
       <Description>
         <!-- Iceape-UXP -->
         <em:id>{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}</em:id>
-        <em:minVersion>@ICEAPEUXP_VERSION@</em:minVersion>
-        <em:maxVersion>@ICEAPEUXP_MAXVERSION@</em:maxVersion>
+        <em:minVersion>28.0</em:minVersion>
+        <em:maxVersion>52.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
     <em:id>@XPI_EM_ID@</em:id>
     <em:name>Lightning</em:name>
-    <em:version>@LIGHTNING_VERSION@</em:version> <!-- BuildID=@MOZ_BUILDID@ -->
+    <em:version>5.4.9.1</em:version>
     <em:description>Integrated Calendaring &amp; Scheduling for your Email client</em:description>
-#ifdef LIGHTNING_PRERELEASE_VERSION
-    <em:developer>Build ID: @MOZ_BUILDID@</em:developer>
-#endif
     <em:creator>Mozilla Calendar Project</em:creator>
     <em:homepageURL>https://www.mozilla.org/projects/calendar/</em:homepageURL>
     <em:iconURL>chrome://calendar/skin/cal-icon32.png</em:iconURL>
     <em:optionsURL>chrome://messenger/content/preferences/preferences.xul</em:optionsURL>
     <em:targetPlatform>@TARGET_PLATFORM@</em:targetPlatform>
-#ifdef LIGHTNING_UPDATE_LOCATION
-    <em:updateURL>@LIGHTNING_UPDATE_LOCATION@?buildID=@MOZ_BUILDID@&amp;appABI=%APP_ABI%&amp;appOS=%APP_OS%&amp;locale=%APP_LOCALE%&amp;appVersion=%APP_VERSION%&amp;appID=%APP_ID%</em:updateURL>
-#endif
     <em:unpack>true</em:unpack>
     <em:strictCompatibility>true</em:strictCompatibility>
   </Description>
