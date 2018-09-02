@@ -16,7 +16,7 @@ DIRS += [
 
 TEST_DIRS += ['../test']
 
-XPI_NAME = 'lightning'
+XPI_NAME = 'iceowl-uxp'
 export('XPI_NAME')
 
 FINAL_TARGET_PP_FILES += [
@@ -45,10 +45,10 @@ FINAL_TARGET_FILES.timezones += [
 ]
 
 with Files('**'):
-    BUG_COMPONENT = ('Calendar', 'Lightning Only')
+    BUG_COMPONENT = ('Calendar', 'Iceowl-UXP Only')
 
 with Files('content/suite-*'):
-    BUG_COMPONENT = ('Calendar', 'Lightning: SeaMonkey Integration')
+    BUG_COMPONENT = ('Calendar', 'Iceowl-UXP: Iceape-UXP Integration')
 
 with Files('build/**'):
     BUG_COMPONENT = ('Calendar', 'Build Config')

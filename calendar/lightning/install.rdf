@@ -30,11 +30,11 @@
     </em:targetApplication>
 
     <em:id>@XPI_EM_ID@</em:id>
-    <em:name>Lightning</em:name>
+    <em:name>Iceowl-UXP</em:name>
     <em:version>5.4.9.1</em:version>
     <em:description>Integrated Calendaring &amp; Scheduling for your Email client</em:description>
-    <em:creator>Mozilla Calendar Project</em:creator>
-    <em:homepageURL>https://www.mozilla.org/projects/calendar/</em:homepageURL>
+    <em:creator>Hyperbola Project</em:creator>
+    <em:homepageURL>https://www.hyperbola.info</em:homepageURL>
     <em:iconURL>chrome://calendar/skin/cal-icon32.png</em:iconURL>
     <em:optionsURL>chrome://messenger/content/preferences/preferences.xul</em:optionsURL>
     <em:targetPlatform>@TARGET_PLATFORM@</em:targetPlatform>
