@@ -3,13 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 Components.utils.import("resource://calendar/modules/calUtils.jsm");
-Components.utils.import("resource://calendar/modules/calAsyncUtils.jsm");
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-Components.utils.import("resource://gre/modules/Timer.jsm");
-Components.utils.import("resource://gre/modules/Preferences.jsm");
-Components.utils.import("resource://gre/modules/Promise.jsm");
-Components.utils.import("resource://gre/modules/Task.jsm");
-
 
 /**
  * This is a handler for the etag request in calDavCalendar.js' getUpdatedItem.
@@ -83,7 +77,7 @@ etagsHandler.prototype = {
         }
     },
 
-    onStopRequest: Task.async(function* (request, context, statusCode) {
+    onStopRequest: function(request, context, statusCode) {
         if (this.calendar.verboseLogging()) {
             cal.LOG("CalDAV: recv: " + this.logXML);
         }
@@ -113,16 +107,28 @@ etagsHandler.prototype = {
                 // If an item has been deleted from the server, delete it here too.
                 // Since the target calendar's operations are synchronous, we can
                 // safely set variables from this function.
-                let pcal = cal.async.promisifyCalendar(this.calendar.mOfflineStorage);
-                let foundItem = (yield pcal.getItem(this.calendar.mHrefIndex[path]))[0];
+                let foundItem;
+                let getItemListener = {
+                    onGetResult: function etags_getItem_onResult(aCalendar,
+                                                                 aStatus,
+                                                                 aItemType,
+                                                                 aDetail,
+                                                                 aCount,
+                                                                 aItems) {
+                        foundItem = aItems[0];
+                    },
+                    onOperationComplete: function etags_getItem_onOperationComplete() {}
+                };
 
+                this.calendar.mOfflineStorage.getItem(this.calendar.mHrefIndex[path],
+                                                      getItemListener);
                 if (foundItem) {
                     let wasInboxItem = this.calendar.mItemInfoCache[foundItem.id].isInboxItem;
                     if ((wasInboxItem && this.calendar.isInbox(this.baseUri.spec)) ||
                         (wasInboxItem === false && !this.calendar.isInbox(this.baseUri.spec))) {
                         cal.LOG("Deleting local href: " + path);
                         delete this.calendar.mHrefIndex[path];
-                        yield pcal.deleteItem(foundItem);
+                        this.calendar.mOfflineStorage.deleteItem(foundItem, null);
                         needsRefresh = true;
                     }
                 }
@@ -160,7 +166,7 @@ etagsHandler.prototype = {
                 this.calendar.pollInbox();
             }
         }
-    }),
+    },
 
     onDataAvailable: function(request, context, inputStream, offset, count) {
         if (this._reader) {
@@ -309,7 +315,6 @@ webDavSyncHandler.prototype = {
     unhandledErrors: 0,
     itemsReported: null,
     itemsNeedFetching: null,
-    additionalSyncNeeded: false,
 
     QueryInterface: XPCOMUtils.generateQI([
         Components.interfaces.nsISAXContentHandler,
@@ -321,7 +326,7 @@ webDavSyncHandler.prototype = {
     doWebDAVSync: function() {
         if (this.calendar.mDisabled) {
             // check if maybe our calendar has become available
-            this.calendar.setupAuthentication(this.changeLogListener);
+            this.calendar.checkDavResourceType(this.changeLogListener);
             return;
         }
 
@@ -349,22 +354,14 @@ webDavSyncHandler.prototype = {
             cal.LOG("CalDAV: send(" + requestUri.spec + "): " + queryXml);
         }
         cal.LOG("CalDAV: webdav-sync Token: " + this.calendar.mWebdavSyncToken);
-        this.calendar.sendHttpRequest(requestUri, queryXml, MIME_TEXT_XML, null, (channel) => {
-            // The depth header adheres to an older version of the webdav-sync
-            // spec and has been replaced by the <sync-level> tag above.
-            // Unfortunately some servers still depend on the depth header,
-            // therefore we send both (yuck).
-            channel.setRequestHeader("Depth", "1", false);
-
-            channel.requestMethod = "REPORT";
-            return this;
-        }, () => {
-            // Something went wrong with the OAuth token, notify failure
-            if (this.calendar.isCached && this.changeLogListener) {
-                this.changeLogListener.onResult({ status: Components.results.NS_ERROR_NOT_AVAILABLE },
-                                                Components.results.NS_ERROR_NOT_AVAILABLE);
-            }
-        }, false);
+        let httpchannel = cal.prepHttpChannel(requestUri,
+                                              queryXml,
+                                              "text/xml; charset=utf-8",
+                                              this.calendar);
+        httpchannel.setRequestHeader("Depth", "1", false);
+        httpchannel.requestMethod = "REPORT";
+        // Submit the request
+        httpchannel.asyncOpen(this, httpchannel);
     },
 
     /**
@@ -645,15 +642,12 @@ webDavSyncHandler.prototype = {
  *                              array of un-encoded paths.
  * @param aCalendar             The (unwrapped) calendar this request belongs to
  * @param aBaseUri              The URI requested (i.e inbox or collection)
- * @param aAdditionalSyncNeeded (optional) If true, the passed sync token is not the
- *                                latest, another webdav sync run should be
- *                                done after completion.
  * @param aNewSyncToken         (optional) new Sync token to set if operation successful
  * @param aListener             (optional) The listener to notify
  * @param aChangeLogListener    (optional) for cached calendars, the listener to
  *                                notify.
  */
-function multigetSyncHandler(aItemsNeedFetching, aCalendar, aBaseUri, aNewSyncToken, aAdditionalSyncNeeded, aListener, aChangeLogListener) {
+function multigetSyncHandler(aItemsNeedFetching, aCalendar, aBaseUri, aNewSyncToken, aListener, aChangeLogListener) {
     this.calendar = aCalendar;
     this.baseUri = aBaseUri;
     this.listener = aListener;
@@ -665,7 +659,6 @@ function multigetSyncHandler(aItemsNeedFetching, aCalendar, aBaseUri, aNewSyncTo
     this._reader.errorHandler = this;
     this._reader.parseAsync(null);
     this.itemsNeedFetching = aItemsNeedFetching;
-    this.additionalSyncNeeded = aAdditionalSyncNeeded;
 }
 multigetSyncHandler.prototype = {
     currentResponse: null,
@@ -678,7 +671,6 @@ multigetSyncHandler.prototype = {
     logXML: null,
     unhandledErrors: 0,
     itemsNeedFetching: null,
-    additionalSyncNeeded: false,
 
     QueryInterface: XPCOMUtils.generateQI([
         Components.interfaces.nsISAXContentHandler,
@@ -690,7 +682,7 @@ multigetSyncHandler.prototype = {
     doMultiGet: function() {
         if (this.calendar.mDisabled) {
             // check if maybe our calendar has become available
-            this.calendar.setupAuthentication(this.changeLogListener);
+            this.calendar.checkDavResourceType(this.changeLogListener);
             return;
         }
 
@@ -718,17 +710,14 @@ multigetSyncHandler.prototype = {
         if (this.calendar.verboseLogging()) {
             cal.LOG("CalDAV: send(" + requestUri.spec + "): " + queryXml);
         }
-        this.calendar.sendHttpRequest(requestUri, queryXml, MIME_TEXT_XML, null, (channel) => {
-            channel.requestMethod = "REPORT";
-            channel.setRequestHeader("Depth", "1", false);
-            return this;
-        }, () => {
-            // Something went wrong with the OAuth token, notify failure
-            if (this.calendar.isCached && this.changeLogListener) {
-                this.changeLogListener.onResult({ status: Components.results.NS_ERROR_NOT_AVAILABLE },
-                                                Components.results.NS_ERROR_NOT_AVAILABLE);
-            }
-        }, false);
+        let httpchannel = cal.prepHttpChannel(requestUri,
+                                              queryXml,
+                                              "text/xml; charset=utf-8",
+                                              this.calendar);
+        httpchannel.setRequestHeader("Depth", "1", false);
+        httpchannel.requestMethod = "REPORT";
+        // Submit the request
+        httpchannel.asyncOpen(this, httpchannel);
     },
 
     /**
@@ -773,17 +762,8 @@ multigetSyncHandler.prototype = {
                 cal.LOG("CalDAV: New webdav-sync Token: " + this.calendar.mWebdavSyncToken);
             }
 
-            if (this.additionalSyncNeeded) {
-                setTimeout(() => {
-                    let wds = new webDavSyncHandler(this.calendar,
-                                                    this.baseUri,
-                                                    this.changeLogListener);
-                    wds.doWebDAVSync();
-                }, 0);
-            } else {
-                this.calendar.finalizeUpdatedItems(this.changeLogListener,
-                                                   this.baseUri);
-            }
+            this.calendar.finalizeUpdatedItems(this.changeLogListener,
+                                               this.baseUri);
         }
         if (!this._reader) {
             // No reader means there was a request error. The error is already
