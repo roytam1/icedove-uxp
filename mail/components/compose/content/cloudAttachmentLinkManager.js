@@ -290,22 +290,6 @@ var gCloudAttachmentLinkManager = {
       list.innerHTML = " ";
       root.appendChild(list);
 
-      let footer = editor.createElementWithDefaults("div");
-      let appLinkUrl = Services.prefs
-                               .getCharPref("mail.cloud_files.inserted_urls.footer.link");
-      let appname = this._generateLink(aDocument,
-                                       brandBundle.GetStringFromName("brandFullName"),
-                                       appLinkUrl);
-
-      let applink = this._getHTMLRepresentation(aDocument, appname);
-      let footerMessage = getComposeBundle().getFormattedString("cloudAttachmentListFooter", [applink], 1);
-
-      footer.innerHTML = footerMessage;
-      footer.style.color = "#444444";
-      footer.style.fontSize = "small";
-      footer.style.marginTop = "15px";
-      root.appendChild(footer);
-
       editor.insertElementAtSelection(root, false);
     }
     else {
