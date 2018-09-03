@@ -53,16 +53,21 @@
            extends="chrome://calendar/content/calendar-multiday-view.xml#calendar-multiday-view">
     <implementation implements="calICalendarView">
       <constructor><![CDATA[
-        // add a listener for the mode change
-        this.mModeHandler = (event) => {
-            if (event.attrName == "mode") {
-                this.onModeChanged(event);
+          this.mBroadcasterObserver = new MutationObserver(aMutations => {
+              for (let mutation of aMutations) {
+                  let currentMode = mutation.target.getAttribute("mode");
+                  if (currentMode != "calendar") {
+                      timeIndicator.cancel();
+                  }
             }
-        };
-        document.getElementById("modeBroadcaster").addEventListener("DOMAttrModified", this.mModeHandler, true);
+          });
+          this.mBroadcasterObserver.observe(
+                  document.getElementById("modeBroadcaster"),
+                  { attributes: true, attributeFilter: ["mode"] }
+          );
       ]]></constructor>
       <destructor><![CDATA[
-        document.getElementById("modeBroadcaster").removeEventListener("DOMAttrModified", this.mModeHandler, true);
+          this.mBroadcasterObserver.disconnect();
       ]]></destructor>
 
       <property name="observerID">

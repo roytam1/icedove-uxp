@@ -2736,7 +2736,6 @@
       <field name="mVisibleMinutes">9 * 60</field>
       <field name="mClickedTime">null</field>
       <field name="mTimeIndicatorInterval">15</field>
-      <field name="mModeHandler">null</field>
       <field name="mTimeIndicatorMinutes">0</field>
 
       <method name="flashAlarm">

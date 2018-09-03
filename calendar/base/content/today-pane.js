@@ -8,10 +8,10 @@ Components.utils.import("resource://calendar/modules/calUtils.jsm");
  * Namespace object to hold functions related to the today pane.
  */
 var TodayPane = {
+    modeObserver: null,
     paneViews: null,
     start: null,
     cwlabel: null,
-    previousMode:  null,
     switchCounter: 0,
     minidayTimer: null,
     minidayDrag: {
@@ -32,12 +32,15 @@ var TodayPane = {
         TodayPane.initializeMiniday();
         TodayPane.setShortWeekdays();
 
-        document.getElementById("modeBroadcaster").addEventListener("DOMAttrModified", TodayPane.onModeModified, false);
+        TodayPane.modeObserver = new MutationObserver(TodayPane.onModeModified);
+        TodayPane.modeObserver.observe(
+            document.getElementById("modeBroadcaster"),
+            { attributes: true, attributeFilter: ["mode"], attributeOldValue: true }
+        );
         TodayPane.setTodayHeader();
 
         document.getElementById("today-splitter").addEventListener("command", onCalendarViewResize, false);
         TodayPane.updateSplitterState();
-        TodayPane.previousMode = document.getElementById("modeBroadcaster").getAttribute("mode");
         TodayPane.showTodayPaneStatusLabel();
     },
 
@@ -45,7 +48,7 @@ var TodayPane = {
      * Unload handler, cleans up the today pane on window unload.
      */
     onUnload: function() {
-        document.getElementById("modeBroadcaster").removeEventListener("DOMAttrModified", TodayPane.onModeModified, false);
+        TodayPane.modeObserver.disconnect();
         document.getElementById("today-splitter").removeEventListener("command", onCalendarViewResize, false);
     },
 
@@ -413,22 +416,21 @@ var TodayPane = {
     },
 
     /**
-     * Handler function for the DOMAttrModified event used to observe the
-     * todaypane-splitter.
+     * Callback function for the MutationObserver used for the mode attribute of modeBroadcaster
      *
-     * @param aEvent        The DOM event occurring on attribute modification.
+     * @param aMutations
      */
-    onModeModified: function(aEvent) {
-        if (aEvent.attrName == "mode") {
-            let todaypane = document.getElementById("today-pane-panel");
+    onModeModified: function(aMutations) {
+        aMutations.forEach(mutation => {
+            let todayPanePanel = document.getElementById("today-pane-panel");
+
             // Store the previous mode panel's width.
-            todaypane.setModeAttribute("modewidths", todaypane.width, TodayPane.previousMode);
+            todayPanePanel.setModeAttribute("modewidths", todayPanePanel.width, mutation.oldValue);
 
             TodayPane.setTodayHeader();
             TodayPane.updateSplitterState();
-            todaypane.width = todaypane.getModeAttribute("modewidths", "width");
-            TodayPane.previousMode = document.getElementById("modeBroadcaster").getAttribute("mode");
-        }
+            todayPanePanel.width = todayPanePanel.getModeAttribute("modewidths", "width");
+        });
     },
 
     /**

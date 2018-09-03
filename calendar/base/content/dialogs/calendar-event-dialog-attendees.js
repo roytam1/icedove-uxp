@@ -25,6 +25,9 @@ var gDisplayTimezone = true;
 var gUndoStack = [];
 var gForce24Hours = false;
 var gZoomFactor = 100;
+var gVerticalScrollbarObserver = null;
+var gHorizontalScrollbarObserver = null;
+var gInputFocusObserver = null;
 
 /**
  * Sets up the attendee dialog
@@ -34,9 +37,23 @@ function onLoad() {
     window.addEventListener("resize", onResize, true);
     window.addEventListener("modify", onModify, true);
     window.addEventListener("rowchange", onRowChange, true);
-    window.addEventListener("DOMAttrModified", onAttrModified, true);
     window.addEventListener("timebar", onTimebar, true);
     window.addEventListener("timechange", onTimeChange, true);
+
+    gVerticalScrollbarObserver = new MutationObserver(onVerticalScrollbarAttributeChange);
+    gVerticalScrollbarObserver.observe(document.getElementById("vertical-scrollbar"), { attributes: true });
+
+    gHorizontalScrollbarObserver = new MutationObserver(onHorizontalScrollbarCurposChange);
+    gHorizontalScrollbarObserver.observe(
+        document.getElementById("horizontal-scrollbar"),
+        { attributes: true, attributeFilter: ["curpos"] }
+    );
+
+    gInputFocusObserver = new MutationObserver(onFocusedAttributeChange);
+    gInputFocusObserver.observe(
+        document.getElementById("calendar-event-dialog-attendees-v2"),
+        { attributes: true, attributeFilter: ["focused"], subtree: true }
+    );
 
     // As long as DOMMouseScroll is still implemented, we need to keep it
     // around to make sure scrolling is blocked.
@@ -51,7 +68,6 @@ function onLoad() {
     gDisplayTimezone = args.displayTimezone;
 
     onChangeCalendar(calendar);
-
 
     let zoom = document.getElementById("zoom-menulist");
     let zoomOut = document.getElementById("zoom-out-button");
@@ -121,6 +137,9 @@ function onLoad() {
     };
     Services.prefs.addObserver("calendar.", prefObserver, false);
     window.addEventListener("unload", () => {
+        gVerticalScrollbarObserver.disconnect();
+        gHorizontalScrollbarObserver.disconnect();
+        gInputFocusObserver.disconnect();
         Services.prefs.removeObserver("calendar.", prefObserver);
     }, false);
 
@@ -582,6 +601,9 @@ function onResize() {
     if (!gStartDate || !gEndDate) {
         return;
     }
+    
+    let selectionbar = document.getElementById("selection-bar");
+    selectionbar.setWidth(selectionbar.boxObject.width);
 
     let grid = document.getElementById("freebusy-grid");
     let gridScrollbar = document.getElementById("horizontal-scrollbar");
@@ -877,61 +899,62 @@ function onMouseScroll(event) {
 }
 
 /**
- * Hanlder function to take care of attribute changes on the window
+ * Callback function to take care of attribute changes in vertical scrollbar
  *
- * @param event     The DOMAttrModified event caused by this change.
+ * @param aMutations
  */
-function onAttrModified(event) {
-    if (event.attrName == "width") {
-        let selectionbar = document.getElementById("selection-bar");
-        selectionbar.setWidth(selectionbar.boxObject.width);
-        return;
-    }
-
-    // Synchronize grid and attendee list
-    let target = event.originalTarget;
-    if (target.hasAttribute("anonid") &&
-        target.getAttribute("anonid") == "input" &&
-        event.attrName == "focused") {
+function onVerticalScrollbarAttributeChange(aMutations) {
+    aMutations.forEach(mutation => {
+        let scrollbar = mutation.target;
         let attendees = document.getElementById("attendees-list");
-        if (event.newValue == "true") {
-            let grid = document.getElementById("freebusy-grid");
-            if (grid.firstVisibleRow != attendees.firstVisibleRow) {
-                grid.firstVisibleRow = attendees.firstVisibleRow;
-            }
+        let grid = document.getElementById("freebusy-grid");
+        if (mutation.attributeName == "curpos") {
+            attendees.ratio = scrollbar.getAttribute("curpos") / scrollbar.getAttribute("maxpos");
         }
-        if (!target.lastListCheckedValue ||
-            target.lastListCheckedValue != target.value) {
-            attendees.resolvePotentialList(target);
-            target.lastListCheckedValue = target.value;
-        }
-    }
+        grid.firstVisibleRow = attendees.firstVisibleRow;
+    });
+}
 
-    if (event.originalTarget.localName == "scrollbar") {
-        let scrollbar = event.originalTarget;
-        if (scrollbar.hasAttribute("maxpos")) {
-            if (scrollbar.getAttribute("id") == "vertical-scrollbar") {
-                let attendees = document.getElementById("attendees-list");
+/**
+ * Callback function to take care of current position changes in horizontal scrollbar
+ *
+ * @param aMutations
+ */
+function onHorizontalScrollbarCurposChange(aMutations) {
+    aMutations.forEach(mutation => {
+        let scrollbar = mutation.target;
+        let ratio = scrollbar.getAttribute("curPos") / scrollbar.getAttribute("maxpos");
+        let timebar = document.getElementById("timebar");
+        let grid = document.getElementById("freebusy-grid");
+        let selectionbar = document.getElementById("selection-bar");
+        timebar.scroll = ratio;
+        grid.scroll = ratio;
+        selectionbar.ratio = ratio;
+    });
+}
+
+/**
+ * Callback function to take care of grid and attendee list sync
+ *
+ * @param aMutations
+ */
+function onFocusedAttributeChange(aMutations) {
+    aMutations.forEach(mutation => {
+        let target = mutation.target;
+        if (target.hasAttribute("anonid") && target.getAttribute("anonid") == "input") {
+            let attendees = document.getElementById("attendees-list");
+            if (target.getAttribute("focused") == "true") {
                 let grid = document.getElementById("freebusy-grid");
-                if (event.attrName == "curpos") {
-                    let maxpos = scrollbar.getAttribute("maxpos");
-                    attendees.ratio = event.newValue / maxpos;
-                }
-                grid.firstVisibleRow = attendees.firstVisibleRow;
-            } else if (scrollbar.getAttribute("id") == "horizontal-scrollbar") {
-                if (event.attrName == "curpos") {
-                    let maxpos = scrollbar.getAttribute("maxpos");
-                    let ratio = event.newValue / maxpos;
-                    let timebar = document.getElementById("timebar");
-                    let grid = document.getElementById("freebusy-grid");
-                    let selectionbar = document.getElementById("selection-bar");
-                    timebar.scroll = ratio;
-                    grid.scroll = ratio;
-                    selectionbar.ratio = ratio;
+                if (grid.firstVisibleRow != attendees.firstVisibleRow) {
+                    grid.firstVisibleRow = attendees.firstVisibleRow;
                 }
             }
+            if (!target.lastListCheckedValue || target.lastListCheckedValue != target.value) {
+                attendees.resolvePotentialList(target);
+                target.lastListCheckedValue = target.value;
+            }
         }
-    }
+    });
 }
 
 /**
@@ -941,8 +964,7 @@ function onAttrModified(event) {
  * @param event     The "timebar" event with details and height property.
  */
 function onTimebar(event) {
-    document.getElementById(
-        "selection-bar")
+    document.getElementById("selection-bar")
             .init(event.details, event.height);
 }
 

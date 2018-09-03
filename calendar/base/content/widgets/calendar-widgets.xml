@@ -304,7 +304,7 @@
     </resources>
     <implementation>
       <field name="mBroadcaster">null</field>;
-      <field name="mModHandler">null</field>;
+      <field name="mBroadcasterObserver">null</field>;
       <field name="mRefControl">null</field>;
       <field name="mControlHandler">null</field>;
 
@@ -328,8 +328,8 @@
       ]]></constructor>
 
       <destructor><![CDATA[
-        if (this.mBroadcaster) {
-            this.mBroadcaster.removeEventListener("DOMAttrModified", this.mModHandler, true);
+          if (this.mBroadcasterObserver) {
+              this.mBroadcasterObserver.disconnect();
         }
         if (this.mRefControl) {
             this.mRefControl.removeEventListener("CheckboxStateChange", this.mControlHandler, true);
@@ -497,13 +497,16 @@
           if (aAttr == "broadcaster") {
               this.mBroadcaster = document.getElementById(aVal);
               if (this.mBroadcaster) {
-                  this.mModHandler = {
-                      binding: this,
-                      handleEvent: function(aEvent, aHandled) {
-                          return this.binding.onModeModified(aEvent, this.binding);
+                    this.mBroadcasterObserver = new MutationObserver(aMutations => {
+                        for (let mutation of aMutations) {
+                            let display = this.isVisibleInMode(mutation.target.getAttribute(mutation.attributeName));
+                            this.setVisible(display, false, true);
                       }
-                  };
-                  this.mBroadcaster.addEventListener("DOMAttrModified", this.mModHandler, true);
+                    });
+                    this.mBroadcasterObserver.observe(
+                        this.mBroadcaster,
+                        { attributes: true, attributeFilter: ["mode"] }
+                    );
               }
           }
           return XULElement.prototype.setAttribute.call(this, aAttr, aVal);
