@@ -14,7 +14,7 @@ pref("mailnews.start_page.welcome_url", "about:");
 //pref("mailnews.start_page.override_url", "chrome://messenger/content/start.xhtml");
 pref("mailnews.start_page.override_url", "about:");
 
-pref("app.vendorURL", "http://www.mozillamessaging.com/%LOCALE%/thunderbird/");
+pref("app.vendorURL", "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp");
 
 // We appear as Thunderbird to avoid fingerprinting risks
 pref("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101, Thunderbird/52.9.1");

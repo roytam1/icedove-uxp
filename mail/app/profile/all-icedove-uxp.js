@@ -146,13 +146,13 @@ pref("extensions.autoDisableScopes", 15);
 // Preferences for AMO integration
 pref("extensions.getAddons.cache.enabled", true);
 pref("extensions.getAddons.maxResults", 15);
-pref("extensions.getAddons.get.url", "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp_addons");
+pref("extensions.getAddons.get.url", "https://id.addons.hyperbola.info");
 pref("extensions.getAddons.getWithPerformance.url", "");
-pref("extensions.getAddons.link.url", "");
+pref("extensions.getAddons.link.url", "https://id.addons.hyperbola.info");
 pref("extensions.getAddons.recommended.url", "");
-pref("extensions.getAddons.search.browseURL", "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp_addons");
-pref("extensions.getAddons.search.url", "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp_addons");
-pref("extensions.webservice.discoverURL", "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp_addons");
+pref("extensions.getAddons.search.browseURL", "https://id.addons.hyperbola.info");
+pref("extensions.getAddons.search.url", "https://id.addons.hyperbola.info");
+pref("extensions.webservice.discoverURL", "https://id.addons.hyperbola.info");
 
 // Blocklist preferences
 pref("extensions.blocklist.enabled", true);
