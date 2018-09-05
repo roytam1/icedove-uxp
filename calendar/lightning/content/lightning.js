@@ -10,11 +10,11 @@ pref("calendar.debug.log", false);
 pref("calendar.debug.log.verbose", false);
 
 // addon description
-pref("extensions.{e2fda1a4-762b-4020-b5ad-a41df1933103}.description",
+pref("extensions.{ee86d35c-86ba-44f3-bd9d-854163f8f07a}.description",
      "chrome://lightning/locale/lightning.properties");
-pref("extensions.{e2fda1a4-762b-4020-b5ad-a41df1933103}.name",
+pref("extensions.{ee86d35c-86ba-44f3-bd9d-854163f8f07a}.name",
      "chrome://lightning/locale/lightning.properties");
-pref("extensions.{e2fda1a4-762b-4020-b5ad-a41df1933103}.creator",
+pref("extensions.{ee86d35c-86ba-44f3-bd9d-854163f8f07a}.creator",
      "chrome://lightning/locale/lightning.properties");
 
 // general settings

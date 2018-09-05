@@ -37,7 +37,7 @@ postflight_all:
 	$(call unify_iceowl-uxp,xpi-stage,iceowl-uxp)
 	$(call unify_iceowl-uxp_repackage,xpi-stage,iceowl-uxp)
 ifdef NIGHTLY_BUILD
-	$(call unify_iceowl-uxp,$(MOZ_APP_DISPLAYNAME).app/Contents/Resources/extensions,{e2fda1a4-762b-4020-b5ad-a41df1933103})
+	$(call unify_iceowl-uxp,$(MOZ_APP_DISPLAYNAME).app/Contents/Resources/extensions,{ee86d35c-86ba-44f3-bd9d-854163f8f07a})
 else
-	$(call unify_iceowl-uxp,$(MOZ_APP_DISPLAYNAME).app/Contents/Resources/distribution/extensions,{e2fda1a4-762b-4020-b5ad-a41df1933103})
+	$(call unify_iceowl-uxp,$(MOZ_APP_DISPLAYNAME).app/Contents/Resources/distribution/extensions,{ee86d35c-86ba-44f3-bd9d-854163f8f07a})
 endif

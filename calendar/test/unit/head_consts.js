@@ -20,7 +20,7 @@ var { classes: Cc, interfaces: Ci, results: Cr, utils: Cu } = Components;
 (function() {
     let bindir = Services.dirsvc.get("CurProcD", Components.interfaces.nsIFile);
     bindir.append("extensions");
-    bindir.append("{e2fda1a4-762b-4020-b5ad-a41df1933103}");
+    bindir.append("{ee86d35c-86ba-44f3-bd9d-854163f8f07a}");
     bindir.append("chrome.manifest");
     dump("Loading" + bindir.path + "\n");
     Components.manager.autoRegister(bindir);

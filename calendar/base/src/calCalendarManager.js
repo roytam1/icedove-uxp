@@ -426,7 +426,7 @@ calCalendarManager.prototype = {
                             { value: false }); // Unnecessary checkbox state
 
         // Disable Lightning
-        AddonManager.getAddonByID("{e2fda1a4-762b-4020-b5ad-a41df1933103}", (aAddon) => {
+        AddonManager.getAddonByID("{ee86d35c-86ba-44f3-bd9d-854163f8f07a}", (aAddon) => {
             aAddon.userDisabled = true;
             Services.startup.quit(Components.interfaces.nsIAppStartup.eRestart |
                 Components.interfaces.nsIAppStartup.eForceQuit);
