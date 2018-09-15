@@ -535,7 +535,6 @@
 @RESPATH@/components/xul.xpt
 @RESPATH@/components/xultmpl.xpt
 @RESPATH@/components/zipwriter.xpt
-@RESPATH@/components/telemetry.xpt
 
 ; toolkit
 @RESPATH@/components/ConsoleAPI.manifest
@@ -644,8 +643,6 @@
 @RESPATH@/components/captivedetect.js
 @RESPATH@/components/servicesComponents.manifest
 @RESPATH@/components/cryptoComponents.manifest
-@RESPATH@/components/TelemetryStartup.js
-@RESPATH@/components/TelemetryStartup.manifest
 @RESPATH@/components/XULStore.js
 @RESPATH@/components/XULStore.manifest
 @RESPATH@/components/messageWakeupService.js
@@ -829,7 +826,3 @@
 @BINPATH@/breakpadinjector.dll
 #endif
 #endif
-
-; Shutdown Terminator
-@RESPATH@/components/nsTerminatorTelemetry.js
-@RESPATH@/components/terminator.manifest

@@ -637,7 +637,6 @@
 @RESPATH@/components/satchel.manifest
 @RESPATH@/components/satchel.xpt
 @RESPATH@/components/shistory.xpt
-@RESPATH@/components/telemetry.xpt
 @RESPATH@/components/zipwriter.xpt
 @RESPATH@/components/cookie.xpt
 @RESPATH@/components/places.xpt

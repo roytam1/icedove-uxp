@@ -231,11 +231,6 @@ tabs {
   border-color: #424e5a;
 }
 
-#telemetryLearnMore,
-#crashReporterLearnMore {
-  margin-inline-end: 4px !important;
-}
-
 /**
  * Font dialog menulist fixes
  */

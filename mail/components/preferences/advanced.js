@@ -36,9 +36,6 @@ var gAdvancedPane = {
     let targetItem = storeTypeElement.getElementsByAttribute("value", defaultStoreID);
     storeTypeElement.selectedItem = targetItem[0];
 
-    if (AppConstants.MOZ_CRASHREPORTER)
-      this.initSubmitCrashes();
-    this.initTelemetry();
     this.updateActualCacheSize();
 
     // Search integration -- check whether we should hide or disable integration
@@ -324,12 +321,6 @@ updateWritePrefs: function ()
       document.getElementById("mail.purge_threshhold_mb").locked;
   },
 
-  updateSubmitCrashReports: function(aChecked)
-  {
-    Components.classes["@mozilla.org/toolkit/crash-reporter;1"]
-              .getService(Components.interfaces.nsICrashReporter)
-              .submitReports = aChecked;
-  },
   /**
    * Display the return receipts configuration dialog.
    */
@@ -434,75 +425,5 @@ updateWritePrefs: function ()
   {
     if (AppConstants.platforms == "win")
       Services.prefs.setBoolPref("gfx.direct2d.disabled", !aVal);
-  },
-
-  // DATA CHOICES TAB
-
-  /**
-   * Open a text link.
-   */
-  openTextLink: function (evt) {
-    // Opening links behind a modal dialog is poor form. Work around flawed
-    // text-link handling by opening in browser if we'd instead get a content
-    // tab behind the modal options dialog.
-    if (Services.prefs.getBoolPref("browser.preferences.instantApply")) {
-      return true; // Yes, open the link in a content tab.
-    }
-    var url = evt.target.getAttribute("href");
-    var messenger = Components.classes["@mozilla.org/messenger;1"]
-      .createInstance(Components.interfaces.nsIMessenger);
-    messenger.launchExternalURL(url);
-    evt.preventDefault();
-    return false;
-  },
-
-  /**
-   * Set up or hide the Learn More links for various data collection options
-   */
-  _setupLearnMoreLink: function (pref, element) {
-    // set up the Learn More link with the correct URL
-    let url = Services.prefs.getCharPref(pref);
-    let el = document.getElementById(element);
-
-    if (url) {
-      el.setAttribute("href", url);
-    } else {
-      el.setAttribute("hidden", "true");
-    }
-  },
-
-  initSubmitCrashes: function ()
-  {
-    var checkbox = document.getElementById("submitCrashesBox");
-    try {
-      var cr = Components.classes["@mozilla.org/toolkit/crash-reporter;1"].
-               getService(Components.interfaces.nsICrashReporter);
-      checkbox.checked = cr.submitReports;
-    } catch (e) {
-      checkbox.style.display = "none";
-    }
-    this._setupLearnMoreLink("toolkit.crashreporter.infoURL", "crashReporterLearnMore");
-  },
-
-  updateSubmitCrashes: function ()
-  {
-    var checkbox = document.getElementById("submitCrashesBox");
-    try {
-      var cr = Components.classes["@mozilla.org/toolkit/crash-reporter;1"].
-               getService(Components.interfaces.nsICrashReporter);
-      cr.submitReports = checkbox.checked;
-    } catch (e) { }
-  },
-
-
-  /**
-   * The preference/checkbox is configured in XUL.
-   *
-   * In all cases, set up the Learn More link sanely
-   */
-  initTelemetry: function ()
-  {
-    if (AppConstants.MOZ_TELEMETRY_REPORTING)
-      this._setupLearnMoreLink("toolkit.telemetry.infoURL", "telemetryLearnMore");
-  },
+  }
 };
