@@ -60,8 +60,13 @@ function OnMailWindowUnload()
  */
 function onCopyOrDragStart(e) {
   let browser = getBrowser();
-  if (!browser || e.target.ownerDocument != browser.contentDocument) {
-    return; // We're only interested if this is in the message content.
+  if (!browser) {
+	  return;
+  }
+  let sourceDoc = browser.contentDocument;
+  if (e.target.ownerDocument != sourceDoc) {
+	  // We're only interested if this is in the message content.
+	  return; 
   }
 
   let imgMap = new Map(); // Mapping img.src -> dataURL.
