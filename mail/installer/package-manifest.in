@@ -535,6 +535,7 @@
 @RESPATH@/components/xul.xpt
 @RESPATH@/components/xultmpl.xpt
 @RESPATH@/components/zipwriter.xpt
+@RESPATH@/components/telemetry.xpt
 
 ; toolkit
 @RESPATH@/components/ConsoleAPI.manifest
