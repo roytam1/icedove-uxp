@@ -81,7 +81,7 @@ public:
     NS_DECL_ISUPPORTS_INHERITED
 
     // Creating a protocol instance requires the URL which needs to be run.
-    nsSmtpProtocol(nsIURI * aURL);
+    explicit nsSmtpProtocol(nsIURI * aURL);
 
     virtual nsresult LoadUrl(nsIURI * aURL, nsISupports * aConsumer = nullptr) override;
     virtual nsresult SendData(const char * dataBuffer, bool aSuppressLogging = false) override;

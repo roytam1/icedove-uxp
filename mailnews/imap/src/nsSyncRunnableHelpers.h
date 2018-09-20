@@ -22,7 +22,7 @@
 class StreamListenerProxy final : public nsIStreamListener
 {
 public:
-  StreamListenerProxy(nsIStreamListener* receiver)
+  explicit StreamListenerProxy(nsIStreamListener* receiver)
     : mReceiver(receiver)
   { }
 
@@ -40,7 +40,7 @@ private:
 class ImapMailFolderSinkProxy final : public nsIImapMailFolderSink
 {
 public:
-  ImapMailFolderSinkProxy(nsIImapMailFolderSink* receiver)
+  explicit ImapMailFolderSinkProxy(nsIImapMailFolderSink* receiver)
     : mReceiver(receiver)
   {
     NS_ASSERTION(receiver, "Don't allow receiver is nullptr");
@@ -59,7 +59,7 @@ private:
 class ImapServerSinkProxy final : public nsIImapServerSink
 {
 public:
-  ImapServerSinkProxy(nsIImapServerSink* receiver)
+  explicit ImapServerSinkProxy(nsIImapServerSink* receiver)
     : mReceiver(receiver)
   { }
 
@@ -77,7 +77,7 @@ private:
 class ImapMessageSinkProxy final : public nsIImapMessageSink
 {
 public:
-  ImapMessageSinkProxy(nsIImapMessageSink* receiver)
+  explicit ImapMessageSinkProxy(nsIImapMessageSink* receiver)
     : mReceiver(receiver)
   { }
 
@@ -94,7 +94,7 @@ private:
 class ImapProtocolSinkProxy final : public nsIImapProtocolSink
 {
 public:
-  ImapProtocolSinkProxy(nsIImapProtocolSink* receiver)
+  explicit ImapProtocolSinkProxy(nsIImapProtocolSink* receiver)
     : mReceiver(receiver)
   { }
 
