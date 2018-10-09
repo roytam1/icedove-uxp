@@ -32,8 +32,6 @@
 #pragma warning (disable : 4996)
 #endif
 #include "nsISupportsArray.h"
-#include "nsAlgorithm.h"
-#include <algorithm>
 #include "mozilla/Attributes.h"
 
 // This stuff lives in the base class because the IMAP search syntax
