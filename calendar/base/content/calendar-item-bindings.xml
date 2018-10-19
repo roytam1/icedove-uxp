@@ -59,6 +59,12 @@
                       label = this.getAttribute("eventStartLabel");
                   }
                   headerLabel.value = label;
+                    if (date.isDate) {
+                        // for all-day items the end/due date is not inclusive,
+                        // so we tweak this to display what the user expects
+                        date = date.clone();
+                        date.day -= 1;
+                    }
               }
           } else {
               date = this.mItem[calGetEndDateProp(this.mItem)];
