@@ -1,8 +1,0 @@
-searx
-searx-tor
-yacy
-quitter-is
-goblinrefuge
-internet-archive
-wikipedia-en
-hyperbola-packages
