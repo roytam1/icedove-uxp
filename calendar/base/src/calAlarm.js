@@ -375,7 +375,11 @@ calAlarm.prototype = {
         "DURATION": "duration",
         "SUMMARY": "summary",
         "DESCRIPTION": "description",
-        "X-MOZ-LASTACK": "lastAck"
+        "X-MOZ-LASTACK": "lastAck",
+
+        // These have complex setters and will be ignored in setProperty
+        "ATTACH": true,
+        "ATTENDEE": true
     },
 
     get icalComponent() {
@@ -589,7 +593,12 @@ calAlarm.prototype = {
     getProperty: function(aName) {
         let name = aName.toUpperCase();
         if (name in this.promotedProps) {
-            return this[this.promotedProps[name]];
+            if (this.promotedProps[name] === true) {
+                // Complex promoted props will return undefined
+                return undefined;
+            } else {
+                return this[this.promotedProps[name]];
+            }
         } else {
             return this.mProperties.getProperty(name);
         }
@@ -599,7 +608,11 @@ calAlarm.prototype = {
         this.ensureMutable();
         let name = aName.toUpperCase();
         if (name in this.promotedProps) {
-            this[this.promotedProps[name]] = aValue;
+            if (this.promotedProps[name] === true) {
+                cal.WARN(`Attempted to set complex property ${name} to a simple value ${aValue}`);
+            } else {
+                this[this.promotedProps[name]] = aValue;
+            }
         } else {
             this.mProperties.setProperty(name, aValue);
         }
