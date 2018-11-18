@@ -615,7 +615,7 @@ private:
   nsDataHashtable<nsCStringHashKey, int32_t> m_specialXListMailboxes;
 
 
-  nsIImapHostSessionList * m_hostSessionList;
+  nsCOMPtr<nsIImapHostSessionList> m_hostSessionList;
 
   bool m_fromHeaderSeen;
 
