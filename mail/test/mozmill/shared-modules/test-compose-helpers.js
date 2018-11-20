@@ -40,6 +40,7 @@ function installInto(module) {
   module.open_compose_with_forward_as_attachments = open_compose_with_forward_as_attachments;
   module.open_compose_with_edit_as_new = open_compose_with_edit_as_new;
   module.open_compose_with_element_click = open_compose_with_element_click;
+  module.open_compose_from_draft = open_compose_from_draft;
   module.close_compose_window = close_compose_window;
   module.wait_for_compose_window = wait_for_compose_window;
   module.setup_msg_contents = setup_msg_contents;
@@ -72,6 +73,23 @@ function open_compose_new_mail(aController) {
   windowHelper.plan_for_new_window("msgcompose");
   aController.keypress(null, "n", {shiftKey: false, accelKey: true});
 
+  return wait_for_compose_window();
+}
+
+/**
+ * Open draft editing by clicking the "Edit" on the draft notification bar
+ * of the selected message.
+ *
+ * @return The loaded window of type "msgcompose" wrapped in a MozmillController
+ *         that is augmented using augment_controller.
+ */
+function open_compose_from_draft(aController) {
+  if (aController === undefined)
+    aController = mc;
+
+  windowHelper.plan_for_new_window("msgcompose");
+  aController.click(aController.eid("msgNotificationBar",
+                                    {tagName: "button", label: "Edit"}));
   return wait_for_compose_window();
 }
 

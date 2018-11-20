@@ -1342,7 +1342,11 @@
     color: #888a85;
   }
 
-  #attachmentNotificationBox > notification .messageImage {
+#attachmentNotificationBox b {
+  font-weight: bold;
+}
+
+#attachmentNotificationBox > notification[image="null"] .messageImage {
     width: 18px;
     height: 18px;
   }
@@ -1554,7 +1558,7 @@
                     rgba(255, 255, 255, 0));
   }
 
-  #attachmentNotificationBox > notification .messageImage {
+  #attachmentNotificationBox > notification[image="null"] .messageImage {
     background-image: url(chrome://messenger/skin/messengercompose/compose-toolbar.svg#attach);
   }
 }
@@ -1613,7 +1617,7 @@
     list-style-image: url("chrome://messenger/skin/icons/dropmarker.svg#win8");
   }
 
-  #attachmentNotificationBox > notification .messageImage {
+  #attachmentNotificationBox > notification[image="null"] .messageImage {
     background-image: url(chrome://messenger/skin/messengercompose/compose-toolbar.svg#attach-flat);
   }
 }
