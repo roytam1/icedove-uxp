@@ -32,7 +32,7 @@ function run_test() {
   gImapServer = createLocalIMAPServer(gServer.port);
 
   // Bug 1050840: check a newly created server has the default number of connections
-  do_check_eq(gImapServer.maximumConnectionsNumber, 5);
+  Assert.equal(gImapServer.maximumConnectionsNumber, 5);
   gImapServer.maximumConnectionsNumber = 1;
 
   localAccountUtils.loadLocalMailAccount();
@@ -43,13 +43,13 @@ function run_test() {
   localAccount.addIdentity(identity);
   localAccount.defaultIdentity = identity;
   localAccount.incomingServer = localAccountUtils.incomingServer;
-  MailServices.accounts.defaultAccount = localAccount;
 
   // Let's also have another account, using the same identity
   let imapAccount = MailServices.accounts.createAccount();
   imapAccount.addIdentity(identity);
   imapAccount.defaultIdentity = identity;
   imapAccount.incomingServer = gImapServer;
+  MailServices.accounts.defaultAccount = imapAccount;
 
   // Get the folder list...
   gImapServer.performExpand(null);
@@ -90,7 +90,7 @@ function* checkStatSelect() {
 function* checkStatNoSelect() {
   // folder 2 should have been stat'd, but not folder 1. All we can really check
   // is that folder 2 was stat'd and that its unread msg count is 1
-  do_check_eq(gFolder2.getNumUnread(false), 1);
+  Assert.equal(gFolder2.getNumUnread(false), 1);
   addMessageToFolder(gFolder2Mailbox);
   gFolder1.clearFlag(Ci.nsMsgFolderFlags.ImapNoselect);
   gServer._test = true;
@@ -120,7 +120,7 @@ function addMessageToFolder(mbox) {
 
 function* endTest()
 {
-  do_check_eq(gFolder2.getNumUnread(false), 2);
+  Assert.equal(gFolder2.getNumUnread(false), 2);
   // Clean up the server in preparation
   gServer.resetTest();
   gImapServer.closeCachedConnections();

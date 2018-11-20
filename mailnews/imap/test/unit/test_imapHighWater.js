@@ -49,13 +49,13 @@ function run_test()
   localAccount.addIdentity(identity);
   localAccount.defaultIdentity = identity;
   localAccount.incomingServer = localAccountUtils.incomingServer;
-  MailServices.accounts.defaultAccount = localAccount;
 
   // Let's also have another account, using the same identity
   let imapAccount = MailServices.accounts.createAccount();
   imapAccount.addIdentity(identity);
   imapAccount.defaultIdentity = identity;
   imapAccount.incomingServer = gIMAPIncomingServer;
+  MailServices.accounts.defaultAccount = imapAccount;
 
   // pref tuning: one connection only, turn off notifications
   Services.prefs.setBoolPref("mail.biff.play_sound", false);
@@ -120,7 +120,7 @@ function* doMoves() {
   yield false;
   // Check that playing back offline events gets rid of dummy
   // headers, and thus highWater is recalculated.
-  do_check_eq(gFolder1.msgDatabase.dBFolderInfo.highWater, 6);
+  Assert.equal(gFolder1.msgDatabase.dBFolderInfo.highWater, 6);
   headers1 = Cc["@mozilla.org/array;1"]
                 .createInstance(Ci.nsIMutableArray);
   msgEnumerator = gIMAPInbox.msgDatabase.EnumerateMessages();
@@ -146,7 +146,7 @@ function* doMoves() {
   gFolder1.updateFolderWithListener(gDummyMsgWindow, UrlListener);
   yield false;
   let serverSink = gIMAPIncomingServer.QueryInterface(Ci.nsIImapServerSink);
-  do_check_eq(gFolder1.msgDatabase.dBFolderInfo.highWater, 11);
+  Assert.equal(gFolder1.msgDatabase.dBFolderInfo.highWater, 11);
   yield true;
 }
 
@@ -156,7 +156,7 @@ var UrlListener =
   OnStopRunningUrl: function(url, rc)
   {
     // Check for ok status.
-    do_check_eq(rc, 0);
+    Assert.equal(rc, 0);
     async_driver();
   }
 };
@@ -169,7 +169,7 @@ var CopyListener =
   SetMessageKey: function(aKey){},
   SetMessageId: function(aMessageId) {},
   OnStopCopy: function(aStatus){
-    do_check_eq(aStatus, 0);
+    Assert.equal(aStatus, 0);
     async_driver();
   }
 };
