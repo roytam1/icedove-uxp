@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use strict";
+
 Components.utils.import("resource:///modules/MailUtils.js");
 Components.utils.import("resource://gre/modules/PluralForm.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -18,7 +20,6 @@ var nsIMsgWindow = Components.interfaces.nsIMsgWindow;
 var gFolderPicker;
 var gStatusFeedback;
 var gTimelineEnabled = false;
-var RDF;
 var gSearchBundle;
 
 // Datasource search listener -- made global as it has to be registered
@@ -231,7 +232,7 @@ function searchOnLoad()
   gSearchStopButton.setAttribute("label", gSearchBundle.getString("labelForSearchButton"));
   gSearchStopButton.setAttribute("accesskey", gSearchBundle.getString("labelForSearchButton.accesskey"));
 
-  gMessageDisplay = new NeverVisisbleMessageDisplayWidget();
+  gMessageDisplay = new NeverVisibleMessageDisplayWidget();
   gFolderDisplay = new SearchFolderDisplayWidget(gMessageDisplay);
   gFolderDisplay.messenger = messenger;
   gFolderDisplay.msgWindow = msgWindow;
