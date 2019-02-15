@@ -44,11 +44,11 @@ class TimezoneUpdater(object):
     def get_tzdata_version(self):
         """Extract version number of tzdata files."""
         version = None
-        with open(os.path.join(self.tzdata_path, "Makefile"), "r") as makefile:
-            for line in makefile:
-                match = re.search(r"VERSION=\s*(\w+)", line)
+        with open(os.path.join(self.tzdata_path, "version"), "r") as versionfile:
+            for line in versionfile:
+                match = re.match(r"\w+", line)
                 if match is not None:
-                    version = "2." + match.group(1)
+                    version = "2." + match.group(0)
                     break
         return version
 
@@ -316,6 +316,12 @@ def main():
     # Clean up.
     shutil.rmtree(zoneinfo_path)
     shutil.rmtree(zoneinfo_pure_path)
+
+    print """
+When updating timezone definitions, please check the zones America/Campo_Grande,
+America/Cuiaba, and America/Sao_Paulo are not reset to their previous buggy state.
+See bug 1515937 for more information.
+"""
 
 if __name__ == "__main__":
     main()
