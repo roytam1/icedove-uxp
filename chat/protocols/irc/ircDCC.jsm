@@ -64,7 +64,7 @@ var ctcpDCC = {
         return false;
 
       // Parse the message and attempt to handle it.
-      return ircHandlers.handleDCCMessage(this, DCCMessage(aMessage, aAccount));
+      return ircHandlers.handleDCCMessage(this, DCCMessage(aMessage, this));
     }
   }
 };
