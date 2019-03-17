@@ -61,6 +61,16 @@
        browser.addEventListener("keypress", this.browserKeyPress);
        browser.addEventListener("dblclick", this.browserDblClick.bind(this));
        Services.obs.addObserver(this, "conversation-loaded", false);
+
+       // @implements {nsIObserver}
+       this.prefObserver = (subject, topic, data) => {
+         if (Services.prefs.getBoolPref("mail.spellcheck.inline")) {
+           this.editor.setAttribute("spellcheck", "true");
+         } else {
+           this.editor.removeAttribute("spellcheck");
+         }
+       };
+       Services.prefs.addObserver("mail.spellcheck.inline", this.prefObserver, false);
       ]]>
      </constructor>
 
@@ -82,7 +92,6 @@
            if ("MessageFormat" in window) {
              let textbox = this.editor;
              MessageFormat.unregisterTextbox(textbox);
-             TextboxSpellChecker.unregisterTextbox(textbox);
            }
          ]]>
        </body>
@@ -417,11 +426,11 @@
                                     this._TEXTBOX_VERTICAL_OVERHEAD;
         textbox.inputField.style.overflowY = "hidden";
 
-        // Delay the initialization of the spellchecker until after
-        // the checkbox is initialized, otherwise the spellchecker is
-        // broken in conversations added to the window before it is
-        // visible (bug 295).
-        TextboxSpellChecker.registerTextbox(textbox);
+        if (Services.prefs.getBoolPref("mail.spellcheck.inline")) {
+          textbox.setAttribute("spellcheck", "true");
+        } else {
+          textbox.removeAttribute("spellcheck");
+        }
       ]]>
       </body>
      </method>

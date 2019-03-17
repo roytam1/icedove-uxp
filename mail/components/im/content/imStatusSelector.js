@@ -94,9 +94,13 @@ var statusSelector = {
         else
           elt.removeAttribute("value");
       }
-      if (!("TextboxSpellChecker" in window))
-        Components.utils.import("resource:///modules/imTextboxUtils.jsm");
-      TextboxSpellChecker.registerTextbox(elt);
+
+      if (Services.prefs.getBoolPref("mail.spellcheck.inline")) {
+        elt.setAttribute("spellcheck", "true");
+      } else {
+        elt.removeAttribute("spellcheck");
+      }
+
       // force binding attachment by forcing layout
       elt.getBoundingClientRect();
       elt.select();
@@ -171,7 +175,6 @@ var statusSelector = {
 
     if (elt.hasAttribute("usingDefault"))
       elt.setAttribute("value", elt.getAttribute("usingDefault"));
-    TextboxSpellChecker.unregisterTextbox(elt);
     elt.removeAttribute("editing");
     elt.removeEventListener("blur", this.statusMessageBlur, false);
 
