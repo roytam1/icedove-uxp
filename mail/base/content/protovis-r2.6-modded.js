@@ -38,54 +38,6 @@ pv.extend = function(f) {
   return new g();
 };
 
-try {
-  eval("pv.parse = function(x) x;"); // native support
-} catch (e) {
-
-/**
- * Parses a Protovis specification, which may use JavaScript 1.8 function
- * expresses, replacing those function expressions with proper functions such
- * that the code can be run by a JavaScript 1.6 interpreter. This hack only
- * supports function expressions (using clumsy regular expressions, no less),
- * and not other JavaScript 1.8 features such as let expressions.
- *
- * @param {string} s a Protovis specification (i.e., a string of JavaScript 1.8
- * source code).
- * @returns {string} a conformant JavaScript 1.6 source code.
- */
-  pv.parse = function(js) { // hacky regex support
-    var re = new RegExp("function(\\s+\\w+)?\\([^)]*\\)\\s*", "mg"), m, i = 0;
-    var s = "";
-    while ((m = re.exec(js))) {
-      var j = m.index + m[0].length;
-      if (js[j--] != '{') {
-        s += js.substring(i, j) + "{return ";
-        i = j;
-        for (var p = 0; p >= 0 && j < js.length; j++) {
-          switch (js[j]) {
-            case '"': case '\'': {
-              var c = js[j];
-              while (++j < js.length && (js[j] != c)) {
-                if (js[j] == '\\') j++;
-              }
-              break;
-            }
-            case '[': case '(': p++; break;
-            case ']': case ')': p--; break;
-            case ';':
-            case ',': if (p == 0) p--; break;
-          }
-        }
-        s += pv.parse(js.substring(i, --j)) + ";}";
-        i = j;
-      }
-      re.lastIndex = j;
-    }
-    s += js.substring(i);
-    return s;
-  };
-}
-
 /**
  * Returns the passed-in argument, <tt>x</tt>; the identity function. This method
  * is provided for convenience since it is used as the default behavior for a
@@ -99,7 +51,7 @@ pv.identity = function(x) { return x; };
 /**
  * Returns an array of numbers, starting at <tt>start</tt>, incrementing by
  * <tt>step</tt>, until <tt>stop</tt> is reached. The stop value is exclusive. If
- * only a single argument is specified, this value is interpeted as the
+ * only a single argument is specified, this value is interpreted as the
  * <i>stop</i> value, with the <i>start</i> value as zero. If only two arguments
  * are specified, the step value is implied to be one.
  *
@@ -1176,7 +1128,7 @@ pv.Mark.prototype.defineProperty = function(name) {
 /**
  * The constructor; the mark type. This mark type may define default property
  * functions (see {@link #defaults}) that are used if the property is not
- * overriden by the mark or any of its prototypes.
+ * overridden by the mark or any of its prototypes.
  *
  * @type function
  */
@@ -2180,7 +2132,7 @@ pv.Area.prototype.update = function() {
   var s = this.scene[0], v = s.svg;
   if (s.visible) {
 
-    /* Create the <svg:polygon> element, if necesary. */
+    /* Create the <svg:polygon> element, if necessary. */
     if (!v) {
       v = s.svg = document.createElementNS(pv.ns.svg, "polygon");
       s.parent.svg.appendChild(v);
@@ -3596,7 +3548,7 @@ pv.Panel.prototype.buildInstance = function(s) {
  * is populated above in {@link #buildInstance}.
  *
  * </ul>The current implementation creates the SVG element, if necessary, during
- * the build phase; in the future, it may be preferrable to move this to the
+ * the build phase; in the future, it may be preferable to move this to the
  * update phase, although then the canvas property would be undefined. In
  * addition, DOM inspection is necessary to define the implied width and height
  * properties that may be inferred from the DOM.
