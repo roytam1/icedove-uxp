@@ -876,6 +876,9 @@ pref("mailnews.mx_service_url", "https://live.mozillamessaging.com/dns/mx/");
 pref("mailnews.auto_config.fetchFromISP.enabled", true);
 // Allow the fetch from ISP via HTTP, but not the email address
 pref("mailnews.auto_config.fetchFromISP.sendEmailAddress", true);
+// Whether we will attempt to guess the account configuration based on
+// protocol default ports and common domain practices
+// (e.g. {mail,pop,imap,smtp}.<email-domain>).
 pref("mailnews.auto_config.guess.enabled", true);
 
 // -- Summary Database options
