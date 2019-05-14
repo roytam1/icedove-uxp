@@ -386,8 +386,8 @@ EmailConfigWizard.prototype =
   /**
    * Start from beginning with possibly new email address.
    */
-  onStartOver : function()
-  {
+  onStartOver : function() {
+    this._currentConfig = null;
     if (this._abortable) {
       this.onStop();
     }
