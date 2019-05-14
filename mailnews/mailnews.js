@@ -880,6 +880,8 @@ pref("mailnews.auto_config.fetchFromISP.sendEmailAddress", true);
 // protocol default ports and common domain practices
 // (e.g. {mail,pop,imap,smtp}.<email-domain>).
 pref("mailnews.auto_config.guess.enabled", true);
+// The timeout (in seconds) for each guess
+pref("mailnews.auto_config.guess.timeout", 10);
 
 // -- Summary Database options
 // dontPreserveOnCopy: a space separated list of properties that are not

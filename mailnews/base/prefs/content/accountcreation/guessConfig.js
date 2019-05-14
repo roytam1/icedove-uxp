@@ -6,8 +6,6 @@
 Cu.import("resource:///modules/gloda/log4moz.js");
 Cu.import("resource://gre/modules/Services.jsm");
 
-var TIMEOUT = 10; // in seconds
-
 // This is a bit ugly - we set outgoingDone to false
 // when emailWizard.js cancels the outgoing probe because the user picked
 // an outoing server. It does this by poking the probeAbortable object,
@@ -445,6 +443,7 @@ HostDetector.prototype =
     if (this._cancel)
       return;
     var me = this;
+    var timeout = Services.prefs.getIntPref("mailnews.auto_config.guess.timeout");
     for (let i = 0; i < this._hostsToTry.length; i++)
     {
       let thisTry = this._hostsToTry[i]; // {HostTry}
@@ -458,7 +457,7 @@ HostDetector.prototype =
 
       thisTry.abortable = SocketUtil(
           thisTry.hostname, thisTry.port, thisTry.ssl,
-          thisTry.commands, TIMEOUT,
+          thisTry.commands, timeout,
           new SSLErrorHandler(thisTry, this._log),
           function(wiredata) // result callback
           {
