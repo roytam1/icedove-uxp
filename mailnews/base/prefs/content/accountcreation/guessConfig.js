@@ -426,6 +426,9 @@ HostDetector.prototype =
         let hostTry = hostEntries[j]; // from getHostEntry()
         hostTry.hostname = hostname;
         hostTry.status = kNotTried;
+        hostTry.desc = hostTry.hostname + ":" + hostTry.port +
+                       " ssl=" + hostTry.ssl + " " +
+                       protocolToString(hostTry.protocol);
         this._hostsToTry.push(hostTry);
       }
     }
@@ -449,9 +452,7 @@ HostDetector.prototype =
       let thisTry = this._hostsToTry[i]; // {HostTry}
       if (thisTry.status != kNotTried)
         continue;
-      this._log.info("poking at " + thisTry.hostname + " port " +
-          thisTry.port + " ssl "+ thisTry.ssl + " protocol " +
-          protocolToString(thisTry.protocol));
+      this._log.info(thisTry.desc + ": initializing probe...");
       if (i == 0) // showing 50 servers at once is pointless
         this.mProgressCallback(thisTry);
 
@@ -471,7 +472,7 @@ HostDetector.prototype =
           {
             if (me._cancel)
               return; // who set cancel to true already called mErrorCallback()
-            me._log.warn(e);
+            me._log.warn(thisTry.desc + ": " + e);
             thisTry.status = kFailed;
             me._checkFinished();
           });
@@ -498,7 +499,7 @@ HostDetector.prototype =
       if (thisTry._gotCertError == Ci.nsICertOverrideService.ERROR_UNTRUSTED ||
           thisTry._gotCertError == Ci.nsICertOverrideService.ERROR_TIME)
       {
-        this._log.info("TRYING AGAIN, hopefully with exception recorded");
+        this._log.info(thisTry.desc + ": TRYING AGAIN, hopefully with exception recorded");
         thisTry._gotCertError = 0;
         thisTry.selfSignedCert = true; // _next_ run gets this exception
         thisTry.status = kNotTried; // try again (with exception)
@@ -509,22 +510,20 @@ HostDetector.prototype =
 
     if (wiredata == null || wiredata === undefined)
     {
-      this._log.info("no data");
+      this._log.info(thisTry.desc + ": no data");
       thisTry.status = kFailed;
       return;
     }
-    this._log.info("wiredata: " + wiredata.join(""));
+    this._log.info(thisTry.desc + ": wiredata: " + wiredata.join(""));
     thisTry.authMethods =
         this._advertisesAuthMethods(thisTry.protocol, wiredata);
     if (thisTry.ssl == TLS && !this._hasTLS(thisTry, wiredata))
     {
-      this._log.info("STARTTLS wanted, but not offered");
+      this._log.info(thisTry.desc + ": STARTTLS wanted, but not offered");
       thisTry.status = kFailed;
       return;
     }
-    this._log.info("success with " + thisTry.hostname + ":" +
-        thisTry.port + " " + protocolToString(thisTry.protocol) +
-        " ssl " + thisTry.ssl +
+    this._log.info(thisTry.desc + ": success" +
         (thisTry.selfSignedCert ? " (selfSignedCert)" : ""));
     thisTry.status = kSuccess;
 
@@ -533,7 +532,8 @@ HostDetector.prototype =
       // earlier we get into an infinite loop, probably because the cert
       // remembering is temporary and the next try gets a new connection which
       // isn't covered by that temporariness.
-      this._log.info("clearing validity override for " + thisTry.hostname);
+      this._log.info(thisTry.desc + ": clearing validity override for " +
+                     thisTry.hostname);
       Cc["@mozilla.org/security/certoverride;1"]
         .getService(Ci.nsICertOverrideService)
         .clearValidityOverride(thisTry.hostname, thisTry.port);
