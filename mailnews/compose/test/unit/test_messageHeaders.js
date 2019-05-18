@@ -379,7 +379,7 @@ function* testContentHeaders() {
     name: "attachment.html",
   });
   let httpAttachmentHeaders = {
-    "Content-Type": "text/html",
+    "Content-Type": "text/html; charset=UTF-8",
     "Content-Disposition": "attachment; filename=\"attachment.html\"",
     "Content-Base": '"data:text/html,<html></html>"',
     "Content-Location": '"data:text/html,<html></html>"',
