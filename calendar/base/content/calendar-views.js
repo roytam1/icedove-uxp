@@ -721,3 +721,14 @@ var timeIndicator = {
     },
     lastView: null
 };
+
+var timezoneObserver = {
+    observe: function() {
+        let minimonth = getMinimonth();
+        minimonth.update(minimonth.value);
+    }
+};
+Services.obs.addObserver(timezoneObserver, "defaultTimezoneChanged");
+window.addEventListener("unload", () => {
+    Services.obs.removeObserver(timezoneObserver, "defaultTimezoneChanged");
+});

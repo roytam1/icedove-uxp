@@ -902,6 +902,8 @@
                       day.setAttribute("extra", "true");
                   }
 
+                  day.removeAttribute("busy");
+
                   day.date = new Date(date);
                   day.minimonthParent = this;
                   day.setAttribute("value", date.getDate());
