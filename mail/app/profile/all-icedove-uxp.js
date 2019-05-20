@@ -886,3 +886,9 @@ pref("mail.calendar-integration.opt-out", false);
 
 // Toolkit Console in tab
 pref("toolkit.console.openInTab", true);
+
+// Disable JavaScript by default.
+pref("javascript.enabled", false);
+pref("javascript.options.baselinejit", false);
+pref("javascript.options.ion", false);
+pref("javascript.options.asmjs", false);
