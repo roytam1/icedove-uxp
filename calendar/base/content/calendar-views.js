@@ -728,7 +728,7 @@ var timezoneObserver = {
         minimonth.update(minimonth.value);
     }
 };
-Services.obs.addObserver(timezoneObserver, "defaultTimezoneChanged");
+Services.obs.addObserver(timezoneObserver, "defaultTimezoneChanged", false);
 window.addEventListener("unload", () => {
     Services.obs.removeObserver(timezoneObserver, "defaultTimezoneChanged");
 });
