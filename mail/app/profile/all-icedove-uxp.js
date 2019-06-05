@@ -429,7 +429,7 @@ pref("spellchecker.dictionaries.download.url", "");
 
 // profile.force.migration can be used to bypass the migration wizard, forcing migration from a particular
 // mail application without any user intervention. Possible values are:
-// seamonkey (mozilla suite), oexpress, outlook.
+// seamonkey (mozilla suite) and outlook.
 pref("profile.force.migration", "");
 
 // prefs to control the mail alert notification
