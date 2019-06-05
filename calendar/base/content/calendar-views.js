@@ -601,9 +601,10 @@ function goToDate(aDate) {
  * @return          The last calendar view.
  */
 function getLastCalendarView() {
-    let deck = getViewDeck();
-    if (deck.selectedIndex > -1) {
-        let viewNode = deck.childNodes[deck.selectedIndex];
+    if (Services.xulStore.hasValue(document.location.href, "view-deck", "selectedIndex")) {
+        let deck = getViewDeck();
+        let selectedIndex = Services.xulStore.getValue(document.location.href, "view-deck", "selectedIndex");
+        let viewNode = deck.childNodes[selectedIndex];
         return viewNode.id.replace(/-view/, "");
     }
 
