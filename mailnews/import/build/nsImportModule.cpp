@@ -13,11 +13,9 @@
 // core import Include Files
 ////////////////////////////////////////////////////////////////////////////////
 #include "nsImportService.h"
-#include "nsImportMimeEncode.h"
 #include "nsImportStringBundle.h"
 
 NS_DEFINE_NAMED_CID(NS_IMPORTSERVICE_CID);
-NS_DEFINE_NAMED_CID(NS_IMPORTMIMEENCODE_CID);
 ////////////////////////////////////////////////////////////////////////////////
 // text import Include Files
 ////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +74,6 @@ NS_DEFINE_NAMED_CID(NS_BECKYIMPORT_CID);
 // core import factories
 ////////////////////////////////////////////////////////////////////////////////
 NS_GENERIC_FACTORY_CONSTRUCTOR(nsImportService)
-NS_GENERIC_FACTORY_CONSTRUCTOR(nsIImportMimeEncodeImpl)
 
 ////////////////////////////////////////////////////////////////////////////////
 // text import factories
@@ -134,7 +131,6 @@ static const mozilla::Module::CategoryEntry kMailNewsImportCategories[] = {
 
 const mozilla::Module::CIDEntry kMailNewsImportCIDs[] = {
   { &kNS_IMPORTSERVICE_CID, false, NULL, nsImportServiceConstructor },
-  { &kNS_IMPORTMIMEENCODE_CID, false, NULL, nsIImportMimeEncodeImplConstructor },
   { &kNS_TEXTIMPORT_CID, false, NULL, nsTextImportConstructor },
   { &kNS_VCARDIMPORT_CID, false, NULL, nsVCardImportConstructor },
 #if defined(XP_MACOSX)
@@ -155,7 +151,6 @@ const mozilla::Module::CIDEntry kMailNewsImportCIDs[] = {
 
 const mozilla::Module::ContractIDEntry kMailNewsImportContracts[] = {
   { NS_IMPORTSERVICE_CONTRACTID, &kNS_IMPORTSERVICE_CID },
-  { "@mozilla.org/import/import-mimeencode;1", &kNS_IMPORTMIMEENCODE_CID },
   { "@mozilla.org/import/import-text;1", &kNS_TEXTIMPORT_CID },
   { "@mozilla.org/import/import-vcard;1", &kNS_VCARDIMPORT_CID },
 #if defined(XP_MACOSX)
