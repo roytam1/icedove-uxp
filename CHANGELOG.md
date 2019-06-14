@@ -4,8 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## [v2.1]
 
-## [v1.9] - TODO
+## [v2.0] - 2019-06-14
 ### Added
 - Backports for various crash fixes and minor bug fixes
 - Backports for fetching ISP configuration using SSL and SOCKS (Tails Uplift)
@@ -22,7 +23,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Outlook Express Importer
 - Unused nsIImportMimeEncode.idl
 
+### Security
+- Multiple security backports applied to libical: CVE-2019-11703, CVE-2019-11704, CVE-2019-11705, CVE-2019-11706
 
+## [v1.9] - 2019-03-23
+### Added
+- Backports for various crash fixes and minor bug fixes
+
+### Removed
+- Remove unused code that uses eval from Protovis library.
 
 ## [v1.8] - 2019-02-20
 ### Added
