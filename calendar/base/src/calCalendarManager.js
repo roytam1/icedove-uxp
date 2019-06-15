@@ -155,16 +155,23 @@ calCalendarManager.prototype = {
                 try {
                     // NOTE: For some reason, this observer call doesn't have
                     // the "cal" namespace defined
-                    let userAgent = httpChannel.getRequestHeader("User-Agent");
-                    let calUAString = Preferences.get("calendar.useragent.extra", "").trim();
+                    
+                    let userAgentDisabled = Services.prefs.getBoolPref("calendar.useragent.disabled");
+                    // If calendar.useragent.disabled is true we don't modify the UA at all, 
+                    // if false calendar.useragent.extra may override it's default value.
+                    if (!userAgentDisabled) {
+                      let userAgent = httpChannel.getRequestHeader("User-Agent");
 
-                    // Don't add an empty string or an already included token.
-                    if (calUAString && !userAgent.includes(calUAString)) {
-                        // User-Agent is not a mergeable header. We need to
-                        // merge the user agent ourselves.
-                        httpChannel.setRequestHeader("User-Agent",
-                                                     userAgent + " " + calUAString,
-                                                     false);
+                      let calUAString = Preferences.get("calendar.useragent.extra", "").trim();
+
+                      // Don't add an empty string or an already included token.
+                      if (calUAString && !userAgent.includes(calUAString)) {
+                          // User-Agent is not a mergeable header. We need to
+                          // merge the user agent ourselves.
+                          httpChannel.setRequestHeader("User-Agent",
+                                                       userAgent + " " + calUAString,
+                                                       false);
+                      }
                     }
                 } catch (e) {
                     if (e.result != Components.results.NS_ERROR_NOT_AVAILABLE) {
