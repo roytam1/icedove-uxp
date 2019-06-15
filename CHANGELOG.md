@@ -6,11 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ## [v2.1]
 
-## [v2.0] - 2019-06-14
+## [v2.0] - 2019-06-15
 ### Added
 - Backports for various crash fixes and minor bug fixes
 - Backports for fetching ISP configuration using SSL and SOCKS (Tails Uplift)
 - Backports for supporting multiple authors and mimetypes in RSS feeds
+- Ability to disable Calendar's UA string (New pref: calendar.useragent.disabled true/false)
 
 ### Changed
 - Referer and Cookies are now disabled by default
