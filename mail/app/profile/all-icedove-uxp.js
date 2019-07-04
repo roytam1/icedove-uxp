@@ -884,6 +884,9 @@ pref("mail.save_msg_filename_underscores_for_space", false);
 // calendar promotion status
 pref("mail.calendar-integration.opt-out", false);
 
+// whether calendar should broadcast it's useragent to CalDav servers
+pref("calendar.useragent.disabled", true);  // Off by default
+
 // Toolkit Console in tab
 pref("toolkit.console.openInTab", true);
 
