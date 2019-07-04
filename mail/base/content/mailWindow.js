@@ -78,38 +78,40 @@ function onCopyOrDragStart(e) {
 
   let selection = sourceDoc.getSelection();
   let draggedImg = selection.isCollapsed ? e.target : null;
+  if (sourceDoc.images) {
   for (let img of sourceDoc.images) {
-    if (/^(https?|data):/.test(img.src)) {
-      continue;
-    }
+     if (/^(https?|data):/.test(img.src)) {
+       continue;
+     }
 
-    if (img.naturalWidth == 0) { // Broken/inaccessible image then...
-      continue;
-    }
+     if (img.naturalWidth == 0) { // Broken/inaccessible image then...
+       continue;
+     }
 
-    if (!draggedImg && !selection.containsNode(img, true)) {
-      continue;
-    }
+     if (!draggedImg && !selection.containsNode(img, true)) {
+       continue;
+     }
 
-    let style = window.getComputedStyle(img);
-    if (style.display == "none" || style.visibility == "hidden") {
-      continue;
-    }
+     let style = window.getComputedStyle(img);
+     if (style.display == "none" || style.visibility == "hidden") {
+       continue;
+     }
 
-    // Do not convert if the image is specifically flagged to not snarf.
-    if (img.getAttribute("moz-do-not-send") == "true") {
-      continue;
-    }
+     // Do not convert if the image is specifically flagged to not snarf.
+     if (img.getAttribute("moz-do-not-send") == "true") {
+       continue;
+     }
 
-    // We don't need to wait for the image to load. If it isn't already loaded
-    // in the source document, we wouldn't want it anyway.
-    let canvas = sourceDoc.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height);
+     // We don't need to wait for the image to load. If it isn't already loaded
+     // in the source document, we wouldn't want it anyway.
+     let canvas = sourceDoc.createElement("canvas");
+     canvas.width = img.width;
+     canvas.height = img.height;
+     canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height);
 
-    let type = /\.jpe?g$/i.test(img.src) ? "image/jpg" : "image/png";
-    imgMap.set(img.src, canvas.toDataURL(type));
+     let type = /\.jpe?g$/i.test(img.src) ? "image/jpg" : "image/png";
+     imgMap.set(img.src, canvas.toDataURL(type));
+   }
   }
 
   if (imgMap.size == 0) {
