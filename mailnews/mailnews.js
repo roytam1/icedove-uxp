@@ -620,7 +620,7 @@ pref("rss.show.summary", 1);
 // 1 - open summary in new window
 // 2 - toggle load summary and content-base url in message pane
 // 3 - load content-base url in browser
-pref("rss.show.content-base", 0);
+pref("rss.show.content-base", 3);
 
 // Feed message additional web page display.
 // 0 - no action
