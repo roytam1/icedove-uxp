@@ -142,6 +142,9 @@ imIncomingServer.prototype = {
     }
   },
   setBoolValue: function(aPrefName, aValue) {
+    if (!this.imAccount) {
+	return; // No account set, fall through
+    }
     this.imAccount.setBool(aPrefName, aValue);
   },
   getBoolValue: function(aPrefName) {
