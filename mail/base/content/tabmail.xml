@@ -1105,6 +1105,7 @@
               let possBrowser = browserFunc.call(this.tabInfo[i].mode.tabType,
                                                  this.tabInfo[i]);
               if (possBrowser &&
+                  possBrowser.contentDocument.documentElement.id &&
                   possBrowser.contentDocument.documentElement.id == aDocumentId)
                 return this.tabInfo[i];
             }
