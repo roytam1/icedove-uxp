@@ -15,4 +15,5 @@ ifdef MOZ_WIDGET_TOOLKIT
 	cp $(srcdir)/mailicon32.png  $(DIST)/branding/default32.png
 	cp $(srcdir)/mailicon48.png  $(DIST)/branding/default48.png
 	cp $(srcdir)/mailicon256.png $(DIST)/branding/default256.png
+	cp $(srcdir)/icedove.ico     $(DIST)/branding/icedove.ico
 endif

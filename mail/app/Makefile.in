@@ -8,7 +8,7 @@ GRE_MILESTONE = $(shell $(PYTHON) $(MOZILLA_SRCDIR)/config/printconfigsetting.py
 MOZ_BUILDID = $(shell $(PYTHON) $(MOZILLA_SRCDIR)/config/printconfigsetting.py $(DIST)/bin/platform.ini Build BuildID)
 
 DEFINES += \
-  -DTHUNDERBIRD_ICO='"$(DIST)/branding/icedove.ico"' \
+  -DICEDOVE_ICO='"$(DIST)/branding/icedove.ico"' \
    $(NULL)
 
 # Build a binary bootstrapping with XRE_main
