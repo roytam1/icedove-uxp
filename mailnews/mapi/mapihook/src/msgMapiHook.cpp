@@ -409,14 +409,16 @@ nsresult nsMapiHook::HandleAttachments (nsIMsgCompFields * aCompFields, int32_t 
             // rename or copy the existing temp file with the real file name
 
             nsAutoString leafName ;
+            nsAutoCString platformCharSet;
             // convert to Unicode using Platform charset
             // leafName already contains a unicode leafName from lpszPathName. If we were given
             // a value for lpszFileName, use it. Otherwise stick with leafName
             if (aFiles[i].lpszFileName)
             {
                 nsAutoString wholeFileName;
-                NS_CopyNativeToUnicode(nsDependentCString((char *)aFiles[i].lpszFileName),
-                                       wholeFileName);
+              if (platformCharSet.IsEmpty())
+                platformCharSet.Assign(nsMsgI18NFileSystemCharset());
+              rv = ConvertToUnicode(platformCharSet.get(), (char *) aFiles[i].lpszFileName, wholeFileName);
                 // need to find the last '\' and find the leafname from that.
                 int32_t lastSlash = wholeFileName.RFindChar(char16_t('\\'));
                 if (lastSlash != kNotFound)
