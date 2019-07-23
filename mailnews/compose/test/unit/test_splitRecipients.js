@@ -63,7 +63,7 @@ var splitRecipientsTests =
     { recipients: '"A " <a@xxx.invalid>; b@xxx.invalid',
       emailAddressOnly: false,
       count: 2,
-      result: [ 'A  <a@xxx.invalid>', "b@xxx.invalid" ]
+      result: [ 'A <a@xxx.invalid>', "b@xxx.invalid" ]
     },
     { recipients: 'A <a@xxx.invalid>; B <b@xxx.invalid>',
       emailAddressOnly: false,
@@ -114,7 +114,8 @@ function run_test() {
     do_check_eq(splitRecipientsTests[part].count, count.value);
     do_check_eq(splitRecipientsTests[part].count, result.length);
 
-    for (var item = 0; item < count.value; ++item)
+    for (var item = 0; item < count.value; ++item) {
       do_check_eq(splitRecipientsTests[part].result[item], result[item]);
+    }
   }
 }
