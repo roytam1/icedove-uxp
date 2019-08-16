@@ -666,12 +666,6 @@ function AddMailAccount()
   NewMailAccount(MailServices.mailSession.topmostMsgWindow);
 }
 
-function AddIMAccount()
-{
-  window.openDialog("chrome://messenger/content/chat/imAccountWizard.xul",
-                    "", "chrome,modal,titlebar,centerscreen");
-}
-
 /**
  * Highlight the default account row in the account tree,
  * optionally un-highlight the previous one.
@@ -905,9 +899,6 @@ function updateButtons(tree, account) {
  * Called only by Icedove-UXP.
  */
 function initAccountActionsButtons(menupopup) {
-  if (!Services.prefs.getBoolPref("mail.chat.enabled"))
-    document.getElementById("accountActionsAddIMAccount").hidden = true;
-
   updateItems(
     document.getElementById("accounttree"),
     getCurrentAccount(),
@@ -1491,9 +1482,6 @@ var gAccountTree = {
       // Other accounts can still be shown properly if they are valid.
       try {
         server = account.incomingServer;
-
-        if (server.type == "im" && !Services.prefs.getBoolPref("mail.chat.enabled"))
-          continue;
 
         accountName = server.prettyName;
 

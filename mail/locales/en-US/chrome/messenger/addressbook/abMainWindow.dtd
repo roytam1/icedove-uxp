@@ -166,7 +166,6 @@ because displayed names don't have the comma in between. -->
 <!ENTITY editContactPropertiesButton.tooltip            "Edit the selected contact">
 <!ENTITY editMailingListPropertiesButton.tooltip        "Edit the selected mailing list">
 <!ENTITY newmsgButton.tooltip                           "Send a mail message">
-<!ENTITY newIM.tooltip                                  "Send an instant message or chat">
 <!ENTITY deleteButton2.tooltip                          "Delete selected item">
 
 <!-- Dir Tree header -->
@@ -186,8 +185,6 @@ because displayed names don't have the comma in between. -->
 <!ENTITY GeneratedName.accesskey                        "N">
 <!ENTITY PrimaryEmail.label                             "Email">
 <!ENTITY PrimaryEmail.accesskey                         "E">
-<!ENTITY ChatName.label                                 "Chat Name">
-<!ENTITY ChatName.accesskey                             "C">
 <!ENTITY Company.label                                  "Organization">
 <!ENTITY Company.accesskey                              "z">
 <!ENTITY NickName.label                                 "Nickname">
@@ -220,7 +217,6 @@ because displayed names don't have the comma in between. -->
 <!ENTITY contact.heading                                "Contact">
 <!ENTITY home.heading                                   "Home">
 <!ENTITY other.heading                                  "Other">
-<!ENTITY chat.heading                                   "Chat">
 <!ENTITY phone.heading                                  "Phone">
 <!ENTITY work.heading                                   "Work">
 <!-- Special Box Headings, for mailing lists -->

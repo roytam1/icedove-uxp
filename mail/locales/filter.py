@@ -3,7 +3,7 @@ def test(mod, path, entity=None):
   # ignore anything but Icedove-UXP
   if mod not in ("netwerk", "dom", "toolkit", "security/manager",
                  "devtools/shared", "devtools/client",
-                 "mail", "chat", "editor/ui", "extensions/spellcheck",
+                 "mail", "editor/ui", "extensions/spellcheck",
                  "other-licenses/branding/icedove-uxp"):
     return "ignore"
 

@@ -385,15 +385,6 @@ function toAddressBook()
                      "chrome://messenger/content/addressbook/addressbook.xul");
 }
 
-function showChatTab()
-{
-  let tabmail = document.getElementById("tabmail");
-  if (gChatTab)
-    tabmail.switchToTab(gChatTab);
-  else
-    tabmail.openTab("chat", {});
-}
-
 function toImport()
 {
   window.openDialog("chrome://messenger/content/importDialog.xul", "importDialog",
@@ -492,40 +483,6 @@ function openActivityMgr()
 {
   Components.classes['@mozilla.org/activity-manager-ui;1'].
     getService(Components.interfaces.nsIActivityManagerUI).show(window);
-}
-
-function openIMAccountMgr()
-{
-  var win = Services.wm.getMostRecentWindow("Messenger:Accounts");
-  if (win)
-    win.focus();
-  else {
-    win = Services.ww.openWindow(null,
-                                 "chrome://messenger/content/chat/imAccounts.xul",
-                                 "Accounts", "chrome,resizable,centerscreen",
-                                 null);
-  }
-  return win;
-}
-
-function openIMAccountWizard()
-{
-  const kFeatures = "chrome,centerscreen,modal,titlebar";
-  const kUrl = "chrome://messenger/content/chat/imAccountWizard.xul";
-  const kName = "IMAccountWizard";
-
-  if (AppConstants.platform == "macosx") {
-    // On Mac, avoid using the hidden window as a parent as that would
-    // make it visible.
-    let hiddenWindowUrl =
-      Services.prefs.getCharPref("browser.hiddenWindowChromeURL");
-    if (window.location.href == hiddenWindowUrl) {
-      Services.ww.openWindow(null, kUrl, kName, kFeatures, null);
-      return;
-    }
-  }
-
-  window.openDialog(kUrl, kName, kFeatures);
 }
 
 function openSavedFilesWnd()

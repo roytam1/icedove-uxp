@@ -151,7 +151,6 @@
   #endif
   locale/@AB_CD@/messenger/preferences/display.dtd                      (%chrome/messenger/preferences/display.dtd)
   locale/@AB_CD@/messenger/preferences/colors.dtd                       (%chrome/messenger/preferences/colors.dtd)
-  locale/@AB_CD@/messenger/preferences/chat.dtd                         (%chrome/messenger/preferences/chat.dtd)
   locale/@AB_CD@/messenger/preferences/compose.dtd                      (%chrome/messenger/preferences/compose.dtd)
   locale/@AB_CD@/messenger/preferences/privacy.dtd                      (%chrome/messenger/preferences/privacy.dtd)
   locale/@AB_CD@/messenger/preferences/sendoptions.dtd                  (%chrome/messenger/preferences/sendoptions.dtd)
@@ -184,12 +183,7 @@
   locale/@AB_CD@/messenger/downloads/settingsChange.dtd                 (%chrome/overrides/settingsChange.dtd)
   locale/@AB_CD@/messenger/netError.dtd                                 (%chrome/overrides/netError.dtd)
   locale/@AB_CD@/messenger/downloadsOverlay.dtd                         (%chrome/messenger/downloadsOverlay.dtd)
-  locale/@AB_CD@/messenger/chat.dtd                                     (%chrome/messenger/chat.dtd)
-  locale/@AB_CD@/messenger/chat.properties                              (%chrome/messenger/chat.properties)
   locale/@AB_CD@/messenger/addbuddy.dtd                                 (%chrome/messenger/addbuddy.dtd)
-  locale/@AB_CD@/messenger/joinChat.dtd                                 (%chrome/messenger/joinChat.dtd)
-  locale/@AB_CD@/messenger/imAccounts.properties                        (%chrome/messenger/imAccounts.properties)
-  locale/@AB_CD@/messenger/imAccountWizard.dtd                          (%chrome/messenger/imAccountWizard.dtd)
   locale/@AB_CD@/messenger/sanitize.dtd									(%chrome/messenger/sanitize.dtd)
 % resource search-plugins chrome://messenger/locale/searchplugins/
   locale/@AB_CD@/messenger/searchplugins/list.json                      (.deps/generated_@AB_CD@/list.json)

@@ -186,11 +186,6 @@
   -moz-image-region: rect(128px 16px 144px 0px); /* message-compose-small.png */
 }
 
-#abResultsTreeContext-newim {
-  list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-small.png");
-  -moz-image-region: rect(0px 16px 16px 0px); /* chat-new-small.png */
-}
-
 #menu_search_addresses {
   list-style-image: url("moz-icon://stock/gtk-find?size=menu");
 }

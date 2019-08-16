@@ -45,7 +45,6 @@ function assert_button_at_end_of_toolbar(aToolbarID, aButtonID) {
  */
 function test_appmenu_button_added() {
   assert_button_at_end_of_toolbar("mail-bar3", "button-appmenu");
-  assert_button_at_end_of_toolbar("chat-toobar", "button-chat-appmenu");
   // Skip the next test for OSX, since it never exposes the main menu.
   if (!mc.mozmillModule.isMac) {
     // Since we started with a pre-existing account, the main menu should

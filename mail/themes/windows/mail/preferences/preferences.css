@@ -63,9 +63,6 @@
   radio[pane=paneCompose] {
     list-style-image: url("chrome://messenger/skin/preferences/composition-XP.png");
   }
-  radio[pane=paneChat] {
-    list-style-image: url("chrome://messenger/skin/preferences/chat-XP.png");
-  }
   radio[pane=panePrivacy] {
     list-style-image: url("chrome://messenger/skin/preferences/privacy-XP.png");
   }
@@ -89,9 +86,6 @@
   }
   radio[pane=paneCompose] {
     list-style-image: url("chrome://messenger/skin/preferences/composition.png");
-  }
-  radio[pane=paneChat] {
-    list-style-image: url("chrome://messenger/skin/preferences/chat.png");
   }
   radio[pane=panePrivacy] {
     list-style-image: url("chrome://messenger/skin/preferences/privacy.png");
@@ -138,11 +132,6 @@
 
 #tagList:focus > listitem[selected="true"] {
   color: HighlightText !important;
-}
-
-/* Chat */
-#timeBeforeAway {
-  width: 4em;
 }
 
 /* Quota meter in Folder Properties */

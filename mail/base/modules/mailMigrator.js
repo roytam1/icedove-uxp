@@ -169,26 +169,6 @@ var MailMigrator = {
         }
       }
 
-      // In UI version 4, we add the chat button to the mail toolbar.
-      if (currentUIVersion < 4) {
-        let cs = xulStore.getValue(MESSENGER_DOCURL, "mail-bar3", "currentset");
-        if (cs && !cs.includes("button-chat")) {
-          if (cs.includes("button-newmsg")) {
-            // Put the chat button after the newmsg button.
-            cs = cs.replace(/(^|,)button-newmsg($|,)/,
-                            "$1button-newmsg,button-chat$2");
-          } else if (cs.includes("button-address")) {
-            // If there's no newmsg button, put the chat button before the address book button.
-            cs = cs.replace(/(^|,)button-address($|,)/,
-                            "$1button-chat,button-address$2");
-          } else {
-            // Otherwise, just put the chat button at the end.
-            cs += ",button-chat";
-          }
-          xulStore.setValue(MESSENGER_DOCURL, "mail-bar3", "currentset", cs);
-        }
-      }
-
       // In UI version 5, we add the AppMenu button to the mail toolbar and
       // collapse the main menu by default if the user has no accounts
       // set up (and the override pref "mail.main_menu.collapse_by_default"
@@ -213,7 +193,6 @@ var MailMigrator = {
         }.bind(this);
 
         addButtonToEnd("mail-bar3", "button-appmenu");
-        addButtonToEnd("chat-toobar", "button-chat-appmenu");
 
         if (Services.prefs.getBoolPref("mail.main_menu.collapse_by_default") &&
             MailServices.accounts.accounts.length == 0) {

@@ -147,21 +147,6 @@ toolbarpaletteitem #hdrDummyReplyButton {
   overflow: hidden;
 }
 
-.emailStar[chatStatus],
-.emailPresence:not([chatStatus]) {
-  display: none;
-}
-
-.emailPresence[chatStatus="available"] {
-  list-style-image: url("chrome://messenger/skin/icons/status-small.png");
-  -moz-image-region: rect(0px 10px 10px 0px);
-}
-
-.emailPresence[chatStatus="away"] {
-  list-style-image: url("chrome://messenger/skin/icons/status-small.png");
-  -moz-image-region: rect(0px 40px 10px 30px);
-}
-
 .emailPopup:hover {
   list-style-image: url("chrome://messenger/skin/icons/arrow-dn-blue.png");
 }

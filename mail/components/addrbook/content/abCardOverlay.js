@@ -56,16 +56,6 @@ var kVcardFields =
          ["Custom4", "Custom4"],
           // Other > Notes
          ["Notes", "Notes"],
-          // Chat
-         ["Gtalk", "_GoogleTalk"],
-         ["AIM", "_AimScreenName"],
-         ["Yahoo", "_Yahoo"],
-         ["Skype", "_Skype"],
-         ["QQ", "_QQ"],
-         ["MSN", "_MSN"],
-         ["ICQ", "_ICQ"],
-         ["XMPP", "_JabberId"],
-         ["IRC", "_IRC"]
         ];
 
 var gEditCard;
@@ -514,8 +504,6 @@ function GetCardValues(cardproperty, doc)
   document.getElementById("PhotoType").value = photoType;
   loadPhoto(cardproperty);
   setCardEditorPhoto(photoType, cardproperty);
-
-  updateChatName();
 }
 
 // when the ab card dialog is being loaded to show a vCard,
@@ -524,7 +512,6 @@ function GetCardValues(cardproperty, doc)
 function HideNonVcardFields()
 {
   document.getElementById("homeTabButton").hidden = true;
-  document.getElementById("chatTabButton").hidden = true;
   document.getElementById("photoTabButton").hidden = true;
   var i;
   for (i = kNonVcardFields.length; i-- > 0; )
@@ -870,44 +857,6 @@ function modifyDatepicker(aDatepicker) {
     if (aValue == null && aField.value != null)
       aField.value = null;
   }
-}
-
-var chatNameFieldIds =
-  ["Gtalk", "AIM", "Yahoo", "Skype", "QQ", "MSN", "ICQ", "XMPP", "IRC"];
-
-/**
- * Show the 'Chat' tab and focus the first field that has a value, or
- * the first field if none of them has a value.
- */
-function showChat()
-{
-  document.getElementById('abTabPanels').parentNode.selectedTab =
-    document.getElementById('chatTabButton');
-  for (let id of chatNameFieldIds) {
-    let elt = document.getElementById(id);
-    if (elt.value) {
-      elt.focus();
-      return;
-    }
-  }
-  document.getElementById(chatNameFieldIds[0]).focus();
-}
-
-/**
- * Fill in the value of the ChatName readonly field with the first
- * value of the fields in the Chat tab.
- */
-function updateChatName()
-{
-  let value = "";
-  for (let id of chatNameFieldIds) {
-    let val = document.getElementById(id).value;
-    if (val) {
-      value = val;
-      break;
-    }
-  }
-  document.getElementById("ChatName").value = value;
 }
 
 /**

@@ -560,16 +560,6 @@ mail-emailaddress[selected="true"] .emailDisplayButton:-moz-system-metric(mac-gr
     width: 10px;
     height: 10px;
   }
-
-  .emailPresence[chatStatus="available"] {
-    list-style-image: url("chrome://messenger/skin/icons/status-small@2x.png");
-    -moz-image-region: rect(0px 20px 20px 0px);
-  }
-
-  .emailPresence[chatStatus="away"] {
-    list-style-image: url("chrome://messenger/skin/icons/status-small@2x.png");
-    -moz-image-region: rect(0px 80px 20px 60px);
-  }
 }
 
 .emailPopup {

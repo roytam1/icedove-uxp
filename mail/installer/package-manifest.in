@@ -252,39 +252,6 @@
 @RESPATH@/components/msgsmime.xpt
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; instant messaging
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; shared with Instantbird
-@RESPATH@/@PREF_DIR@/chat-prefs.js
-@RESPATH@/chrome/chat@JAREXT@
-@RESPATH@/chrome/chat.manifest
-@RESPATH@/components/chat.xpt
-@RESPATH@/components/imAccounts.js
-@RESPATH@/components/imAccounts.manifest
-@RESPATH@/components/imCommands.js
-@RESPATH@/components/imCommands.manifest
-@RESPATH@/components/imContacts.js
-@RESPATH@/components/imContacts.manifest
-@RESPATH@/components/imConversations.js
-@RESPATH@/components/imConversations.manifest
-@RESPATH@/components/imCore.js
-@RESPATH@/components/imCore.manifest
-@RESPATH@/components/irc.js
-@RESPATH@/components/irc.manifest
-@RESPATH@/components/xmpp.js
-@RESPATH@/components/xmpp.manifest
-@RESPATH@/components/smileProtocolHandler.js
-@RESPATH@/components/smileProtocolHandler.manifest
-@RESPATH@/components/logger.js
-@RESPATH@/components/logger.manifest
-
-; Icedove-UXP specific
-@RESPATH@/@PREF_DIR@/all-im.js
-@RESPATH@/components/im.manifest
-@RESPATH@/components/imIncomingServer.js
-@RESPATH@/components/imProtocolInfo.js
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Chrome Files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

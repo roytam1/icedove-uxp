@@ -3540,13 +3540,6 @@ function QuickSearchFocus()
     return;
   }
 
-  if (tabmail && tabmail.currentTabInfo.mode.name == "chat") {
-    let searchInput = document.getElementById("IMSearchInput");
-    if (searchInput)
-      searchInput.select();
-    return;
-  }
-
   var quickSearchTextBox = document.getElementById('searchInput');
   if (quickSearchTextBox)
     quickSearchTextBox.select();

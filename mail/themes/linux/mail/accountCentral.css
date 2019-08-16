@@ -156,11 +156,6 @@ spacer.big {
   background-repeat: no-repeat;
 }
 
-#CreateAccountChat {
-  background-image: url("chrome://chat/skin/chat-16.png");
-  background-repeat: no-repeat;
-}
-
 #CreateAccountNewsgroups {
   background-image: -moz-image-rect(url("chrome://messenger/skin/icons/server.png"), 0, 64, 16, 48);
   background-repeat: no-repeat;
@@ -173,7 +168,6 @@ spacer.big {
 
 #CreateAccountMail:-moz-locale-dir(rtl),
 #CreateAccountMovemail:-moz-locale-dir(rtl),
-#CreateAccountChat:-moz-locale-dir(rtl),
 #CreateAccountNewsgroups:-moz-locale-dir(rtl),
 #CreateAccountRSS:-moz-locale-dir(rtl) {
   background-position: right center;

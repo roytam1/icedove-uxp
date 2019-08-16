@@ -152,10 +152,6 @@ spacer.big {
 #OfflineSettings label:-moz-locale-dir(rtl) {
   background: url("chrome://messenger/skin/accountcentral/offline-settings.png") right no-repeat !important;
 }
-#CreateAccountChat {
-  background-image: url("chrome://chat/skin/chat-16.png");
-  background-repeat: no-repeat;
-}
 
 @media (-moz-os-version: windows-xp) {
   #CreateAccountMail,
@@ -190,7 +186,6 @@ spacer.big {
 
 #CreateAccountMail:-moz-locale-dir(rtl),
 #CreateAccountMovemail:-moz-locale-dir(rtl),
-#CreateAccountChat:-moz-locale-dir(rtl),
 #CreateAccountNewsgroups:-moz-locale-dir(rtl),
 #CreateAccountRSS:-moz-locale-dir(rtl) {
   background-position: right center;

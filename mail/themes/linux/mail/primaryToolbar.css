@@ -129,10 +129,6 @@
   list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#archive");
 }
 
-#button-chat {
-  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#chat");
-}
-
 #button-nextMsg {
   list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#nextMsg");
 }
@@ -236,10 +232,6 @@ toolbar[brighttext] #button-archive {
   list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#archive-inverted");
 }
 
-toolbar[brighttext] #button-chat {
-  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#chat-inverted");
-}
-
 toolbar[brighttext] #button-nextMsg {
   list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#nextMsg-inverted");
 }
@@ -258,10 +250,6 @@ toolbar[brighttext] #button-showconversation {
 
 toolbar[brighttext] .button-appmenu {
   list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#appButton-inverted");
-}
-
-toolbar > #button-chat[unreadMessages="true"] {
-  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.svg#chat-unread");
 }
 
 .button-appmenu .toolbarbutton-text,

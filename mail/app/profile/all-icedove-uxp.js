@@ -833,20 +833,6 @@ pref("browser.safebrowsing.provider.google4.pver", "about:blank");
 pref("browser.safebrowsing.provider.google4.reportURL", "about:blank");
 pref("browser.safebrowsing.provider.mozilla.lists", "about:blank");
 
-pref("mail.chat.enabled", true);
-// Whether to show chat notifications or not.
-pref("mail.chat.show_desktop_notifications", true);
-// Decide how much information is to be shown in the notification.
-// 0 == Show all info (sender, chat message message preview),
-// 1 == Show sender's info only (not message preview),
-// 2 == No info (fill dummy values).
-pref("mail.chat.notification_info", 0);
-pref("mail.chat.play_sound", true);
-// 0 == default system sound, 1 == user specified wav
-pref("mail.chat.play_sound.type", 0);
-// if sound is user specified, this needs to be a file url
-pref("mail.chat.play_sound.url", "");
-
 // BigFiles
 pref("mail.cloud_files.enabled", true);
 pref("mail.cloud_files.learn_more_url", "https://support.mozillamessaging.com/kb/filelink-large-attachments");
