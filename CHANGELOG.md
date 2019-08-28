@@ -4,7 +4,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## [v2.1]
+## [v2.2]
+
+## [v2.1] 2019-08-26
+### Added
+- New 2019b Time Zone update
+- Use our own infastructure for autoconfiguration wizard
+
+### Fixed
+- Default search engine changed to working instances (SearX/YaCy)
+- Backports for various crash fixes and minor bug fixes
+
+### Changed
+- Profile Directory (Now ~/.hyperbola/icedove-uxp instead of ~/.mozilla/thunderbird)
+- Iceowl-UXP now installs as global addon (opt-in)
+- RSS feeds now open default browser (Iceweasel-UXP)
+
+### Removed
+- Chat and IM (unmaintained code)
+- MediaGoblin instance search plugin
 
 ## [v2.0] - 2019-06-15
 ### Added
