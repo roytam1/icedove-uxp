@@ -43,6 +43,7 @@
           &removeAccount.desc;
         </description>
       </vbox>
+      <vbox id="removeDataPossibility" collapsed="false">
       <checkbox id="removeData"
                 label="&removeData.label;"
                 checked="false"
