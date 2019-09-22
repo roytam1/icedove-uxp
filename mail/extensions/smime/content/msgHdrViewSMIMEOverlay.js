@@ -13,6 +13,9 @@ var gMyLastEncryptedURI = null;
 
 var gSMIMEBundle = null;
 
+var gSignatureStatusForURI = null;
+var gEncryptionStatusForURI = null;
+
 // manipulates some globals from msgReadSMIMEOverlay.js
 
 var nsICMSMessageErrors = Components.interfaces.nsICMSMessageErrors;
@@ -35,7 +38,12 @@ var smimeHeaderSink =
     return 1;
   },
 
-  isStatusForSelectedMessage(aMsgNeckoURL) {
+  /**
+   * @return the URI of the selected message, or null if the current
+   *         message displayed isn't in a folder, for example if the
+   *         message is displayed in a separate window.
+   */
+  getSelectedMessageURI() {
     if (!gFolderDisplay.selectedMessage.folder) {
       // The folder should be absent only if the message gets opened
       // from an external file (.eml), which is opened in its own window.
@@ -44,11 +52,10 @@ var smimeHeaderSink =
       // This special handling is necessary, because the necko URL for
       // separate windows that is seen by the MIME code differs from the
       // one we see here in JS.
-      return true;
+      return null;
     }
 
-    let neckoURI = neckoURLForMessageURI(gFolderDisplay.selectedMessageUris[0]);
-    return (neckoURI === aMsgNeckoURL);
+    return neckoURLForMessageURI(gFolderDisplay.selectedMessageUris[0]);
   },
 
   signedStatus(aNestingLevel, aSignatureStatus, aSignerCert,
@@ -59,10 +66,20 @@ var smimeHeaderSink =
       return;
     }
 
-    if (!this.isStatusForSelectedMessage(aMsgNeckoURL)) {
+    if (aMsgNeckoURL != this.getSelectedMessageURI()) {
+      // Status isn't for selected message.
       return;
     }
 
+    if (gSignatureStatusForURI == aMsgNeckoURL) {
+      // We already received a status previously for this URL.
+      // Don't allow overriding an existing bad status.
+      if (gSignatureStatus != Ci.nsICMSMessageErrors.SUCCESS) {
+        return;
+      }
+    }
+
+    gSignatureStatusForURI = aMsgNeckoURL;
     gSignatureStatus = aSignatureStatus;
     gSignerCert = aSignerCert;
 
@@ -131,10 +148,20 @@ var smimeHeaderSink =
       return;
     }
 
-    if (!this.isStatusForSelectedMessage(aMsgNeckoURL)) {
+    if (aMsgNeckoURL != this.getSelectedMessageURI()) {
+      // Status isn't for selected message.
       return;
     }
 
+    if (gEncryptionStatusForURI == aMsgNeckoURL) {
+      // We already received a status previously for this URL.
+      // Don't allow overriding an existing bad status.
+      if (gEncryptionStatus != Ci.nsICMSMessageErrors.SUCCESS) {
+        return;
+      }
+    }
+
+    gEncryptionStatusForURI = aMsgNeckoURL;
     gEncryptionStatus = aEncryptionStatus;
     gEncryptionCert = aRecipientCert;
 
@@ -210,6 +237,9 @@ function onSMIMEStartHeaders()
 {
   gEncryptionStatus = -1;
   gSignatureStatus = -1;
+
+  gSignatureStatusForURI = null;
+  gEncryptionStatusForURI = null;
 
   gSignerCert = null;
   gEncryptionCert = null;
