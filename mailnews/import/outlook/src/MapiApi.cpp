@@ -1409,9 +1409,6 @@ void CMapiApi::ReportLongProp(const char *pTag, LPSPropValue pVal)
   else if (pVal && (PROP_TYPE(pVal->ulPropTag) == PT_ERROR)) {
     MAPI_TRACE1("%s {Error retrieving property}\n", pTag);
   }
-  else if (pVal && (PROP_TYPE(pVal->ulPropTag) == PT_ERROR)) {
-    MAPI_TRACE1("%s {Error retrieving property}\n", pTag);
-  }
   else {
     MAPI_TRACE1("%s invalid value, expecting long\n", pTag);
   }
