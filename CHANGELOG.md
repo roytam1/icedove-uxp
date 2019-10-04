@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## [v2.2]
+## [v2.3]
+
+## [v2.2] 2019-10-03
+### Added
+- 2019c timezones update
+
+### Fixed
+- Backports for various crash fixes and bugs
+- Missing dom_bindings.xpt in package-manifest.in
+- Broken folder Removal Prompt after removing an Account
+
+### Changed
+- SearX search engine instance to a working one
 
 ## [v2.1] 2019-08-26
 ### Added
