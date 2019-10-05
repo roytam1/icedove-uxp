@@ -9,10 +9,9 @@
 # BrandFullNameInternal is used for some registry and file system values
 # instead of BrandFullName and typically should not be modified.
 !define BrandFullNameInternal "Icedove-UXP Mail/News"
-!define CompanyName           "debian.org"
-!define URLInfoAbout          "http://www.hyperbola.info/"
+!define CompanyName           "Hyperbola Project"
+!define URLInfoAbout          "https://www.hyperbola.info/"
 !define URLUpdateInfo         "https://wiki.hyperbola.info/doku.php?id=en:project:icedove-uxp"
-!define SurveyURL             "https://survey.mozilla.com/1/Mozilla%20Thunderbird/${AppVersion}/${AB_CD}/exit.html"
 
 # Everything below this line may be modified for Alpha / Beta releases.
 !define BrandFullName         "Icedove-UXP"
