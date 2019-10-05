@@ -1,315 +1,315 @@
 {
   "default": {
     "visibleDefaultEngines": [
-      "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+      "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
     ]
   },
   "locales": {
     "en-US": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ar": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ast": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "be": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "br": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ca": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "cs": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "da": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "de": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "en-GB": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "es-AR": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "es-ES": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "et": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "fi": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "fr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ga-IE": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "gd": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "he": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "hr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "hu": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "id": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "is": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "it": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ja-JP-mac": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ja": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "kab": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ko": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "lt": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "nb-NO": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "nl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "nn-NO": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "pl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "pt-PT": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "rm": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ro": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "ru": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "sk": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "sl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "sq": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "sv-SE": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "tr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "uk": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "vi": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     },
     "zh-TW": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "goblinrefuge", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
         ]
       }
     }
