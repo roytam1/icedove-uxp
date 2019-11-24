@@ -323,6 +323,9 @@ pref("mail.forward_message_mode", 2);
 // 0=ask, 1=plain, 2=html, 3=both
 pref("mail.default_html_action", 3);
 
+// Use our own autoconfig server
+pref("mailnews.auto_config_url", "https://repo.hyperbola.info:50000/other/icedove-uxp/autoconfig/v1.1/");
+
 /////////////////////////////////////////////////////////////////
 // End core mailnews.js pref overrides
 /////////////////////////////////////////////////////////////////
