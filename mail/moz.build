@@ -22,8 +22,4 @@ if CONFIG['MOZ_INCOMPLETE_EXTERNAL_LINKAGE']:
 if CONFIG['MAKENSISU']:
     DIRS += ['installer/windows']
 
-if CONFIG['MOZ_BUNDLED_FONTS']:
-    DIRS += ['fonts']
-
 TEST_DIRS += ['test/mozmill']
-
