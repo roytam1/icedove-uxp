@@ -1,315 +1,315 @@
 {
   "default": {
     "visibleDefaultEngines": [
-      "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+      "searx", "searx-tor", "wikipedia-en"
     ]
   },
   "locales": {
     "en-US": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ar": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ast": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "be": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "br": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ca": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "cs": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "da": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "de": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "en-GB": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "es-AR": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "es-ES": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "et": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "fi": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "fr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ga-IE": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "gd": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "he": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "hr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "hu": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "id": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "is": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "it": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ja-JP-mac": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ja": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "kab": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ko": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "lt": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "nb-NO": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "nl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "nn-NO": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "pl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "pt-PT": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "rm": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ro": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "ru": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "sk": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "sl": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "sq": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "sv-SE": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "tr": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "uk": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "vi": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     },
     "zh-TW": {
       "default": {
         "visibleDefaultEngines": [
-          "searx", "searx-tor", "yacy", "quitter-is", "internet-archive", "wikipedia-en", "hyperbola-packages"
+          "searx", "searx-tor", "wikipedia-en"
         ]
       }
     }
