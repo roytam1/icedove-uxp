@@ -4,7 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## [v2.3]
+## [v2.4]
+
+## [v2.3] 2019-01-12
+
+### Added
+- New about config option "mail.suppress_content_language", set to true by default.
+This removes Content-Language header from outgoing mail to help resist fingerprinting.
+
+### Removed
+- Search engines that are not useful from mail: YaCy, GNUSocial, Internet Archive, Package Search
+- MailNews: this component was taken upstream to UXP
+- TwemojiMozilla font: now ships in UXP by default.
+
+### Fixed
+- Missing locales for RSS Feed Reader that was removed during imChat component removal.
 
 ## [v2.2] 2019-10-03
 ### Added
