@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ## [v2.4]
 
-## [v2.3] 2019-01-12
+## [v2.3] 2020-01-12
 
 ### Added
 - New about config option "mail.suppress_content_language", set to true by default.
