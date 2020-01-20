@@ -277,7 +277,7 @@
 @RESPATH@/defaults/pref/mdn.js
 @RESPATH@/defaults/pref/smime.js
 @RESPATH@/defaults/pref/icedove-uxp-branding.js
-@RESPATH@/greprefs.js
+@RESPATH@/goanna.js
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; App extensions to Mail
