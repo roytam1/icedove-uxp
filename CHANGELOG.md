@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## [v2.4]
+## [v2.5]
+
+## [v2.4] 2020-06-09
+### Fixed
+- Broken SearX instance
+- Update timezones to 2020a
 
 ## [v2.3] 2020-01-12
 
