@@ -384,7 +384,6 @@
 @RESPATH@/components/dom_xhr.xpt
 @RESPATH@/components/dom_xpath.xpt
 @RESPATH@/components/dom_xul.xpt
-@RESPATH@/components/dom_presentation.xpt
 @RESPATH@/components/downloads.xpt
 @RESPATH@/components/editor.xpt
 @RESPATH@/components/embed_base.xpt
@@ -632,11 +631,6 @@
 
 @RESPATH@/components/nsAsyncShutdown.manifest
 @RESPATH@/components/nsAsyncShutdown.js
-
-@RESPATH@/components/PresentationDeviceInfoManager.manifest
-@RESPATH@/components/PresentationDeviceInfoManager.js
-@RESPATH@/components/BuiltinProviders.manifest
-@RESPATH@/components/PresentationControlService.js
 
 ; Modules
 @RESPATH@/modules/*
