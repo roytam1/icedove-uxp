@@ -631,7 +631,6 @@
 @RESPATH@/components/PeerConnection.manifest
 #endif
 
-; @RESPATH@/components/dom_webspeechsynth.xpt
 @RESPATH@/components/nsAsyncShutdown.manifest
 @RESPATH@/components/nsAsyncShutdown.js
 
