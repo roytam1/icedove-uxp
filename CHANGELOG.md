@@ -6,10 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ## [v2.5]
 
-## [v2.4] 2020-06-09
+## [v2.4] 2020-06-18
 ### Fixed
 - Broken SearX instance
 - Update timezones to 2020a
+- UXP#1457 - Unfold sqlite
+
+### Removed
+- UXP#756 - Remove identity from manifestHEADmaster
+- UXP#1470 - Remove update.locale
+- UXP#1390 - Remove Presentation Service
+- UXP#1538 - Remove speech recognition
 
 ## [v2.3] 2020-01-12
 
