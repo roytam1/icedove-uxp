@@ -179,7 +179,7 @@
 @DIR_MACOS@@DLL_PREFIX@ssl3@DLL_SUFFIX@
 @DIR_MACOS@@DLL_PREFIX@smime3@DLL_SUFFIX@
 @DIR_MACOS@@DLL_PREFIX@nssutil3@DLL_SUFFIX@
-@DIR_MACOS@@DLL_PREFIX@mozsqlite3@DLL_SUFFIX@
+#@DIR_MACOS@@DLL_PREFIX@mozsqlite3@DLL_SUFFIX@
 #endif
 
 # Remove obsolete bundled icedove-uxp test pilot.
