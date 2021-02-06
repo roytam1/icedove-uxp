@@ -784,18 +784,13 @@ pref("mail.provider.providerList", "https://broker-live.mozillamessaging.com/pro
 pref("mail.provider.suggestFromName", "https://broker-live.mozillamessaging.com/provider/suggest");
 pref("mail.provider.enabled", false);
 
-// Pointer to the default engine name.
-pref("browser.search.defaultenginename", "chrome://messenger-region/locale/region.properties");
+// pointer to the default engine name
+pref("browser.search.defaultenginename",      "chrome://browser-region/locale/region.properties");
 
-// Ordering of search engines in the engine list.
-pref("browser.search.order.1", "chrome://messenger-region/locale/region.properties");
-pref("browser.search.order.2", "chrome://messenger-region/locale/region.properties");
-pref("browser.search.order.3", "chrome://messenger-region/locale/region.properties");
-
-pref("browser.search.defaultenginename.US", "data:text/plain,browser.search.defaultenginename.US=Bing");
-pref("browser.search.order.US.1", "data:text/plain,browser.search.defaultenginename.US=Bing");
-pref("browser.search.order.US.2", "data:text/plain,browser.search.defaultenginename.US=Yahoo");
-pref("browser.search.order.US.3", "data:text/plain,browser.search.defaultenginename.US=");
+// Ordering of Search Engines in the Engine list.
+pref("browser.search.order.1",                "chrome://browser-region/locale/region.properties");
+pref("browser.search.order.2",                "chrome://browser-region/locale/region.properties");
+pref("browser.search.order.3",                "chrome://browser-region/locale/region.properties");
 
 // Developer Tools related preferences
 pref("devtools.debugger.log", false);
