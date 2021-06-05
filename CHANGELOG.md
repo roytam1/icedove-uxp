@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## [v2.5]
+## [v2.6]
+
+## [v2.5] 2020-06-04
+### Fixed
+- Ensure OAUTH2 is actually disabled at build time
+- Bring search service back in locally
+
 
 ## [v2.4] 2020-06-18
 ### Fixed
