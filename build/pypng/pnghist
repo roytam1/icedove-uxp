@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env tauthon
 # $URL: http://pypng.googlecode.com/svn/trunk/code/pnghist $
 # $Rev: 153 $
 # PNG Histogram

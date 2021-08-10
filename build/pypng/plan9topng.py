@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env tauthon
 # $Rev: 184 $
 # $URL: http://pypng.googlecode.com/svn/trunk/code/plan9topng.py $
 
