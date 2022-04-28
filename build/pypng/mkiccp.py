@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env tauthon
 # $URL: http://pypng.googlecode.com/svn/trunk/code/mkiccp.py $
 # $Rev: 182 $
 # Make ICC Profile

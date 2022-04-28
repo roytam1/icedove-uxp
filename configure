@@ -23,4 +23,4 @@ fi
 # directly. We use a copy of the underlying configure script to get paths
 # correct.
 set -- "$@" --with-external-source-dir="$TOPSRCDIR"
-which python2.7 > /dev/null && exec python2.7 "$TOPSRCDIR/configure.py" "$@" || exec python "$TOPSRCDIR/configure.py" "$@"
+which tauthon2.8 > /dev/null && exec tauthon2.8 "$TOPSRCDIR/configure.py" "$@" || exec python "$TOPSRCDIR/configure.py" "$@"
