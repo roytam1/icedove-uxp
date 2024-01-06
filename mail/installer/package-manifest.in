@@ -523,9 +523,9 @@
 @RESPATH@/components/nsCrashMonitor.js
 @RESPATH@/components/SiteSpecificUserAgent.js
 @RESPATH@/components/SiteSpecificUserAgent.manifest
-;@RESPATH@/components/toolkitsearch.manifest
-;@RESPATH@/components/nsSearchService.js
-;@RESPATH@/components/nsSearchSuggestions.js
+@RESPATH@/components/toolkitsearch.manifest
+@RESPATH@/components/nsSearchService.js
+@RESPATH@/components/nsSearchSuggestions.js
 @RESPATH@/components/passwordmgr.manifest
 @RESPATH@/components/nsLoginInfo.js
 @RESPATH@/components/nsLoginManager.js
